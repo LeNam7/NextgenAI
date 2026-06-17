@@ -86,7 +86,7 @@ export default function PersonalizedLearningSection() {
             {/* Student Image Banner */}
             <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
               <img
-                src="/images/vietnamese_student.png"
+                src="/NextgenAI/images/vietnamese_student.png"
                 alt="Học sinh Việt Nam học tập cá nhân hóa với NextgenAI"
                 className="w-full h-48 object-cover group-hover:scale-103 transition-transform duration-500"
               />

@@ -87,7 +87,7 @@ export default function EducationTabs() {
             {/* Class image with Vietnamese theme overlay */}
             <div className="relative rounded-xl overflow-hidden border border-slate-200 shadow-sm group">
               <img
-                src="/images/vietnamese_classroom.png"
+                src="/NextgenAI/images/vietnamese_classroom.png"
                 alt="Đào tạo AI tại trường học Việt Nam"
                 className="w-full h-40 object-cover group-hover:scale-103 transition-all duration-300"
               />

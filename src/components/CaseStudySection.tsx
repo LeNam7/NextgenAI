@@ -35,7 +35,7 @@ export default function CaseStudySection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-sky-500/5 rounded-2xl blur-lg pointer-events-none"></div>
             <div className="relative w-full max-w-[450px] rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
               <img
-                src="/images/vietnamese_office.png"
+                src="/NextgenAI/images/vietnamese_office.png"
                 alt="Triển khai Private AI tại doanh nghiệp Việt Nam"
                 className="w-full h-44 object-cover group-hover:scale-103 transition-transform duration-300"
               />
