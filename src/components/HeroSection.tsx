@@ -1,11 +1,92 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Bot, BookOpen, Layers, CheckCircle, Sparkles, UserCheck, Shield, ChevronRight } from "lucide-react";
 
 export default function HeroSection() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+
+    const resizeCanvas = () => {
+      canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth;
+      canvas.height = canvas.parentElement?.offsetHeight || 800;
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // AI binary data characters
+    const alphabet = "0101010101010101NEXTGENAI";
+    const fontSize = 14;
+    const columns = Math.ceil(canvas.width / fontSize);
+
+    const rainDrops = Array(columns).fill(1).map(() => Math.floor(Math.random() * -50));
+
+    let lastTime = 0;
+    const fps = 15; // Set target FPS to slow down the rain
+    const interval = 1000 / fps;
+
+    const draw = (timestamp: number = 0) => {
+      animationFrameId = requestAnimationFrame(draw);
+
+      const elapsed = timestamp - lastTime;
+      if (elapsed < interval) return;
+      lastTime = timestamp - (elapsed % interval);
+
+      // Clear with trailing alpha to create fading rain effect
+      ctx.fillStyle = "rgba(248, 250, 252, 0.15)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        
+        const x = i * fontSize;
+        const y = rainDrops[i] * fontSize;
+
+        // Draw character only when it's on screen
+        if (y > 0) {
+          // Occasional warm color rain drops (AI glowing anomalies)
+          if (Math.random() > 0.98) {
+            ctx.fillStyle = "rgba(244, 63, 94, 0.5)"; // Pink accent
+          } else if (Math.random() > 0.95) {
+            ctx.fillStyle = "rgba(245, 158, 11, 0.5)"; // Amber accent
+          } else {
+            ctx.fillStyle = "rgba(59, 130, 246, 0.2)"; // Soft ocean blue
+          }
+          ctx.fillText(text, x, y);
+        }
+
+        // Reset condition
+        if (y > canvas.height && Math.random() > 0.975) {
+          rainDrops[i] = 0;
+        }
+
+        rainDrops[i]++;
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(draw);
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
   return (
     <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-slate-50">
+      {/* Matrix data rain effect */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+
       {/* Background glow effects - ocean blues */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/[0.03] rounded-full blur-[120px] -translate-y-1/2 pointer-events-none animate-pulse-slow"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-sky-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
