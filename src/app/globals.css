@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+:root {
+  /* Warm silk off-white Vietnamese traditional paper aesthetic background */
+  --background: #fbfaf8;
+  --foreground: #1c2220;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Micro-Animations */
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(220px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+}
+
+@keyframes shimmer-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 5s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scan 6s ease-in-out infinite;
+}
+
+.animate-shimmer-bg {
+  background-size: 200% 200%;
+  animation: shimmer-bg 4s ease infinite;
+}
+
+/* Premium Light Glassmorphism with silk white & gold borders */
+.glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(180, 83, 9, 0.12); /* Warm gold border */
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(180, 83, 9, 0.06);
+}
+
+/* Custom Scrollbar for Light Theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fbfaf8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 4px;
+  border: 1px solid rgba(180, 83, 9, 0.08);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* ============================================================
+   AI Greeting Character – Animation Keyframes
+   ============================================================ */
+
+/* Hand waving – rotates from the wrist */
+@keyframes charWave {
+  0%   { transform: rotate(0deg); }
+  10%  { transform: rotate(-20deg); }
+  20%  { transform: rotate(12deg); }
+  30%  { transform: rotate(-18deg); }
+  40%  { transform: rotate(10deg); }
+  50%  { transform: rotate(-14deg); }
+  60%  { transform: rotate(6deg); }
+  75%  { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+.char-wave {
+  transform-origin: 30% 90%;
+  animation: charWave 2.8s ease-in-out infinite;
+}
+
+/* Idle body bob */
+@keyframes charIdleBob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+.char-body {
+  animation: charIdleBob 4s ease-in-out infinite;
+}
+
+/* Eye blink */
+@keyframes charBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95%           { transform: scaleY(0.08); }
+}
+.char-eye {
+  transform-origin: center;
+  animation: charBlink 4.5s ease-in-out infinite;
+}
+.char-eye-right {
+  animation: charBlink 4.5s ease-in-out 0.15s infinite;
+}
+
+/* Floating AI particles */
+@keyframes charFloatA {
+  0%, 100% { transform: translate(0, 0) rotate(0deg);   opacity: 0.7; }
+  33%      { transform: translate(6px, -10px) rotate(8deg); opacity: 1;   }
+  66%      { transform: translate(-4px, -6px) rotate(-5deg); opacity: 0.8; }
+}
+@keyframes charFloatB {
+  0%, 100% { transform: translate(0, 0) rotate(0deg);    opacity: 0.5; }
+  40%      { transform: translate(-7px, -12px) rotate(-10deg); opacity: 0.9; }
+  70%      { transform: translate(5px, -4px) rotate(6deg);  opacity: 0.6; }
+}
+@keyframes charFloatC {
+  0%, 100% { transform: translate(0, 0);    opacity: 0.4; }
+  50%      { transform: translate(4px, -8px); opacity: 0.9; }
+}
+.char-particle-a { animation: charFloatA 3.2s ease-in-out infinite; }
+.char-particle-b { animation: charFloatB 4.1s ease-in-out 0.6s infinite; }
+.char-particle-c { animation: charFloatC 2.8s ease-in-out 1.2s infinite; }
+.char-particle-d { animation: charFloatA 3.8s ease-in-out 0.9s infinite; }
+.char-particle-e { animation: charFloatB 3.4s ease-in-out 0.3s infinite; }
+
+/* Chat bubble pulse */
+@keyframes charBubble {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.9; }
+  50%      { transform: scale(1.04) translateY(-3px); opacity: 1; }
+}
+.char-bubble { animation: charBubble 3s ease-in-out infinite; }
+
+/* Neural node ping */
+@keyframes charNodePing {
+  0%, 100% { opacity: 0.3; r: 3; }
+  50%      { opacity: 1;   r: 4.5; }
+}
+.char-node { animation: charNodePing 2.5s ease-in-out infinite; }
+.char-node-b { animation: charNodePing 2.5s ease-in-out 0.8s infinite; }
+.char-node-c { animation: charNodePing 2.5s ease-in-out 1.6s infinite; }
+
+/* ============================================================
+   Floating Guide Character – Slide-in & Hop
+   ============================================================ */
+
+/* Initial slide-up from bottom-right */
+@keyframes guideSlideIn {
+  0%   { transform: translateX(180px) translateY(40px); opacity: 0; }
+  60%  { transform: translateX(-8px) translateY(-6px); opacity: 1; }
+  80%  { transform: translateX(4px) translateY(2px); }
+  100% { transform: translateX(0) translateY(0); opacity: 1; }
+}
+.guide-slide-in {
+  animation: guideSlideIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Hop when section changes */
+@keyframes guideHop {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-18px) rotate(-3deg); }
+  55%  { transform: translateY(-8px) rotate(2deg); }
+  75%  { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+.guide-hop {
+  animation: guideHop 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+}
+
+/* Speech bubble fade in */
+@keyframes guideBubbleFade {
+  0%   { opacity: 0; transform: scale(0.85) translateY(6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.guide-bubble-in {
+  animation: guideBubbleFade 0.3s ease-out forwards;
+}
+
+/* Idle gentle sway (replaces bob when floating) */
+@keyframes guideSway {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25%      { transform: rotate(1.5deg) translateY(-3px); }
+  75%      { transform: rotate(-1.5deg) translateY(-1px); }
+}
+.guide-sway {
+  animation: guideSway 3.5s ease-in-out infinite;
+}
