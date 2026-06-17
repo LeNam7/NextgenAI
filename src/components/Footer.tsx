@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-slate-200">
           
           {/* Col 1: Brand details */}
-          <div className="space-y-4">
+          <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm">
                 <Cpu className="w-4.5 h-4.5" />
@@ -18,7 +18,7 @@ export default function Footer() {
                 Nextgen<span className="text-blue-600 font-extrabold">AI</span>
               </span>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed max-w-sm">
               Học viện nghiên cứu và ứng dụng Trí tuệ Nhân tạo thực tế cho cá nhân, doanh nghiệp và các tổ chức giáo dục phổ thông hàng đầu tại Việt Nam.
             </p>
           </div>
@@ -56,33 +56,6 @@ export default function Footer() {
                 <span>Tòa nhà Innovation, Khu Công nghệ cao Q9, TP. Hồ Chí Minh, Việt Nam</span>
               </div>
             </div>
-          </div>
-
-          {/* Col 4: Resources / Badges */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-mono uppercase text-slate-800 font-bold tracking-wider">Tài liệu tham khảo</h4>
-            <ul className="space-y-2 text-xs text-slate-500">
-              <li>
-                <a
-                  href="https://docs.google.com/document/d/1VBsyqRpr2bAyERGVXmm5tktcF-hM0CYlBodIwbl4pJc/edit?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 hover:text-slate-800 transition-colors"
-                >
-                  <span>Báo cáo Giáo dục AI K-12</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-1 hover:text-slate-800 transition-colors"
-                >
-                  <span>Khung năng lực AI Literacy</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-            </ul>
           </div>
 
         </div>

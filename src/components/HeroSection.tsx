@@ -155,7 +155,7 @@ export default function HeroSection() {
                       <p className="text-[10px] text-slate-400">Khung đào tạo K-12 & GV</p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/30 text-rose-455 border border-rose-900/30">4 Khóa</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/30 text-rose-400 border border-rose-900/30">4 Khóa</span>
                 </div>
 
                 {/* Grid for two smaller sub-widgets */}

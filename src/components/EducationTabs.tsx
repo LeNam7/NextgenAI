@@ -8,6 +8,36 @@ export default function EducationTabs() {
   const [activeTab, setActiveTab] = useState("giao-vien");
   const activeProgram = educationPrograms.find((p) => p.id === activeTab) || educationPrograms[0];
 
+  const getProgramImage = (tabId: string) => {
+    switch (tabId) {
+      case "giao-vien":
+        return "/NextgenAI/images/education_teachers.png";
+      case "cap-1":
+        return "/NextgenAI/images/education_elementary.png";
+      case "cap-2":
+        return "/NextgenAI/images/education_middle.png";
+      case "cap-3":
+        return "/NextgenAI/images/education_high.png";
+      default:
+        return "/NextgenAI/images/education_teachers.png";
+    }
+  };
+
+  const getProgramLabel = (tabId: string) => {
+    switch (tabId) {
+      case "giao-vien":
+        return "ĐÀO TẠO GIÁO VIÊN TIÊU CHUẨN";
+      case "cap-1":
+        return "STEM CLB LỚP 1 - LỚP 5";
+      case "cap-2":
+        return "MÁY HỌC & PROMPT LỚP 6 - LỚP 9";
+      case "cap-3":
+        return "PYTHON & RAG LỚP 10 - LỚP 12";
+      default:
+        return "LỚP HỌC AI TIÊU CHUẨN";
+    }
+  };
+
   return (
     <section id="giao-duc" className="py-24 bg-transparent relative overflow-hidden border-t border-slate-200/60">
       {/* Background decorations */}
@@ -40,7 +70,7 @@ export default function EducationTabs() {
                 className={`px-4 sm:px-6 py-2.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === program.id
                     ? "bg-blue-600 text-white shadow-sm shadow-blue-500/10"
-                    : "text-slate-650 hover:text-slate-900"
+                    : "text-slate-655 hover:text-slate-900"
                 }`}
               >
                 {program.tabLabel}
@@ -50,54 +80,43 @@ export default function EducationTabs() {
         </div>
 
         {/* Active Tab Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Column 1: Info Card Summary (4 cols) */}
-          <div className="lg:col-span-4 bg-white border border-slate-200/80 rounded-2xl p-6 space-y-6 shadow-sm">
-            <h3 className="text-lg font-bold text-slate-900 leading-tight">
-              {activeProgram.title}
-            </h3>
+          <div className="lg:col-span-4 bg-white border border-slate-200/80 rounded-2xl p-6 space-y-6 shadow-sm flex flex-col justify-between">
+            <div className="space-y-6">
+              <h3 className="text-lg font-bold text-slate-900 leading-tight">
+                {activeProgram.title}
+              </h3>
 
-            <div className="space-y-4 text-xs">
-              <div className="flex items-start gap-3">
-                <User className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-755">Đối tượng phù hợp:</h4>
-                  <p className="text-slate-650 mt-0.5 leading-relaxed">{activeProgram.target}</p>
+              <div className="space-y-4 text-xs">
+                <div className="flex items-start gap-3">
+                  <User className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-755">Đối tượng phù hợp:</h4>
+                    <p className="text-slate-650 mt-0.5 leading-relaxed">{activeProgram.target}</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex items-start gap-3">
-                <Clock className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-755">Thời lượng chương trình:</h4>
-                  <p className="text-slate-650 mt-0.5 leading-relaxed">{activeProgram.duration}</p>
+                <div className="flex items-start gap-3">
+                  <Clock className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-755">Thời lượng chương trình:</h4>
+                    <p className="text-slate-655 mt-0.5 leading-relaxed">{activeProgram.duration}</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex items-start gap-3">
-                <Target className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-755">Mục tiêu đầu ra:</h4>
-                  <p className="text-slate-650 mt-0.5 leading-relaxed">{activeProgram.objective}</p>
+                <div className="flex items-start gap-3">
+                  <Target className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-755">Mục tiêu đầu ra:</h4>
+                    <p className="text-slate-655 mt-0.5 leading-relaxed">{activeProgram.objective}</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Class image with Vietnamese theme overlay */}
-            <div className="relative rounded-xl overflow-hidden border border-slate-200 shadow-sm group">
-              <img
-                src="/NextgenAI/images/vietnamese_classroom.png"
-                alt="Đào tạo AI tại trường học Việt Nam"
-                className="w-full h-40 object-cover group-hover:scale-103 transition-all duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-              <div className="absolute bottom-2 left-3">
-                <span className="text-[9px] font-mono text-blue-400 bg-slate-950/80 px-2 py-0.5 rounded border border-blue-500/20">LỚP HỌC AI TIÊU CHUẨN</span>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100">
+            <div className="pt-6 border-t border-slate-100 mt-6">
               <a
                 href="#lien-he"
                 className="w-full inline-flex items-center justify-center px-4 py-3 rounded-xl bg-blue-600 text-xs font-semibold text-white transition-all shadow-md shadow-blue-500/10 hover:bg-blue-700 active:scale-98 cursor-pointer"
@@ -107,37 +126,36 @@ export default function EducationTabs() {
             </div>
           </div>
 
-          {/* Column 2: Detailed Syllabus & Deliverables (8 cols) */}
-          <div className="lg:col-span-8 space-y-8">
-            
+          {/* Column 2: Detailed Syllabus & Deliverables (5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
             {/* Syllabus */}
-            <div className="space-y-4">
-              <h4 className="text-sm font-mono uppercase text-slate-400 tracking-wider font-semibold">Nội dung học chi tiết:</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-3">
+              <h4 className="text-xs font-mono uppercase text-slate-400 tracking-wider font-bold">Nội dung học chi tiết:</h4>
+              <div className="space-y-3">
                 {activeProgram.contents.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-white border border-slate-200/60 flex items-start gap-3 shadow-sm"
+                    className="p-3.5 rounded-xl bg-white border border-slate-200/60 flex items-start gap-3 shadow-sm hover:border-blue-500/25 transition-all duration-300"
                   >
                     <span className="w-5 h-5 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-[10px] font-mono text-blue-600 flex-shrink-0 mt-0.5 font-bold">
                       {idx + 1}
                     </span>
-                    <p className="text-xs text-slate-700 leading-relaxed">{item}</p>
+                    <p className="text-xs text-slate-700 leading-normal">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Hands-on Activities & Deliverables */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-200/60">
+            {/* Hands-on & Deliverables side-by-side */}
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200/60">
               
               {/* Hands-on Activities */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-mono uppercase text-slate-400 tracking-wider font-semibold">Hoạt động thực hành tiêu biểu:</h4>
-                <ul className="space-y-2">
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-mono uppercase text-slate-400 tracking-wider font-bold">Thực hành tiêu biểu:</h4>
+                <ul className="space-y-1.5">
                   {activeProgram.activities.map((act, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-655">
-                      <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <li key={idx} className="flex items-start gap-1.5 text-[10.5px] text-slate-655 leading-normal">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
                       <span>{act}</span>
                     </li>
                   ))}
@@ -145,12 +163,12 @@ export default function EducationTabs() {
               </div>
 
               {/* Deliverables / Final Projects */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-mono uppercase text-slate-400 tracking-wider font-semibold">Sản phẩm đạt được cuối khóa:</h4>
-                <ul className="space-y-2">
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-mono uppercase text-slate-400 tracking-wider font-bold">Sản phẩm đạt được:</h4>
+                <ul className="space-y-1.5">
                   {activeProgram.deliverables.map((del, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-655">
-                      <Award className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <li key={idx} className="flex items-start gap-1.5 text-[10.5px] text-slate-655 leading-normal">
+                      <Award className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
                       <span className="text-slate-800 font-bold">{del}</span>
                     </li>
                   ))}
@@ -158,7 +176,23 @@ export default function EducationTabs() {
               </div>
 
             </div>
+          </div>
 
+          {/* Column 3: Large Dynamic Graphic Illustration (3 cols) */}
+          <div className="lg:col-span-3 flex flex-col">
+            <div className="relative w-full h-full min-h-[320px] lg:min-h-[440px] rounded-2xl overflow-hidden border border-slate-200 shadow-md group flex-grow flex">
+              <img
+                src={getProgramImage(activeTab)}
+                alt={activeProgram.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-center">
+                <span className="inline-block text-[10px] font-bold font-mono text-blue-400 bg-slate-950/90 px-3 py-1.5 rounded-lg border border-blue-500/30 shadow-lg backdrop-blur-sm tracking-wider">
+                  {getProgramLabel(activeTab)}
+                </span>
+              </div>
+            </div>
           </div>
 
         </div>
