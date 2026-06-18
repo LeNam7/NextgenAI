@@ -102,7 +102,7 @@ export default function ProblemSection() {
             <br />
             nhưng <span className="text-blue-600">chưa biết bắt đầu từ đâu</span>
           </h2>
-          <p className="text-slate-655 text-sm sm:text-base">
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
             Việc áp dụng AI tự phát không có định hướng thường dẫn đến lãng phí ngân sách và không giải quyết triệt để bài toán cốt lõi.
           </p>
         </div>
@@ -112,16 +112,16 @@ export default function ProblemSection() {
           {painPoints.map((item, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl bg-white border border-slate-200/60 hover:border-blue-500/30 shadow-sm hover:shadow-md transition-all duration-300 relative group flex gap-4"
+              className="p-8 rounded-2xl bg-white border border-slate-200/60 hover:border-blue-500/30 shadow-sm hover:shadow-md transition-all duration-300 relative group flex gap-5"
             >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 font-bold">
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
                 0{index + 1}
               </div>
               <div className="space-y-2">
-                <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors tracking-tight leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-655 leading-relaxed">
+                <p className="text-base text-slate-600 leading-relaxed tracking-wide">
                   {item.description}
                 </p>
               </div>

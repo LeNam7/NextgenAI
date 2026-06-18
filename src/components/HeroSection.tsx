@@ -128,7 +128,7 @@ export default function HeroSection() {
               thực chiến
             </h1>
 
-            <p className="max-w-2xl mx-auto lg:mx-0 text-base sm:text-lg text-slate-655 leading-relaxed">
+            <p className="max-w-2xl mx-auto lg:mx-0 text-base sm:text-lg text-slate-600 leading-relaxed tracking-wide">
               Chúng tôi đồng hành cùng cá nhân, doanh nghiệp và các trường học Việt Nam tối ưu hóa quy trình, thiết kế lộ trình đào tạo Trí tuệ Nhân tạo thông minh, bảo mật, đáp ứng chuẩn Giáo dục phổ thông Việt Nam.
             </p>
 
@@ -187,7 +187,7 @@ export default function HeroSection() {
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
-                  <span className="text-[10px] font-mono text-blue-400">ACTIVE</span>
+                  <span className="text-xs font-mono text-blue-400">ACTIVE</span>
                 </div>
               </div>
 
@@ -203,7 +203,7 @@ export default function HeroSection() {
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-white">Private AI Assistant</h3>
-                      <p className="text-[10px] text-slate-400">Hỏi đáp tài liệu & RAG</p>
+                      <p className="text-xs text-slate-400 mt-0.5">Hỏi đáp tài liệu & RAG</p>
                     </div>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-emerald-400 border border-emerald-950/30">Online</span>
@@ -218,7 +218,7 @@ export default function HeroSection() {
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-white">AI Model Hub</h3>
-                      <p className="text-[10px] text-slate-400">LLM, Vision, Speech APIs</p>
+                      <p className="text-xs text-slate-400 mt-0.5">LLM, Vision, Speech APIs</p>
                     </div>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/30 text-amber-400 border border-amber-900/30">12 Models</span>
@@ -233,7 +233,7 @@ export default function HeroSection() {
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-white">AI Education Pathway</h3>
-                      <p className="text-[10px] text-slate-400">Khung đào tạo K-12 & GV</p>
+                      <p className="text-xs text-slate-400 mt-0.5">Khung đào tạo K-12 & GV</p>
                     </div>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/30 text-rose-400 border border-rose-900/30">4 Khóa</span>
@@ -245,42 +245,40 @@ export default function HeroSection() {
                   {/* Sub-Widget: Teacher Copilot */}
                   <div className="p-3 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all">
                     <div className="flex items-center justify-between">
-                      <span className="text-[9px] font-semibold text-slate-400">Teacher Copilot</span>
+                      <span className="text-[10.5px] font-semibold text-slate-400">Teacher Copilot</span>
                       <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
                     </div>
                     <div className="mt-2 text-base font-bold text-rose-400">95%</div>
-                    {/* Make description much brighter for accessibility */}
-                    <p className="text-[9px] text-slate-400">Giảm thời gian soạn bài</p>
+                    <p className="text-[10.5px] text-slate-400">Giảm thời gian soạn bài</p>
                   </div>
 
                   {/* Sub-Widget: Student AI Lab */}
                   <div className="p-3 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all">
                     <div className="flex items-center justify-between">
-                      <span className="text-[9px] font-semibold text-slate-400">Student AI Lab</span>
+                      <span className="text-[10.5px] font-semibold text-slate-400">Student AI Lab</span>
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                     </div>
                     <div className="mt-2 text-base font-bold text-amber-400">350+</div>
-                    {/* Make description much brighter for accessibility */}
-                    <p className="text-[9px] text-slate-400">Dự án STEM hoàn thành</p>
+                    <p className="text-[10.5px] text-slate-400">Dự án STEM hoàn thành</p>
                   </div>
                 </div>
 
               </div>
 
               {/* Floating micro metrics */}
-              <div className="mt-5 pt-4 border-t border-slate-900 flex justify-between items-center text-[10px] text-slate-500 font-mono">
+              <div className="mt-5 pt-4 border-t border-slate-900 flex justify-between items-center text-xs text-slate-500 font-mono">
                 <span>RAG LATENCY: 1.2s</span>
                 <span>SECURITY: ENCRYPTED</span>
               </div>
             </div>
 
             {/* Absolute floating element for dynamic depth */}
-            <div className="absolute -bottom-6 -left-6 md:-left-10 bg-slate-900/95 border border-slate-850 rounded-xl p-3 shadow-xl backdrop-blur-sm hidden sm:flex items-center gap-3 animate-bounce-slow">
+            <div className="absolute -bottom-6 -left-6 md:-left-10 bg-slate-900/95 border border-slate-850 rounded-xl p-3.5 shadow-xl backdrop-blur-sm hidden sm:flex items-center gap-3 animate-bounce-slow">
               <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400">
                 <CheckCircle className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-[10px] text-slate-400 font-medium">Bản quyền & Đạo đức</p>
+                <p className="text-[10.5px] text-slate-400 font-medium">Bản quyền & Đạo đức</p>
                 <p className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-rose-400">Chuẩn Whitelist AI</p>
               </div>
             </div>

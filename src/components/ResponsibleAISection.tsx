@@ -51,7 +51,7 @@ export default function ResponsibleAISection() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             AI Mạnh Phải Đi Cùng <span className="text-blue-600">An Toàn Dữ Liệu</span> & Trách Nhiệm
           </h2>
-          <p className="text-slate-655 text-sm sm:text-base">
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
             Chúng tôi xây dựng các giải pháp dựa trên khung tiêu chuẩn bảo mật quốc tế và quy tắc đạo đức AI phổ thông nghiêm ngặt.
           </p>
         </div>
@@ -61,16 +61,16 @@ export default function ResponsibleAISection() {
           {safetyPrinciples.map((principle, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-500/30 transition-all duration-300 space-y-4 group shadow-sm hover:shadow-md"
+              className="p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-500/30 transition-all duration-300 space-y-4 group shadow-sm hover:shadow-md"
             >
               <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center group-hover:scale-105 transition-transform">
                 {principle.icon}
               </div>
               <div className="space-y-2">
-                <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors tracking-tight">
                   {principle.title}
                 </h3>
-                <p className="text-xs text-slate-655 leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed tracking-wide">
                   {principle.description}
                 </p>
               </div>
@@ -79,9 +79,9 @@ export default function ResponsibleAISection() {
         </div>
 
         {/* Warning notification bar */}
-        <div className="mt-12 p-4 rounded-xl bg-blue-50/60 border border-blue-100 max-w-4xl mx-auto flex items-start gap-3 shadow-sm">
+        <div className="mt-12 p-5 rounded-2xl bg-blue-50/60 border border-blue-100 max-w-4xl mx-auto flex items-start gap-3.5 shadow-sm">
           <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-          <div className="text-xs text-slate-700 leading-relaxed">
+          <div className="text-sm text-slate-700 leading-relaxed tracking-wide">
             <strong className="text-slate-900 font-bold">Khuyến nghị từ báo cáo nghiên cứu K-12:</strong> Các trường học cần có chính sách kiểm soát danh sách công cụ AI được duyệt sử dụng (Whitelist), cấm học sinh dưới cấp trung học tự ý truy cập các Chatbot AI sinh nội dung nếu chưa có sự giám sát của giáo viên và phụ huynh.
           </div>
         </div>

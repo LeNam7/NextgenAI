@@ -22,11 +22,11 @@ export default function TrustBar() {
               <div className="p-2.5 rounded-lg bg-slate-100 border border-slate-200 group-hover:bg-white transition-colors">
                 {icons[index]}
               </div>
-              <div className="space-y-1">
-                <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              <div className="space-y-2">
+                <h4 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors tracking-tight">
                   {item.title}
                 </h4>
-                <p className="text-xs text-slate-650 leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed tracking-wide">
                   {item.description}
                 </p>
               </div>

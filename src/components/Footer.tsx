@@ -4,7 +4,7 @@ import { menuItems } from "@/data/landingData";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-100 border-t border-slate-200 pt-16 pb-8 text-slate-655">
+    <footer className="bg-slate-100 border-t border-slate-200 pt-16 pb-8 text-slate-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-slate-200">
           
@@ -18,15 +18,15 @@ export default function Footer() {
                 Nextgen<span className="text-blue-600 font-extrabold">AI</span>
               </span>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed max-w-sm">
+            <p className="text-sm text-slate-500 leading-relaxed max-w-sm">
               Học viện nghiên cứu và ứng dụng Trí tuệ Nhân tạo thực tế cho cá nhân, doanh nghiệp và các tổ chức giáo dục phổ thông hàng đầu tại Việt Nam.
             </p>
           </div>
 
           {/* Col 2: Navigation Links */}
           <div className="space-y-4">
-            <h4 className="text-xs font-mono uppercase text-slate-800 font-bold tracking-wider">Hệ sinh thái</h4>
-            <div className="grid grid-cols-2 gap-2 text-xs">
+            <h4 className="text-sm font-mono uppercase text-slate-800 font-bold tracking-wider">Hệ sinh thái</h4>
+            <div className="grid grid-cols-2 gap-2 text-sm">
               {menuItems.map((item) => (
                 <a
                   key={item.href}
@@ -41,8 +41,8 @@ export default function Footer() {
 
           {/* Col 3: Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-xs font-mono uppercase text-slate-800 font-bold tracking-wider">Liên hệ hợp tác</h4>
-            <div className="space-y-2.5 text-xs text-slate-655">
+            <h4 className="text-sm font-mono uppercase text-slate-800 font-bold tracking-wider">Liên hệ hợp tác</h4>
+            <div className="space-y-2.5 text-sm text-slate-600">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-blue-600 flex-shrink-0" />
                 <span>contact@nextgenai.vn</span>
@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom footer text */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-slate-500 font-mono">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
           <p>© 2026 NextgenAI. All rights reserved. Designed for Vietnamese Educators.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-slate-850">Privacy Policy</a>

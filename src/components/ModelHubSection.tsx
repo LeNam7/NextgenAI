@@ -19,7 +19,7 @@ export default function ModelHubSection() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Chọn Đúng Model AI Trước Khi Triển Khai
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base">
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
             Chúng tôi tư vấn tích hợp model tối ưu theo 5 tiêu chí kỹ thuật: độ chính xác, chi phí, tốc độ, bảo mật và khả năng mở rộng.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function ModelHubSection() {
         {/* Desktop Table View */}
         <div className="hidden md:block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
           <table className="min-w-full divide-y divide-slate-200 text-left">
-            <thead className="bg-slate-50 font-bold text-slate-700 text-xs uppercase tracking-wider font-mono">
+            <thead className="bg-slate-50 font-bold text-slate-700 text-xs uppercase tracking-wider font-mono border-b border-slate-200">
               <tr>
                 <th className="px-6 py-4">Nhu cầu thực tế</th>
                 <th className="px-6 py-4">Loại model phù hợp</th>
@@ -35,7 +35,7 @@ export default function ModelHubSection() {
                 <th className="px-6 py-4 text-right">Cách triển khai</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-slate-750 text-xs">
+            <tbody className="divide-y divide-slate-100 text-slate-700 text-sm leading-relaxed">
               {modelHubRows.map((row, index) => (
                 <tr
                   key={index}
@@ -45,14 +45,14 @@ export default function ModelHubSection() {
                     {row.need}
                   </td>
                   <td className="px-6 py-5">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded bg-blue-50 border border-blue-150 text-blue-800 font-bold">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded bg-blue-50 border border-blue-150 text-blue-800 font-bold text-xs">
                       {row.modelType}
                     </span>
                   </td>
-                  <td className="px-6 py-5 text-slate-650">
+                  <td className="px-6 py-5 text-slate-600">
                     {row.example}
                   </td>
-                  <td className="px-6 py-5 text-right font-mono text-slate-650">
+                  <td className="px-6 py-5 text-right font-mono text-slate-600 text-xs">
                     {row.deployment}
                   </td>
                 </tr>
@@ -66,35 +66,35 @@ export default function ModelHubSection() {
           {modelHubRows.map((row, index) => (
             <div
               key={index}
-              className="p-5 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-sm"
+              className="p-6 rounded-2xl bg-white border border-slate-200 space-y-3.5 shadow-sm"
             >
               <div>
-                <h4 className="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-semibold">Nhu cầu</h4>
+                <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Nhu cầu</h4>
                 <p className="text-sm font-bold text-slate-900 mt-1">{row.need}</p>
               </div>
               <div className="grid grid-cols-2 gap-4 pt-3 border-t border-slate-100">
                 <div>
-                  <h4 className="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-semibold">Model phù hợp</h4>
-                  <span className="inline-block mt-1 text-[11px] font-bold text-blue-700">
+                  <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Model phù hợp</h4>
+                  <span className="inline-block mt-1 text-xs font-bold text-blue-700">
                     {row.modelType}
                   </span>
                 </div>
                 <div>
-                  <h4 className="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-semibold">Cách triển khai</h4>
-                  <p className="text-[11px] font-mono text-slate-650 mt-1">{row.deployment}</p>
+                  <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Cách triển khai</h4>
+                  <p className="text-xs font-mono text-slate-600 mt-1">{row.deployment}</p>
                 </div>
               </div>
               <div className="pt-2">
-                <h4 className="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-semibold">Ví dụ model</h4>
-                <p className="text-xs text-slate-600 mt-1">{row.example}</p>
+                <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Ví dụ model</h4>
+                <p className="text-sm text-slate-600 mt-1 leading-relaxed">{row.example}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Footnote note */}
-        <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-700 font-medium bg-blue-50/60 py-3 rounded-xl border border-blue-100 max-w-3xl mx-auto px-4 text-center shadow-sm">
-          <ShieldAlert className="w-4 h-4 text-blue-600 flex-shrink-0" />
+        <div className="mt-8 flex items-center justify-center gap-2 text-sm text-slate-700 font-medium bg-blue-50/60 py-4 rounded-2xl border border-blue-100 max-w-3xl mx-auto px-5 text-center shadow-sm leading-relaxed">
+          <ShieldAlert className="w-4.5 h-4.5 text-blue-600 flex-shrink-0" />
           <span>Chúng tôi cam kết <b className="text-slate-900 font-bold">không bán model thương mại chung chung</b> mà tư vấn cấu hình RAG/Fine-tuning tối ưu.</span>
         </div>
 

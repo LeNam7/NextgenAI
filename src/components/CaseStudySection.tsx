@@ -27,7 +27,7 @@ export default function CaseStudySection() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
               Tình Huống Sử Dụng & <br className="hidden md:inline" />Giải Giải Pháp Triển Khai Thực Tế
             </h2>
-            <p className="text-slate-655 text-sm sm:text-base max-w-2xl mx-auto lg:mx-0">
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide max-w-2xl mx-auto lg:mx-0">
               Khám phá cách các cá nhân, tổ chức giáo dục và doanh nghiệp Việt Nam giải quyết bài toán thực tế bằng các giải pháp AI chuyên biệt từ NextgenAI.
             </p>
           </div>
@@ -52,15 +52,15 @@ export default function CaseStudySection() {
           {caseStudies.map((scenario, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-500/30 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-6"
+              className="p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-500/30 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-6"
             >
               {/* Header: Title and Target Audience */}
               <div className="flex items-start justify-between gap-4">
                 <div className="space-y-1.5">
-                  <span className="text-[10px] font-mono text-blue-700 font-bold tracking-wider uppercase">
+                  <span className="text-xs font-mono text-blue-700 font-bold tracking-wider uppercase">
                     {scenario.targetAudience}
                   </span>
-                  <h3 className="text-base font-bold text-slate-900 leading-snug">
+                  <h3 className="text-lg font-bold text-slate-900 leading-snug tracking-tight">
                     {scenario.title}
                   </h3>
                 </div>
@@ -70,27 +70,27 @@ export default function CaseStudySection() {
               </div>
 
               {/* Body: Problem, Solution, Outcome */}
-              <div className="space-y-4 text-xs">
+              <div className="space-y-4 text-sm">
                 {/* 1. Problem */}
                 <div className="flex gap-2.5">
-                  <AlertCircle className="w-4 h-4 text-slate-455 flex-shrink-0 mt-0.5" />
-                  <p className="text-slate-655 leading-relaxed">
-                    <strong className="text-slate-800">Vấn đề:</strong> {scenario.problem}
+                  <AlertCircle className="w-4.5 h-4.5 text-slate-400 flex-shrink-0 mt-0.5" />
+                  <p className="text-slate-600 leading-relaxed tracking-wide">
+                    <strong className="text-slate-800 font-bold">Vấn đề:</strong> {scenario.problem}
                   </p>
                 </div>
 
                 {/* 2. Solution */}
                 <div className="flex gap-2.5">
-                  <Lightbulb className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <p className="text-slate-655 leading-relaxed">
-                    <strong className="text-slate-800">Giải pháp:</strong> {scenario.solution}
+                  <Lightbulb className="w-4.5 h-4.5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <p className="text-slate-600 leading-relaxed tracking-wide">
+                    <strong className="text-slate-800 font-bold">Giải pháp:</strong> {scenario.solution}
                   </p>
                 </div>
 
                 {/* 3. Outcome */}
-                <div className="flex gap-2.5 p-3 rounded-lg bg-blue-50 border border-blue-100">
-                  <TrendingUp className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <p className="text-slate-700 leading-relaxed font-medium">
+                <div className="flex gap-2.5 p-4 rounded-xl bg-blue-50 border border-blue-100">
+                  <TrendingUp className="w-4.5 h-4.5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <p className="text-slate-700 leading-relaxed tracking-wide">
                     <strong className="text-blue-700 font-bold">Kết quả kỳ vọng:</strong> {scenario.outcome}
                   </p>
                 </div>

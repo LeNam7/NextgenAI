@@ -31,7 +31,7 @@ export default function FAQSection() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Giải Đáp Thắc Mắc Về Giải Pháp AI
           </h2>
-          <p className="text-slate-655 text-sm sm:text-base">
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
             Tìm hiểu nhanh các thông tin quan tâm trước khi quyết định triển khai hoặc hợp tác cùng chúng tôi.
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function FAQSection() {
                   className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors cursor-pointer group"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-sm font-bold text-slate-950 leading-snug group-hover:text-blue-600 transition-colors">
+                  <span className="text-base font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
                     {item.question}
                   </span>
                   <span className="p-1 rounded bg-slate-50 border border-slate-200 text-slate-500 flex-shrink-0 group-hover:border-blue-500/20 group-hover:text-blue-600 transition-all">
@@ -60,10 +60,10 @@ export default function FAQSection() {
 
                 <div
                   className={`transition-all duration-300 ease-in-out ${
-                    isOpen ? "max-h-[500px] border-t border-slate-100" : "max-h-0 overflow-hidden"
+                    isOpen ? "max-h-[550px] border-t border-slate-100" : "max-h-0 overflow-hidden"
                   }`}
                 >
-                  <div className="px-6 py-5 text-xs sm:text-sm text-slate-655 leading-relaxed bg-slate-50/50">
+                  <div className="px-6 py-5 text-sm sm:text-base text-slate-600 leading-relaxed bg-slate-50/50 tracking-wide">
                     {item.answer}
                   </div>
                 </div>

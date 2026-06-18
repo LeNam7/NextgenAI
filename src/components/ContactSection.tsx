@@ -87,19 +87,19 @@ export default function ContactSection() {
             Sẵn Sàng Xây AI Riêng & <br />
             Chương Trình Giáo Dục AI Cho Tổ Chức Của Bạn?
           </h2>
-          <p className="text-slate-655 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Hãy điền thông tin bên dưới để nhận cuộc gọi tư vấn chuyên sâu, khảo sát nhu cầu thực tế và thiết kế demo thử nghiệm hoàn toàn miễn phí.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="#lien-he"
-              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold text-white rounded-lg bg-blue-600 hover:bg-blue-700 shadow shadow-blue-500/10 cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white rounded-xl bg-blue-600 hover:bg-blue-700 shadow shadow-blue-500/10 cursor-pointer"
             >
               Đặt lịch tư vấn miễn phí
             </a>
             <a
               href="#giao-duc"
-              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold text-slate-700 hover:text-slate-900 rounded-lg bg-white border border-slate-200"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-slate-700 hover:text-slate-900 rounded-xl bg-white border border-slate-200"
             >
               Nhận đề xuất lộ trình AI
             </a>
@@ -114,22 +114,22 @@ export default function ContactSection() {
                 <CheckCircle2 className="w-6 h-6 animate-bounce" />
               </div>
               <h3 className="text-lg font-bold text-slate-950">Gửi Yêu Cầu Thành Công!</h3>
-              <p className="text-xs text-slate-655 max-w-md mx-auto leading-relaxed">
+              <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
                 Cảm ơn bạn đã quan tâm đến giải pháp của NextgenAI. Đội ngũ kỹ sư và thiết kế của chúng tôi sẽ liên hệ lại qua số điện thoại/email trong vòng 24 giờ làm việc.
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
-                className="mt-4 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors cursor-pointer"
+                className="mt-4 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl transition-colors cursor-pointer"
               >
                 Gửi yêu cầu mới
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Full Name */}
-                <div className="space-y-1.5">
-                  <label htmlFor="fullName" className="text-xs font-bold text-slate-700">
+                <div className="space-y-2">
+                  <label htmlFor="fullName" className="text-sm font-bold text-slate-700">
                     Họ và tên <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -138,21 +138,21 @@ export default function ContactSection() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2.5 text-xs rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
                       errors.fullName ? "border-red-500" : "border-slate-200"
                     }`}
                     placeholder="Nguyễn Văn A"
                   />
                   {errors.fullName && (
-                    <p className="text-[10px] text-red-500 flex items-center gap-1 font-semibold">
-                      <AlertCircle className="w-3 h-3" /> {errors.fullName}
+                    <p className="text-xs text-red-500 flex items-center gap-1.5 font-semibold">
+                      <AlertCircle className="w-3.5 h-3.5" /> {errors.fullName}
                     </p>
                   )}
                 </div>
 
                 {/* Phone Number */}
-                <div className="space-y-1.5">
-                  <label htmlFor="phone" className="text-xs font-bold text-slate-700">
+                <div className="space-y-2">
+                  <label htmlFor="phone" className="text-sm font-bold text-slate-700">
                     Số điện thoại <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -161,23 +161,23 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2.5 text-xs rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
                       errors.phone ? "border-red-500" : "border-slate-200"
                     }`}
                     placeholder="0912345678"
                   />
                   {errors.phone && (
-                    <p className="text-[10px] text-red-500 flex items-center gap-1 font-semibold">
-                      <AlertCircle className="w-3 h-3" /> {errors.phone}
+                    <p className="text-xs text-red-500 flex items-center gap-1.5 font-semibold">
+                      <AlertCircle className="w-3.5 h-3.5" /> {errors.phone}
                     </p>
                   )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Email Address */}
-                <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-xs font-bold text-slate-700">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-bold text-slate-700">
                     Email liên hệ <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -186,21 +186,21 @@ export default function ContactSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2.5 text-xs rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
                       errors.email ? "border-red-500" : "border-slate-200"
                     }`}
                     placeholder="name@company.com"
                   />
                   {errors.email && (
-                    <p className="text-[10px] text-red-500 flex items-center gap-1 font-semibold">
-                      <AlertCircle className="w-3 h-3" /> {errors.email}
+                    <p className="text-xs text-red-500 flex items-center gap-1.5 font-semibold">
+                      <AlertCircle className="w-3.5 h-3.5" /> {errors.email}
                     </p>
                   )}
                 </div>
 
                 {/* Organization name */}
-                <div className="space-y-1.5">
-                  <label htmlFor="organization" className="text-xs font-bold text-slate-700">
+                <div className="space-y-2">
+                  <label htmlFor="organization" className="text-sm font-bold text-slate-700">
                     Đơn vị / Trường học / Doanh nghiệp <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -209,22 +209,22 @@ export default function ContactSection() {
                     name="organization"
                     value={formData.organization}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2.5 text-xs rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
                       errors.organization ? "border-red-500" : "border-slate-200"
                     }`}
                     placeholder="Trường THPT X hoặc Doanh nghiệp Y"
                   />
                   {errors.organization && (
-                    <p className="text-[10px] text-red-500 flex items-center gap-1 font-semibold">
-                      <AlertCircle className="w-3 h-3" /> {errors.organization}
+                    <p className="text-xs text-red-500 flex items-center gap-1.5 font-semibold">
+                      <AlertCircle className="w-3.5 h-3.5" /> {errors.organization}
                     </p>
                   )}
                 </div>
               </div>
 
               {/* Service Interest Option Dropdown */}
-              <div className="space-y-1.5">
-                <label htmlFor="interest" className="text-xs font-bold text-slate-700">
+              <div className="space-y-2">
+                <label htmlFor="interest" className="text-sm font-bold text-slate-700">
                   Giải pháp bạn quan tâm nhất <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -232,7 +232,7 @@ export default function ContactSection() {
                   name="interest"
                   value={formData.interest}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  className="w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 >
                   <option value="ai-rieng">Cài đặt & Tư vấn AI riêng cho tổ chức</option>
                   <option value="ai-model">Cung cấp, tích hợp AI Model (API, Private Cloud)</option>
@@ -242,8 +242,8 @@ export default function ContactSection() {
               </div>
 
               {/* Description textarea */}
-              <div className="space-y-1.5">
-                <label htmlFor="description" className="text-xs font-bold text-slate-700">
+              <div className="space-y-2">
+                <label htmlFor="description" className="text-sm font-bold text-slate-700">
                   Mô tả cụ thể nhu cầu của bạn
                 </label>
                 <textarea
@@ -252,7 +252,7 @@ export default function ContactSection() {
                   rows={4}
                   value={formData.description}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-950 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
+                  className="w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-200 text-slate-950 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
                   placeholder="Vui lòng chia sẻ thêm về số lượng nhân sự/học sinh, hạ tầng hiện tại hoặc bài toán cụ thể bạn cần giải quyết..."
                 />
               </div>
@@ -261,14 +261,14 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-xs font-bold text-white transition-all hover:opacity-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-blue-500/10 cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-bold text-white transition-all hover:opacity-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-blue-500/10 cursor-pointer"
               >
                 {isSubmitting ? (
                   <span>Đang gửi thông tin...</span>
                 ) : (
                   <>
                     <span>Gửi yêu cầu tư vấn</span>
-                    <Send className="w-3.5 h-3.5" />
+                    <Send className="w-4 h-4" />
                   </>
                 )}
               </button>
