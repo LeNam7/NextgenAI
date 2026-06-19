@@ -49,25 +49,52 @@ export default function ContactSection() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
     
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        fullName: "",
-        phone: "",
-        email: "",
-        organization: "",
-        interest: "ai-rieng",
-        description: "",
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/anhdt@anf-technology.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "Họ và tên": formData.fullName,
+          "Số điện thoại": formData.phone,
+          "Email liên hệ": formData.email,
+          "Đơn vị / Doanh nghiệp": formData.organization,
+          "Giải pháp quan tâm": formData.interest === "ai-rieng" ? "Cài đặt & Tư vấn AI cá nhân cho tổ chức" :
+                                formData.interest === "ai-model" ? "Cung cấp, tích hợp AI Model (API, Private Cloud)" :
+                                formData.interest === "ai-edu" ? "Giáo dục, đào tạo AI cho Giáo viên / Học sinh" : "Khác",
+          "Nhu cầu chi tiết": formData.description || "Không có mô tả thêm",
+          "_subject": `[NextgenAI] Yêu cầu tư vấn mới từ ${formData.fullName}`,
+          "_captcha": "false"
+        })
       });
-    }, 1200);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          fullName: "",
+          phone: "",
+          email: "",
+          organization: "",
+          interest: "ai-rieng",
+          description: "",
+        });
+      } else {
+        alert("Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Có lỗi kết nối. Vui lòng kiểm tra lại đường truyền internet.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
