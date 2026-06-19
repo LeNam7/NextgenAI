@@ -119,7 +119,7 @@ export default function HeroSection() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
               Giải pháp <span className="text-blue-600">AI Giáo dục</span>
-              <br className="hidden sm:inline" /> Hỗ trợ cho Giáo viên
+              <br className="hidden sm:inline" /> Hỗ trợ cho Giáo viên, Phụ huynh
               <br className="hidden sm:inline" />
               <span className="relative">
                 <span className="text-blue-600"> & Học sinh các cấp</span>
@@ -128,7 +128,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="max-w-2xl mx-auto lg:mx-0 text-base sm:text-lg text-slate-600 leading-relaxed tracking-wide">
-              Đồng hành cùng nhà trường và giáo viên tối ưu hóa 50% thời gian soạn bài, chấm điểm; đồng thời trang bị năng lực số, tư duy lập trình AI an toàn, thực hành chuẩn STEM cho học sinh từ Tiểu học đến THPT.
+              Đồng hành cùng nhà trường, giáo viên và phụ huynh tối ưu hóa thời gian soạn bài, chấm điểm, đồng hành học tập; đồng thời trang bị năng lực số, tư duy lập trình AI an toàn, chuẩn STEM cho học sinh.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
