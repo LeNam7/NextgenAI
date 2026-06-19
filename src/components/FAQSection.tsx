@@ -3,9 +3,12 @@
 import React, { useState } from "react";
 import { faqItems } from "@/data/landingData";
 import { HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FAQSection() {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+  const { language, t } = useLanguage();
+  const currentFaqItems = faqItems[language];
 
   const toggleFAQ = (index: number) => {
     if (openIndexes.includes(index)) {
@@ -26,19 +29,22 @@ export default function FAQSection() {
         <div className="text-center space-y-4 mb-20">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700">
             <HelpCircle className="w-3.5 h-3.5 text-blue-600" />
-            <span>Câu Hỏi Thường Gặp</span>
+            <span>{t({ vi: "Câu Hỏi Thường Gặp", en: "Frequently Asked Questions" })}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Giải Đáp Thắc Mắc Về Giải Pháp AI
+            {t({ vi: "Giải Đáp Thắc Mắc Về Giải Pháp AI", en: "AI Solutions FAQ" })}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
-            Tìm hiểu nhanh các thông tin quan tâm trước khi quyết định triển khai hoặc hợp tác cùng chúng tôi.
+            {t({
+              vi: "Tìm hiểu nhanh các thông tin quan tâm trước khi quyết định triển khai hoặc hợp tác cùng chúng tôi.",
+              en: "Quickly learn details about our solutions before planning deployment or requesting partnership.",
+            })}
           </p>
         </div>
 
         {/* FAQ Accordions */}
         <div className="space-y-4">
-          {faqItems.map((item, index) => {
+          {currentFaqItems.map((item, index) => {
             const isOpen = openIndexes.includes(index);
             return (
               <div

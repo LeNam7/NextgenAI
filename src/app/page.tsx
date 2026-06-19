@@ -91,7 +91,7 @@ export default function Home() {
       {
         "@type": "FAQPage",
         "@id": "https://nextgenai.vn/#faq",
-        "mainEntity": faqItems.map((item) => ({
+        "mainEntity": faqItems.vi.map((item) => ({
           "@type": "Question",
           "name": item.question,
           "acceptedAnswer": {

@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { caseStudies } from "@/data/landingData";
 import { AlertCircle, Lightbulb, TrendingUp, Sparkles, Building, GraduationCap, UserCheck } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const icons = [
   <GraduationCap key="school" className="w-5 h-5 text-blue-600" />,
@@ -10,6 +13,9 @@ const icons = [
 ];
 
 export default function CaseStudySection() {
+  const { language, t } = useLanguage();
+  const currentCaseStudies = caseStudies[language];
+
   return (
     <section id="case-study" className="py-24 bg-transparent border-t border-slate-200/60 relative overflow-hidden">
       {/* Background radial glow */}
@@ -22,13 +28,19 @@ export default function CaseStudySection() {
           <div className="lg:col-span-7 space-y-4 text-center lg:text-left">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700">
               <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              <span>Kịch Bản Ứng Dụng Thực Tế</span>
+              <span>{t({ vi: "Kịch Bản Ứng Dụng Thực Tế", en: "Real-world Applications" })}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Tình Huống Sử Dụng & <br className="hidden md:inline" />Giải Giải Pháp Triển Khai Thực Tế
+              {t({
+                vi: "Tình Huống Sử Dụng & Giải Pháp Triển Khai Thực Tế",
+                en: "Use Cases & Real-world Implementations",
+              })}
             </h2>
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide max-w-2xl mx-auto lg:mx-0">
-              Khám phá cách các cá nhân, tổ chức giáo dục và doanh nghiệp Việt Nam giải quyết bài toán thực tế bằng các giải pháp AI chuyên biệt từ NextgenAI.
+              {t({
+                vi: "Khám phá cách các cá nhân, tổ chức giáo dục và doanh nghiệp Việt Nam giải quyết bài toán thực tế bằng các giải pháp AI chuyên biệt từ NextgenAI.",
+                en: "Explore how individuals, educational institutions, and Vietnamese enterprises solve real-world problems with dedicated AI solutions from NextgenAI.",
+              })}
             </p>
           </div>
           <div className="lg:col-span-5 relative w-full flex justify-center">
@@ -39,9 +51,11 @@ export default function CaseStudySection() {
                 alt="Triển khai Private AI tại doanh nghiệp Việt Nam"
                 className="w-full h-44 object-cover group-hover:scale-103 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
               <div className="absolute bottom-2.5 left-4">
-                <span className="text-[9px] font-mono text-blue-400 bg-slate-950/80 px-2.5 py-0.5 rounded border border-blue-500/20">VĂN PHÒNG DOANH NGHIỆP TRONG NƯỚC</span>
+                <span className="text-[9px] font-mono text-blue-400 bg-slate-950/80 px-2.5 py-0.5 rounded border border-blue-500/20">
+                  {t({ vi: "VĂN PHÒNG DOANH NGHIỆP TRONG NƯỚC", en: "DOMESTIC ENTERPRISE OFFICE" })}
+                </span>
               </div>
             </div>
           </div>
@@ -49,7 +63,7 @@ export default function CaseStudySection() {
 
         {/* Scenarios Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {caseStudies.map((scenario, index) => (
+          {currentCaseStudies.map((scenario, index) => (
             <div
               key={index}
               className="p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-500/30 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-6"
@@ -75,7 +89,7 @@ export default function CaseStudySection() {
                 <div className="flex gap-2.5">
                   <AlertCircle className="w-4.5 h-4.5 text-slate-400 flex-shrink-0 mt-0.5" />
                   <p className="text-slate-600 leading-relaxed tracking-wide">
-                    <strong className="text-slate-800 font-bold">Vấn đề:</strong> {scenario.problem}
+                    <strong className="text-slate-800 font-bold">{t({ vi: "Vấn đề:", en: "Problem:" })}</strong> {scenario.problem}
                   </p>
                 </div>
 
@@ -83,7 +97,7 @@ export default function CaseStudySection() {
                 <div className="flex gap-2.5">
                   <Lightbulb className="w-4.5 h-4.5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <p className="text-slate-600 leading-relaxed tracking-wide">
-                    <strong className="text-slate-800 font-bold">Giải pháp:</strong> {scenario.solution}
+                    <strong className="text-slate-800 font-bold">{t({ vi: "Giải pháp:", en: "Solution:" })}</strong> {scenario.solution}
                   </p>
                 </div>
 
@@ -91,7 +105,7 @@ export default function CaseStudySection() {
                 <div className="flex gap-2.5 p-4 rounded-xl bg-blue-50 border border-blue-100">
                   <TrendingUp className="w-4.5 h-4.5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <p className="text-slate-700 leading-relaxed tracking-wide">
-                    <strong className="text-blue-700 font-bold">Kết quả kỳ vọng:</strong> {scenario.outcome}
+                    <strong className="text-blue-700 font-bold">{t({ vi: "Kết quả kỳ vọng:", en: "Expected Outcome:" })}</strong> {scenario.outcome}
                   </p>
                 </div>
               </div>

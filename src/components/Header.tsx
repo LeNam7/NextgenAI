@@ -3,10 +3,14 @@
 import React, { useState, useEffect } from "react";
 import { menuItems } from "@/data/landingData";
 import { Menu, X, Cpu } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, setLanguage } = useLanguage();
+
+  const currentMenuItems = menuItems[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +43,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {menuItems.map((item) => (
+            {currentMenuItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -50,18 +54,42 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          {/* Desktop CTA & Language Switcher */}
+          <div className="hidden md:flex items-center gap-4">
+            {/* Language Switcher */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+              <button
+                onClick={() => setLanguage("vi")}
+                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  language === "vi"
+                    ? "bg-white text-blue-600 shadow-sm"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                VI
+              </button>
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  language === "en"
+                    ? "bg-white text-blue-600 shadow-sm"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <a
               href="#lien-he"
               className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all shadow-sm shadow-blue-500/10 cursor-pointer"
             >
-              Đặt lịch tư vấn
+              {language === "vi" ? "Đặt lịch tư vấn" : "Book a Consultation"}
             </a>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-3">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors border border-slate-200"
@@ -80,7 +108,7 @@ export default function Header() {
         }`}
       >
         <div className="px-4 space-y-3">
-          {menuItems.map((item) => (
+          {currentMenuItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -90,13 +118,37 @@ export default function Header() {
               {item.label}
             </a>
           ))}
-          <div className="pt-4 px-4">
+          <div className="pt-4 px-4 flex items-center justify-between gap-4">
+            {/* Language Switcher Mobile */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+              <button
+                onClick={() => setLanguage("vi")}
+                className={`px-3 py-1.5 text-sm font-bold rounded-lg transition-all cursor-pointer ${
+                  language === "vi"
+                    ? "bg-white text-blue-600 shadow-sm"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                VI
+              </button>
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-3 py-1.5 text-sm font-bold rounded-lg transition-all cursor-pointer ${
+                  language === "en"
+                    ? "bg-white text-blue-600 shadow-sm"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <a
               href="#lien-he"
               onClick={() => setIsOpen(false)}
-              className="flex w-full items-center justify-center px-5 py-3 text-base font-bold text-white rounded-xl bg-blue-600 shadow-md shadow-blue-500/10 cursor-pointer"
+              className="flex-grow flex items-center justify-center px-5 py-3 text-base font-bold text-white rounded-xl bg-blue-600 shadow-md shadow-blue-500/10 cursor-pointer"
             >
-              Đặt lịch tư vấn
+              {language === "vi" ? "Đặt lịch tư vấn" : "Book a Consultation"}
             </a>
           </div>
         </div>

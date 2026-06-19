@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { Sparkles, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactSection() {
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -19,21 +21,28 @@ export default function ContactSection() {
 
   const validate = () => {
     const tempErrors: Record<string, string> = {};
-    if (!formData.fullName.trim()) tempErrors.fullName = "Vui lòng nhập họ và tên";
+    if (!formData.fullName.trim()) {
+      tempErrors.fullName = t({ vi: "Vui lòng nhập họ và tên", en: "Please enter your full name" });
+    }
     
     if (!formData.phone.trim()) {
-      tempErrors.phone = "Vui lòng nhập số điện thoại";
+      tempErrors.phone = t({ vi: "Vui lòng nhập số điện thoại", en: "Please enter your phone number" });
     } else if (!/^(0[3|5|7|8|9])([0-9]{8})$/.test(formData.phone.trim())) {
-      tempErrors.phone = "Số điện thoại không hợp lệ (ví dụ: 0912345678)";
+      tempErrors.phone = t({
+        vi: "Số điện thoại không hợp lệ (ví dụ: 0912345678)",
+        en: "Invalid phone number (e.g., 0912345678)",
+      });
     }
 
     if (!formData.email.trim()) {
-      tempErrors.email = "Vui lòng nhập email";
+      tempErrors.email = t({ vi: "Vui lòng nhập email", en: "Please enter your email" });
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      tempErrors.email = "Email không hợp lệ";
+      tempErrors.email = t({ vi: "Email không hợp lệ", en: "Invalid email address" });
     }
 
-    if (!formData.organization.trim()) tempErrors.organization = "Vui lòng nhập tên đơn vị";
+    if (!formData.organization.trim()) {
+      tempErrors.organization = t({ vi: "Vui lòng nhập tên đơn vị", en: "Please enter organization name" });
+    }
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -87,11 +96,17 @@ export default function ContactSection() {
           description: "",
         });
       } else {
-        alert("Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau.");
+        alert(t({
+          vi: "Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau.",
+          en: "An error occurred while submitting your request. Please try again later.",
+        }));
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Có lỗi kết nối. Vui lòng kiểm tra lại đường truyền internet.");
+      alert(t({
+        vi: "Có lỗi kết nối. Vui lòng kiểm tra lại đường truyền internet.",
+        en: "Connection error. Please check your internet connection.",
+      }));
     } finally {
       setIsSubmitting(false);
     }
@@ -108,27 +123,32 @@ export default function ContactSection() {
         <div className="text-center max-w-3xl mx-auto space-y-6 mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-55 border border-blue-200 text-xs font-bold text-blue-700">
             <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-            <span>Liên hệ tư vấn miễn phí</span>
+            <span>{t({ vi: "Liên hệ tư vấn miễn phí", en: "Free Consultation" })}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Sẵn Sàng Xây AI Cá Nhân & <br />
-            Chương Trình Giáo Dục AI Cho Tổ Chức Của Bạn?
+            {t({
+              vi: "Sẵn Sàng Xây AI Cá Nhân & Chương Trình Giáo Dục AI Cho Tổ Chức Của Bạn?",
+              en: "Ready to Build Personal AI & AI Training Programs for Your Organization?",
+            })}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Hãy điền thông tin bên dưới để nhận cuộc gọi tư vấn chuyên sâu, khảo sát nhu cầu thực tế và thiết kế demo thử nghiệm hoàn toàn miễn phí.
+            {t({
+              vi: "Hãy điền thông tin bên dưới để nhận cuộc gọi tư vấn chuyên sâu, khảo sát nhu cầu thực tế và thiết kế demo thử nghiệm hoàn toàn miễn phí.",
+              en: "Fill in the form below to receive a deep-dive consultation call, practical needs assessment, and a custom demo design entirely for free.",
+            })}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="#lien-he"
               className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white rounded-xl bg-blue-600 hover:bg-blue-700 shadow shadow-blue-500/10 cursor-pointer"
             >
-              Đặt lịch tư vấn miễn phí
+              {t({ vi: "Đặt lịch tư vấn miễn phí", en: "Schedule Free Consultation" })}
             </a>
             <a
               href="#giao-duc"
               className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-slate-700 hover:text-slate-900 rounded-xl bg-white border border-slate-200"
             >
-              Nhận đề xuất lộ trình AI
+              {t({ vi: "Nhận đề xuất lộ trình AI", en: "Get AI Roadmap Proposal" })}
             </a>
           </div>
         </div>
@@ -140,15 +160,20 @@ export default function ContactSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600">
                 <CheckCircle2 className="w-6 h-6 animate-bounce" />
               </div>
-              <h3 className="text-lg font-bold text-slate-950">Gửi Yêu Cầu Thành Công!</h3>
+              <h3 className="text-lg font-bold text-slate-950">
+                {t({ vi: "Gửi Yêu Cầu Thành Công!", en: "Request Submitted Successfully!" })}
+              </h3>
               <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                Cảm ơn bạn đã quan tâm đến giải pháp của NextgenAI. Đội ngũ kỹ sư và thiết kế của chúng tôi sẽ liên hệ lại qua số điện thoại/email trong vòng 24 giờ làm việc.
+                {t({
+                  vi: "Cảm ơn bạn đã quan tâm đến giải pháp của NextgenAI. Đội ngũ kỹ sư và thiết kế của chúng tôi sẽ liên hệ lại qua số điện thoại/email trong vòng 24 giờ làm việc.",
+                  en: "Thank you for your interest in NextgenAI. Our engineering and design team will contact you via phone or email within 24 business hours.",
+                })}
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
                 className="mt-4 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl transition-colors cursor-pointer"
               >
-                Gửi yêu cầu mới
+                {t({ vi: "Gửi yêu cầu mới", en: "Submit new request" })}
               </button>
             </div>
           ) : (
@@ -157,7 +182,7 @@ export default function ContactSection() {
                 {/* Full Name */}
                 <div className="space-y-2">
                   <label htmlFor="fullName" className="text-sm font-bold text-slate-700">
-                    Họ và tên <span className="text-red-500">*</span>
+                    {t({ vi: "Họ và tên", en: "Full name" })} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -180,7 +205,7 @@ export default function ContactSection() {
                 {/* Phone Number */}
                 <div className="space-y-2">
                   <label htmlFor="phone" className="text-sm font-bold text-slate-700">
-                    Số điện thoại <span className="text-red-500">*</span>
+                    {t({ vi: "Số điện thoại", en: "Phone number" })} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -205,7 +230,7 @@ export default function ContactSection() {
                 {/* Email Address */}
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-bold text-slate-700">
-                    Email liên hệ <span className="text-red-500">*</span>
+                    {t({ vi: "Email liên hệ", en: "Contact email" })} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -228,7 +253,7 @@ export default function ContactSection() {
                 {/* Organization name */}
                 <div className="space-y-2">
                   <label htmlFor="organization" className="text-sm font-bold text-slate-700">
-                    Đơn vị / Trường học / Doanh nghiệp <span className="text-red-500">*</span>
+                    {t({ vi: "Đơn vị / Trường học / Doanh nghiệp", en: "Organization / School / Enterprise" })} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -239,7 +264,7 @@ export default function ContactSection() {
                     className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
                       errors.organization ? "border-red-500" : "border-slate-200"
                     }`}
-                    placeholder="Trường THPT X hoặc Doanh nghiệp Y"
+                    placeholder={t({ vi: "Trường THPT X hoặc Doanh nghiệp Y", en: "School X or Enterprise Y" })}
                   />
                   {errors.organization && (
                     <p className="text-xs text-red-500 flex items-center gap-1.5 font-semibold">
@@ -252,7 +277,7 @@ export default function ContactSection() {
               {/* Service Interest Option Dropdown */}
               <div className="space-y-2">
                 <label htmlFor="interest" className="text-sm font-bold text-slate-700">
-                  Giải pháp bạn quan tâm nhất <span className="text-red-500">*</span>
+                  {t({ vi: "Giải pháp bạn quan tâm nhất", en: "Solution you are interested in" })} <span className="text-red-500">*</span>
                 </label>
                 <select
                   id="interest"
@@ -261,17 +286,25 @@ export default function ContactSection() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 >
-                  <option value="ai-rieng">Cài đặt & Tư vấn AI cá nhân cho tổ chức</option>
-                  <option value="ai-model">Cung cấp, tích hợp AI Model (API, Private Cloud)</option>
-                  <option value="ai-edu">Giáo dục, đào tạo AI cho Giáo viên / Học sinh</option>
-                  <option value="khac">Khác (Yêu cầu tư vấn tổng hợp)</option>
+                  <option value="ai-rieng">
+                    {t({ vi: "Cài đặt & Tư vấn AI cá nhân cho tổ chức", en: "Deploy & Consult Personal AI for Organizations" })}
+                  </option>
+                  <option value="ai-model">
+                    {t({ vi: "Cung cấp, tích hợp AI Model (API, Private Cloud)", en: "Provide & Integrate AI Models (API, Private Cloud)" })}
+                  </option>
+                  <option value="ai-edu">
+                    {t({ vi: "Giáo dục, đào tạo AI cho Giáo viên / Học sinh", en: "AI Education & Training for Teachers / Students" })}
+                  </option>
+                  <option value="khac">
+                    {t({ vi: "Khác (Yêu cầu tư vấn tổng hợp)", en: "Other (General Consultation Inquiry)" })}
+                  </option>
                 </select>
               </div>
 
               {/* Description textarea */}
               <div className="space-y-2">
                 <label htmlFor="description" className="text-sm font-bold text-slate-700">
-                  Mô tả cụ thể nhu cầu của bạn
+                  {t({ vi: "Mô tả cụ thể nhu cầu của bạn", en: "Specific details of your requirements" })}
                 </label>
                 <textarea
                   id="description"
@@ -280,7 +313,10 @@ export default function ContactSection() {
                   value={formData.description}
                   onChange={handleChange}
                   className="w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-200 text-slate-950 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
-                  placeholder="Vui lòng chia sẻ thêm về số lượng nhân sự/học sinh, hạ tầng hiện tại hoặc bài toán cụ thể bạn cần giải quyết..."
+                  placeholder={t({
+                    vi: "Vui lòng chia sẻ thêm về số lượng nhân sự/học sinh, hạ tầng hiện tại hoặc bài toán cụ thể bạn cần giải quyết...",
+                    en: "Please share details about the number of staff/students, current infrastructure, or the specific problem you need to solve...",
+                  })}
                 />
               </div>
 
@@ -291,10 +327,10 @@ export default function ContactSection() {
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-bold text-white transition-all hover:opacity-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-blue-500/10 cursor-pointer"
               >
                 {isSubmitting ? (
-                  <span>Đang gửi thông tin...</span>
+                  <span>{t({ vi: "Đang gửi thông tin...", en: "Submitting details..." })}</span>
                 ) : (
                   <>
-                    <span>Gửi yêu cầu tư vấn</span>
+                    <span>{t({ vi: "Gửi yêu cầu tư vấn", en: "Submit Consultation Request" })}</span>
                     <Send className="w-4 h-4" />
                   </>
                 )}

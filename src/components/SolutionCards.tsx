@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { solutionPillars } from "@/data/landingData";
 import { Bot, Layers, BookOpen, Check, ArrowUpRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const icons = [
   <Bot key="bot" className="w-6 h-6" />,
@@ -36,6 +39,9 @@ const colorThemes = [
 ];
 
 export default function SolutionCards() {
+  const { language, t } = useLanguage();
+  const currentPillars = solutionPillars[language];
+
   return (
     <section id="giai-phap" className="py-24 bg-transparent relative overflow-hidden">
       {/* Background radial glow */}
@@ -47,19 +53,25 @@ export default function SolutionCards() {
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700">
-            <span>Dịch Vụ Cốt Lỗi</span>
+            <span>{t({ vi: "Dịch Vụ Cốt Lỗi", en: "Core Services" })}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Ba Trụ Cột <span className="text-blue-600">Hệ Sinh Thái AI</span> của Chúng Tôi
+            {t({ vi: "Ba Trụ Cột ", en: "Our Three " })}
+            <span className="text-blue-600">
+              {t({ vi: "Hệ Sinh Thái AI", en: "AI Ecosystem Pillars" })}
+            </span>
           </h2>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
-            Cung cấp giải pháp trọn gói từ tư vấn chiến lược, triển khai kỹ thuật hạ tầng đến chuyển giao giáo trình đào tạo AI chuẩn hóa cho Việt Nam.
+            {t({
+              vi: "Cung cấp giải pháp trọn gói từ tư vấn chiến lược, triển khai kỹ thuật hạ tầng đến chuyển giao giáo trình đào tạo AI chuẩn hóa cho Việt Nam.",
+              en: "Providing all-in-one solutions from strategic consulting and technical deployment to standardized AI training curriculum transfer for Vietnam.",
+            })}
           </p>
         </div>
 
         {/* 3 Pillars Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {solutionPillars.map((pillar, index) => {
+          {currentPillars.map((pillar, index) => {
             const theme = colorThemes[index];
             return (
               <div
@@ -84,7 +96,9 @@ export default function SolutionCards() {
 
                   {/* Tasks List */}
                   <div className="space-y-4 pt-5 border-t border-slate-100">
-                    <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider font-bold">Hạng mục triển khai:</h4>
+                    <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider font-bold">
+                      {t({ vi: "Hạng mục triển khai:", en: "Implementation Tasks:" })}
+                    </h4>
                     <ul className="space-y-3">
                       {pillar.tasks.map((task, idx) => (
                         <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 leading-relaxed tracking-wide">
@@ -97,7 +111,9 @@ export default function SolutionCards() {
 
                   {/* Use Cases */}
                   <div className="space-y-4 pt-5 border-t border-slate-100">
-                    <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider font-bold">Ứng dụng thực tế:</h4>
+                    <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider font-bold">
+                      {t({ vi: "Ứng dụng thực tế:", en: "Real-world Applications:" })}
+                    </h4>
                     <div className="flex flex-wrap gap-2.5">
                       {pillar.useCases.map((useCase, idx) => (
                         <span
@@ -117,7 +133,7 @@ export default function SolutionCards() {
                     href="#lien-he"
                     className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-350 text-sm font-bold text-slate-700 hover:text-blue-600 transition-all group cursor-pointer"
                   >
-                    <span>Liên hệ giải pháp này</span>
+                    <span>{t({ vi: "Liên hệ giải pháp này", en: "Inquire About This Solution" })}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-blue-600" />
                   </a>
                 </div>

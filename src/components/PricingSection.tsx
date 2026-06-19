@@ -1,8 +1,14 @@
+"use client";
+
 import React from "react";
 import { pricingPackages } from "@/data/landingData";
 import { Check } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function PricingSection() {
+  const { language, t } = useLanguage();
+  const currentPackages = pricingPackages[language];
+
   return (
     <section id="bao-gia" className="py-24 bg-transparent border-t border-slate-200/60 relative overflow-hidden">
       {/* Background glow decoration */}
@@ -13,19 +19,22 @@ export default function PricingSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700">
-            <span>Báo Giá & Hợp Tác</span>
+            <span>{t({ vi: "Báo Giá & Hợp Tác", en: "Pricing & Partnership" })}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Gói Giải Pháp Linh Hoạt Theo Quy Mô
+            {t({ vi: "Gói Giải Pháp Linh Hoạt Theo Quy Mô", en: "Flexible Solution Packages by Scale" })}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
-            Không cần đầu tư chi phí khổng lồ ban đầu. Chúng tôi cung cấp các tùy chọn gói phù hợp với ngân sách của cá nhân, trung tâm và trường học.
+            {t({
+              vi: "Không cần đầu tư chi phí khổng lồ ban đầu. Chúng tôi cung cấp các tùy chọn gói phù hợp với ngân sách của cá nhân, trung tâm và trường học.",
+              en: "No huge upfront investment required. We offer budget-friendly package options for individuals, learning centers, and schools.",
+            })}
           </p>
         </div>
 
         {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {pricingPackages.map((pkg) => (
+          {currentPackages.map((pkg) => (
             <div
               key={pkg.name}
               className={`rounded-2xl border p-10 flex flex-col justify-between transition-all duration-300 relative bg-white ${
@@ -37,7 +46,7 @@ export default function PricingSection() {
               {/* Popular Badge */}
               {pkg.isPopular && (
                 <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-blue-600 text-[10px] font-bold tracking-wider text-white uppercase shadow-sm">
-                  Phổ biến nhất
+                  {t({ vi: "Phổ biến nhất", en: "Most popular" })}
                 </span>
               )}
 
@@ -48,11 +57,13 @@ export default function PricingSection() {
                   <p className="text-sm text-slate-600 mt-2.5 leading-relaxed tracking-wide">{pkg.tagline}</p>
                 </div>
 
-                {/* Price Label (Hidden concrete numbers) */}
+                {/* Price Label */}
                 <div className="py-4 border-y border-slate-100">
-                  <span className="text-sm font-semibold text-slate-500">Chi phí triển khai:</span>
+                  <span className="text-sm font-semibold text-slate-500">
+                    {t({ vi: "Chi phí triển khai:", en: "Deployment cost:" })}
+                  </span>
                   <div className="text-2xl font-extrabold text-blue-600 mt-1">
-                    Liên hệ báo giá theo nhu cầu
+                    {t({ vi: "Liên hệ báo giá theo nhu cầu", en: "Contact for custom quote" })}
                   </div>
                 </div>
 

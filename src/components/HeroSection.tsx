@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { Bot, BookOpen, Layers, CheckCircle, Sparkles, UserCheck, Shield, ChevronRight, GraduationCap, Users } from "lucide-react";
+import { Bot, BookOpen, CheckCircle, Sparkles, Shield, ChevronRight, GraduationCap, Users } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { language, t } = useLanguage();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -114,21 +116,39 @@ export default function HeroSection() {
           <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 backdrop-blur-sm text-xs font-bold text-blue-700">
               <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-pulse" />
-              <span>Tiên phong ứng dụng AI vào giáo dục cho người Việt</span>
+              <span>
+                {t({
+                  vi: "Tiên phong ứng dụng AI vào giáo dục cho người Việt",
+                  en: "Pioneering AI applications in education for Vietnamese",
+                })}
+              </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
-              Giải pháp <span className="text-blue-600">AI Giáo dục</span>
-              <br className="hidden sm:inline" /> Hỗ trợ cho Giáo viên, Phụ huynh
+              {t({ vi: "Giải pháp", en: "Educational" })}{" "}
+              <span className="text-blue-600">
+                {t({ vi: "AI Giáo dục", en: "AI Solutions" })}
+              </span>
+              <br className="hidden sm:inline" />{" "}
+              {t({
+                vi: "Hỗ trợ cho Giáo viên, Phụ huynh",
+                en: "Supporting Teachers, Parents",
+              })}
               <br className="hidden sm:inline" />
               <span className="relative">
-                <span className="text-blue-600"> & Học sinh các cấp</span>
+                <span className="text-blue-600">
+                  {" "}
+                  {t({ vi: "& Học sinh các cấp", en: "& K-12 Students" })}
+                </span>
                 <span className="absolute -bottom-2 left-0 w-full h-[3px] bg-blue-500 rounded-full"></span>
               </span>
             </h1>
 
             <p className="max-w-2xl mx-auto lg:mx-0 text-base sm:text-lg text-slate-600 leading-relaxed tracking-wide">
-              Đồng hành cùng nhà trường, giáo viên và phụ huynh tối ưu hóa thời gian soạn bài, chấm điểm, đồng hành học tập; đồng thời trang bị năng lực số, tư duy lập trình AI an toàn, chuẩn STEM cho học sinh.
+              {t({
+                vi: "Đồng hành cùng nhà trường, giáo viên và phụ huynh tối ưu hóa thời gian soạn bài, chấm điểm, đồng hành học tập; đồng thời trang bị năng lực số, tư duy lập trình AI an toàn, chuẩn STEM cho học sinh.",
+                en: "Empowering schools, teachers, and parents to optimize lesson preparation, grading, and collaborative learning; while equipping K-12 students with digital literacy, safe AI programming, and STEM skills.",
+              })}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -136,14 +156,22 @@ export default function HeroSection() {
                 href="#lien-he"
                 className="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white rounded-xl bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/10 active:scale-98 transition-all gap-2 cursor-pointer"
               >
-                <span>Đăng ký tư vấn lộ trình</span>
+                <span>
+                  {t({
+                    vi: "Đăng ký tư vấn lộ trình",
+                    en: "Request Roadmap Consultation",
+                  })}
+                </span>
                 <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#giao-duc"
                 className="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-slate-700 hover:text-slate-900 rounded-xl bg-white border border-slate-200 hover:border-slate-300 active:scale-98 transition-all hover:bg-slate-50"
               >
-                Xem chương trình giảng dạy
+                {t({
+                  vi: "Xem chương trình giảng dạy",
+                  en: "Explore Curriculum",
+                })}
               </a>
             </div>
 
@@ -151,33 +179,47 @@ export default function HeroSection() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 pt-4 border-t border-slate-200">
               <div className="flex items-center gap-1.5 text-xs text-slate-600 font-semibold">
                 <GraduationCap className="w-4 h-4 text-blue-600" />
-                <span>Trợ lý AI Giáo viên soạn bài & chấm điểm</span>
+                <span>
+                  {t({
+                    vi: "Trợ lý AI Giáo viên soạn bài & chấm điểm",
+                    en: "AI Teacher Assistant for lesson prep & grading",
+                  })}
+                </span>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-slate-600 font-semibold">
                 <Users className="w-4 h-4 text-blue-600" />
-                <span>Lộ trình K-12 (Cấp 1, 2, 3) chuẩn hóa</span>
+                <span>
+                  {t({
+                    vi: "Lộ trình K-12 (Cấp 1, 2, 3) chuẩn hóa",
+                    en: "Standardized K-12 (Grades 1-12) Roadmap",
+                  })}
+                </span>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-slate-600 font-semibold">
                 <Shield className="w-4 h-4 text-blue-600" />
-                <span>Đạo đức & An toàn dữ liệu học sinh</span>
+                <span>
+                  {t({
+                    vi: "Đạo đức & An toàn dữ liệu học sinh",
+                    en: "Ethics & Student Data Privacy",
+                  })}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Right: Stunning Mockup Dashboard Visual (Dark card contrast for luxury feel) */}
+          {/* Right: Stunning Mockup Dashboard Visual */}
           <div className="lg:col-span-5 relative w-full flex justify-center items-center">
-            {/* Outer rotating/glowing frame with warm AI colors interweaving */}
+            {/* Outer rotating/glowing frame */}
             <div className="absolute w-[95%] h-[95%] bg-gradient-to-tr from-blue-600/15 via-purple-500/10 to-rose-500/15 rounded-2xl blur-xl opacity-80 -z-10 animate-pulse-slow"></div>
             
-            {/* Dashboard Container (Sleek dark card for premium tech contrast) */}
+            {/* Dashboard Container */}
             <div className="w-full max-w-[480px] bg-slate-950 border border-blue-900/60 rounded-2xl p-5 shadow-2xl backdrop-blur-md relative overflow-hidden">
               
-              {/* Scanning neon line for AI effect */}
+              {/* Scanning neon line */}
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-rose-500 opacity-60 pointer-events-none animate-scan-line"></div>
 
               {/* Header of Dashboard */}
               <div className="flex items-center justify-between pb-4 border-b border-slate-900/80">
-                {/* 3 browser dots: red, yellow, green for high visibility */}
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-rose-500 shadow-sm shadow-rose-500/20"></span>
                   <span className="w-3 h-3 rounded-full bg-amber-400 shadow-sm shadow-amber-400/20"></span>
@@ -196,13 +238,17 @@ export default function HeroSection() {
                 {/* Module 1: Teacher AI Copilot */}
                 <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all group">
                   <div className="flex items-center gap-3">
-                    {/* Pop-out bright icon container */}
                     <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-400 group-hover:bg-blue-600 group-hover:text-slate-950 transition-all duration-300">
                       <GraduationCap className="w-4 h-4" />
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-white">Teacher AI Copilot</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">Soạn giáo án, đề thi & chấm bài</p>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        {t({
+                          vi: "Soạn giáo án, đề thi & chấm bài",
+                          en: "Lesson prep, exams & automated grading",
+                        })}
+                      </p>
                     </div>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-emerald-400 border border-emerald-950/30">Online</span>
@@ -211,31 +257,43 @@ export default function HeroSection() {
                 {/* Module 2: Student AI Assistant */}
                 <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all group">
                   <div className="flex items-center gap-3">
-                    {/* Pop-out bright icon container */}
                     <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-400 group-hover:bg-blue-600 group-hover:text-slate-950 transition-all duration-300">
                       <Bot className="w-4 h-4" />
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-white">Student AI Assistant</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">Học tập & gia sư ảo cá nhân 24/7</p>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        {t({
+                          vi: "Học tập & gia sư ảo cá nhân 24/7",
+                          en: "Learning & 24/7 personal virtual tutor",
+                        })}
+                      </p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/30 text-amber-400 border border-amber-900/30">Lớp 1-12</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/30 text-amber-400 border border-amber-900/30">
+                    {t({ vi: "Lớp 1-12", en: "Grades 1-12" })}
+                  </span>
                 </div>
 
                 {/* Module 3: K-12 AI Curriculum */}
                 <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all group">
                   <div className="flex items-center gap-3">
-                    {/* Pop-out bright icon container */}
                     <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-400 group-hover:bg-blue-600 group-hover:text-slate-950 transition-all duration-300">
                       <BookOpen className="w-4 h-4" />
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-white">K-12 AI Curriculum</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">Khung đào tạo STEM & AI chuẩn</p>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        {t({
+                          vi: "Khung đào tạo STEM & AI chuẩn",
+                          en: "Standard STEM & AI training framework",
+                        })}
+                      </p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/30 text-rose-400 border border-rose-900/30">4 Khóa</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/30 text-rose-400 border border-rose-900/30">
+                    {t({ vi: "4 Khóa", en: "4 Courses" })}
+                  </span>
                 </div>
 
                 {/* Grid for two smaller sub-widgets */}
@@ -248,7 +306,9 @@ export default function HeroSection() {
                       <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
                     </div>
                     <div className="mt-2 text-base font-bold text-rose-400">95%</div>
-                    <p className="text-[10.5px] text-slate-400">Giảm thời gian soạn bài</p>
+                    <p className="text-[10.5px] text-slate-400 font-medium">
+                      {t({ vi: "Giảm thời gian soạn bài", en: "Reduced lesson prep time" })}
+                    </p>
                   </div>
 
                   {/* Sub-Widget: Student AI Lab */}
@@ -258,7 +318,9 @@ export default function HeroSection() {
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                     </div>
                     <div className="mt-2 text-base font-bold text-amber-400">350+</div>
-                    <p className="text-[10.5px] text-slate-400">Dự án STEM hoàn thành</p>
+                    <p className="text-[10.5px] text-slate-400 font-medium">
+                      {t({ vi: "Dự án STEM hoàn thành", en: "STEM projects completed" })}
+                    </p>
                   </div>
                 </div>
 
@@ -271,14 +333,18 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Absolute floating element for dynamic depth */}
+            {/* Absolute floating element */}
             <div className="absolute -bottom-6 -left-6 md:-left-10 bg-slate-900/95 border border-slate-850 rounded-xl p-3.5 shadow-xl backdrop-blur-sm hidden sm:flex items-center gap-3 animate-bounce-slow">
               <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400">
                 <CheckCircle className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-[10.5px] text-slate-400 font-medium">Bản quyền & Đạo đức</p>
-                <p className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-rose-400">Chuẩn Whitelist AI</p>
+                <p className="text-[10.5px] text-slate-400 font-medium">
+                  {t({ vi: "Bản quyền & Đạo đức", en: "Copyright & Ethics" })}
+                </p>
+                <p className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-rose-400">
+                  {t({ vi: "Chuẩn Whitelist AI", en: "AI Whitelist Standards" })}
+                </p>
               </div>
             </div>
           </div>

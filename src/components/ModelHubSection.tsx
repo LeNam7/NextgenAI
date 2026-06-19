@@ -1,8 +1,14 @@
+"use client";
+
 import React from "react";
 import { modelHubRows } from "@/data/landingData";
 import { Cpu, ShieldAlert } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ModelHubSection() {
+  const { language, t } = useLanguage();
+  const currentRows = modelHubRows[language];
+
   return (
     <section id="model-hub" className="py-24 bg-transparent border-t border-slate-200/60 relative overflow-hidden">
       {/* Background glow */}
@@ -17,10 +23,13 @@ export default function ModelHubSection() {
             <span>AI Model Hub</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Chọn Đúng Model AI Trước Khi Triển Khai
+            {t({ vi: "Chọn Đúng Model AI Trước Khi Triển Khai", en: "Choose the Right AI Model Before Deployment" })}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
-            Chúng tôi tư vấn tích hợp model tối ưu theo 5 tiêu chí kỹ thuật: độ chính xác, chi phí, tốc độ, bảo mật và khả năng mở rộng.
+            {t({
+              vi: "Chúng tôi tư vấn tích hợp model tối ưu theo 5 tiêu chí kỹ thuật: độ chính xác, chi phí, tốc độ, bảo mật và khả năng mở rộng.",
+              en: "We advise integrating the optimal model based on 5 technical criteria: accuracy, cost, speed, security, and scalability.",
+            })}
           </p>
         </div>
 
@@ -29,14 +38,14 @@ export default function ModelHubSection() {
           <table className="min-w-full divide-y divide-slate-200 text-left">
             <thead className="bg-slate-50 font-bold text-slate-700 text-xs uppercase tracking-wider font-mono border-b border-slate-200">
               <tr>
-                <th className="px-6 py-4">Nhu cầu thực tế</th>
-                <th className="px-6 py-4">Loại model phù hợp</th>
-                <th className="px-6 py-4">Ví dụ ứng dụng</th>
-                <th className="px-6 py-4 text-right">Cách triển khai</th>
+                <th className="px-6 py-4">{t({ vi: "Nhu cầu thực tế", en: "Real-world Needs" })}</th>
+                <th className="px-6 py-4">{t({ vi: "Loại model phù hợp", en: "Suitable Model Type" })}</th>
+                <th className="px-6 py-4">{t({ vi: "Ví dụ ứng dụng", en: "Example Applications" })}</th>
+                <th className="px-6 py-4 text-right">{t({ vi: "Cách triển khai", en: "Deployment Method" })}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-slate-700 text-sm leading-relaxed">
-              {modelHubRows.map((row, index) => (
+              {currentRows.map((row, index) => (
                 <tr
                   key={index}
                   className="hover:bg-slate-50/50 transition-colors"
@@ -63,29 +72,37 @@ export default function ModelHubSection() {
 
         {/* Mobile Grid/Card View */}
         <div className="md:hidden space-y-4">
-          {modelHubRows.map((row, index) => (
+          {currentRows.map((row, index) => (
             <div
               key={index}
               className="p-6 rounded-2xl bg-white border border-slate-200 space-y-3.5 shadow-sm"
             >
               <div>
-                <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Nhu cầu</h4>
+                <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">
+                  {t({ vi: "Nhu cầu", en: "Need" })}
+                </h4>
                 <p className="text-sm font-bold text-slate-900 mt-1">{row.need}</p>
               </div>
               <div className="grid grid-cols-2 gap-4 pt-3 border-t border-slate-100">
                 <div>
-                  <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Model phù hợp</h4>
+                  <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">
+                    {t({ vi: "Model phù hợp", en: "Suitable Model" })}
+                  </h4>
                   <span className="inline-block mt-1 text-xs font-bold text-blue-700">
                     {row.modelType}
                   </span>
                 </div>
                 <div>
-                  <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Cách triển khai</h4>
+                  <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">
+                    {t({ vi: "Cách triển khai", en: "Deployment" })}
+                  </h4>
                   <p className="text-xs font-mono text-slate-600 mt-1">{row.deployment}</p>
                 </div>
               </div>
               <div className="pt-2">
-                <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">Ví dụ model</h4>
+                <h4 className="text-[11px] uppercase font-mono tracking-wider text-slate-500 font-bold">
+                  {t({ vi: "Ví dụ model", en: "Example Model" })}
+                </h4>
                 <p className="text-sm text-slate-600 mt-1 leading-relaxed">{row.example}</p>
               </div>
             </div>
@@ -95,7 +112,12 @@ export default function ModelHubSection() {
         {/* Footnote note */}
         <div className="mt-8 flex items-center justify-center gap-2 text-sm text-slate-700 font-medium bg-blue-50/60 py-4 rounded-2xl border border-blue-100 max-w-3xl mx-auto px-5 text-center shadow-sm leading-relaxed">
           <ShieldAlert className="w-4.5 h-4.5 text-blue-600 flex-shrink-0" />
-          <span>Chúng tôi cam kết <b className="text-slate-900 font-bold">không bán model thương mại chung chung</b> mà tư vấn cấu hình RAG/Fine-tuning tối ưu.</span>
+          <span>
+            {t({
+              vi: "Chúng tôi cam kết không bán model thương mại chung chung mà tư vấn cấu hình RAG/Fine-tuning tối ưu.",
+              en: "We pledge not to sell generic commercial models but to advise on optimal RAG/Fine-tuning configuration.",
+            })}
+          </span>
         </div>
 
       </div>
