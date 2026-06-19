@@ -119,7 +119,7 @@ export default function HeroSection() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
               Giải pháp <span className="text-blue-600">AI Giáo dục</span>
-              <br className="hidden sm:inline" /> Trợ lực cho Giáo viên
+              <br className="hidden sm:inline" /> Hỗ trợ cho Giáo viên
               <br className="hidden sm:inline" />
               <span className="relative">
                 <span className="text-blue-600"> & Học sinh các cấp</span>
