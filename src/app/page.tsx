@@ -17,12 +17,12 @@ import Footer from "@/components/Footer";
 import { faqItems } from "@/data/landingData";
 
 export const metadata: Metadata = {
-  title: "NextgenAI | Cài đặt AI riêng, Model AI và Giáo dục AI cho trường học",
+  title: "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học",
   description:
-    "Tư vấn triển khai AI riêng biệt, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ tại Việt Nam.",
+    "Tư vấn triển khai AI cá nhân, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ tại Việt Nam.",
   keywords: [
     "NextgenAI",
-    "cài đặt AI riêng",
+    "cài đặt AI cá nhân",
     "tư vấn AI",
     "model AI",
     "giáo dục AI",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     "AI trong giáo dục",
   ],
   openGraph: {
-    title: "NextgenAI | Cài đặt AI riêng, Model AI và Giáo dục AI cho trường học",
+    title: "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học",
     description:
-      "Tư vấn triển khai AI riêng biệt, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ.",
+      "Tư vấn triển khai AI cá nhân, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ.",
     url: "https://nextgenai.vn",
     siteName: "NextgenAI",
     locale: "vi_VN",
@@ -59,9 +59,9 @@ export default function Home() {
         "contactPoint": [
           {
             "@type": "ContactPoint",
-            "telephone": "+84-90-123-4567",
+            "telephone": "+84-989-92-92-69",
             "contactType": "customer service",
-            "email": "contact@nextgenai.vn",
+            "email": "anhdt@anf-technology.com",
             "areaServed": "VN",
             "availableLanguage": "Vietnamese",
           },
@@ -70,9 +70,9 @@ export default function Home() {
       {
         "@type": "Service",
         "@id": "https://nextgenai.vn/#service-ai-private",
-        "name": "Cài đặt & Tư vấn AI riêng",
+        "name": "Cài đặt & Tư vấn AI cá nhân",
         "provider": { "@id": "https://nextgenai.vn/#organization" },
-        "description": "Thiết kế, cài đặt và vận hành một AI Assistant riêng có khả năng hỏi đáp dựa trên tài liệu, kiến thức và quy trình nội bộ của cá nhân, doanh nghiệp hoặc tổ chức giáo dục.",
+        "description": "Thiết kế, cài đặt và vận hành một AI Assistant cá nhân có khả năng hỏi đáp dựa trên tài liệu, kiến thức và quy trình nội bộ của cá nhân, doanh nghiệp hoặc tổ chức giáo dục.",
       },
       {
         "@type": "Service",
@@ -115,7 +115,7 @@ export default function Home() {
       <div className="flex flex-col min-h-screen bg-[#fbfaf8] text-slate-800 selection:bg-blue-600 selection:text-white">
         
         {/* H1 hidden for SEO hierarchy, since Hero contains a styled h1 */}
-        <h1 className="sr-only">NextgenAI - Hệ sinh thái dịch vụ AI riêng biệt, model AI và đào tạo AI thực chiến</h1>
+        <h1 className="sr-only">NextgenAI - Hệ sinh thái dịch vụ AI cá nhân, model AI và đào tạo AI thực chiến</h1>
 
         <Header />
 

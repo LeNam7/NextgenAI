@@ -85,7 +85,7 @@ export const menuItems: MenuItem[] = [
 
 export const trustItems: TrustItem[] = [
   {
-    title: "AI riêng theo nhu cầu",
+    title: "AI cá nhân theo nhu cầu",
     description: "Tối ưu hóa theo dữ liệu và tri thức đặc thù của bạn.",
   },
   {
@@ -124,12 +124,12 @@ export const painPoints: PainPoint[] = [
 export const solutionPillars: SolutionPillar[] = [
   {
     id: "ai-private",
-    title: "Cài đặt & Tư vấn AI Riêng biệt",
-    description: "Thiết kế trợ lý AI riêng bảo mật, có khả năng tra cứu và làm việc trực tiếp trên tài liệu nội bộ.",
+    title: "Cài đặt & Tư vấn AI Cá nhân",
+    description: "Thiết kế trợ lý AI cá nhân bảo mật, có khả năng tra cứu và làm việc trực tiếp trên tài liệu nội bộ.",
     tasks: [
       "Đánh giá nhu cầu và hạ tầng hiện tại",
       "Thiết kế sơ đồ workflow và phân quyền dữ liệu",
-      "Cài đặt Chatbot / Assistant riêng biệt (Private AI)",
+      "Cài đặt Chatbot / Assistant cá nhân (Private AI)",
       "Tích hợp tài liệu nội bộ qua giải pháp RAG",
     ],
     useCases: [
@@ -403,8 +403,8 @@ export const caseStudies: CaseStudyScenario[] = [
 
 export const faqItems: FAQItem[] = [
   {
-    question: "AI riêng biệt khác gì so với việc sử dụng ChatGPT Plus thông thường?",
-    answer: "AI riêng biệt hoạt động hoàn toàn trên dữ liệu tri thức nội bộ của bạn, cam kết bảo mật 100%, không chia sẻ dữ liệu huấn luyện và có thể tùy chỉnh sâu theo quy trình hoạt động của tổ chức.",
+    question: "AI cá nhân khác gì so với việc sử dụng ChatGPT Plus thông thường?",
+    answer: "AI cá nhân hoạt động hoàn toàn trên dữ liệu tri thức nội bộ của bạn, cam kết bảo mật 100%, không chia sẻ dữ liệu huấn luyện và có thể tùy chỉnh sâu theo quy trình hoạt động của tổ chức.",
   },
   {
     question: "Tổ chức của chúng tôi không có nhân sự kỹ thuật, liệu có vận hành được không?",
@@ -415,7 +415,7 @@ export const faqItems: FAQItem[] = [
     answer: "Có. Chúng tôi hỗ trợ bảo mật đa tầng: chạy qua API doanh nghiệp không lưu nhật ký, triển khai trên Private Cloud riêng, hoặc cài đặt On-Premise (Local Server) nội bộ ngắt kết nối Internet.",
   },
   {
-    question: "Chi phí triển khai giải pháp AI riêng được tính toán thế nào?",
+    question: "Chi phí triển khai giải pháp AI cá nhân được tính toán thế nào?",
     answer: "Chi phí dựa trên dung lượng cơ sở tri thức nạp vào, số lượng người dùng đồng thời và mô hình hạ tầng (Cloud API hay Server vật lý). Chúng tôi sẽ tư vấn phương án tối ưu nhất cho ngân sách.",
   },
   {
@@ -427,7 +427,7 @@ export const faqItems: FAQItem[] = [
 export const pricingPackages: PricingPackage[] = [
   {
     name: "Starter (Cá nhân & GV)",
-    tagline: "Tối ưu hóa hiệu suất làm việc cá nhân bằng trợ lý AI riêng chuyên biệt.",
+    tagline: "Tối ưu hóa hiệu suất làm việc cá nhân bằng trợ lý AI cá nhân chuyên biệt.",
     features: [
       "Tư vấn lựa chọn công cụ AI phù hợp",
       "Thiết kế 01 Trợ lý AI cá nhân (RAG dưới 100 trang)",

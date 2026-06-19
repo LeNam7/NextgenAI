@@ -45,15 +45,15 @@ export default function Footer() {
             <div className="space-y-2.5 text-sm text-slate-600">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                <span>contact@nextgenai.vn</span>
+                <span>anhdt@anf-technology.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                <span>+84 90 123 4567</span>
+                <span>(+84) 989 92 92 69</span>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                <span>Tòa nhà Innovation, Khu Công nghệ cao Q9, TP. Hồ Chí Minh, Việt Nam</span>
+                <span>Tầng 6, Tòa nhà AZ Lâm Viên, Số 107 Nguyễn Phong Sắc, Dịch Vọng, Cầu Giấy, Hà Nội</span>
               </div>
             </div>
           </div>

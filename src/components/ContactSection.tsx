@@ -84,7 +84,7 @@ export default function ContactSection() {
             <span>Liên hệ tư vấn miễn phí</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Sẵn Sàng Xây AI Riêng & <br />
+            Sẵn Sàng Xây AI Cá Nhân & <br />
             Chương Trình Giáo Dục AI Cho Tổ Chức Của Bạn?
           </h2>
           <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -234,7 +234,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 >
-                  <option value="ai-rieng">Cài đặt & Tư vấn AI riêng cho tổ chức</option>
+                  <option value="ai-rieng">Cài đặt & Tư vấn AI cá nhân cho tổ chức</option>
                   <option value="ai-model">Cung cấp, tích hợp AI Model (API, Private Cloud)</option>
                   <option value="ai-edu">Giáo dục, đào tạo AI cho Giáo viên / Học sinh</option>
                   <option value="khac">Khác (Yêu cầu tư vấn tổng hợp)</option>
