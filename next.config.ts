@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: "/NextgenAI",
+  basePath: "/",
 };
 
 export default nextConfig;
