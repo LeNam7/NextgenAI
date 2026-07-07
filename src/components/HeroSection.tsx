@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { Bot, BookOpen, CheckCircle, Sparkles, Shield, ChevronRight, GraduationCap, Users } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import InteractiveBrain3D from "./InteractiveBrain3D";
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -207,134 +208,15 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right: Stunning Mockup Dashboard Visual */}
+          {/* Right: Interactive 3D Brain/Neural Sphere */}
           <div className="lg:col-span-5 relative w-full flex justify-center items-center">
             {/* Outer rotating/glowing frame */}
-            <div className="absolute w-[95%] h-[95%] bg-gradient-to-tr from-blue-600/15 via-purple-500/10 to-rose-500/15 rounded-2xl blur-xl opacity-80 -z-10 animate-pulse-slow"></div>
+            <div className="absolute w-[95%] h-[95%] bg-gradient-to-tr from-blue-600/15 via-purple-500/10 to-indigo-500/15 rounded-3xl blur-2xl opacity-80 -z-10 animate-pulse-slow"></div>
             
-            {/* Dashboard Container */}
-            <div className="w-full max-w-[480px] bg-slate-950 border border-blue-900/60 rounded-2xl p-5 shadow-2xl backdrop-blur-md relative overflow-hidden">
-              
-              {/* Scanning neon line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-rose-500 opacity-60 pointer-events-none animate-scan-line"></div>
-
-              {/* Header of Dashboard */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-900/80">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-rose-500 shadow-sm shadow-rose-500/20"></span>
-                  <span className="w-3 h-3 rounded-full bg-amber-400 shadow-sm shadow-amber-400/20"></span>
-                  <span className="w-3 h-3 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/20"></span>
-                  <span className="ml-2 text-xs font-mono text-slate-300">nextgen-ai.edu.vn</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  <span className="text-xs font-mono text-emerald-400">EDU HUB</span>
-                </div>
-              </div>
-
-              {/* Dashboard Modules List */}
-              <div className="mt-5 space-y-4">
-                
-                {/* Module 1: Teacher AI Copilot */}
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-400 group-hover:bg-blue-600 group-hover:text-slate-950 transition-all duration-300">
-                      <GraduationCap className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="text-xs font-semibold text-white">Teacher AI Copilot</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        {t({
-                          vi: "Soạn giáo án, đề thi & chấm bài",
-                          en: "Lesson prep, exams & automated grading",
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-emerald-400 border border-emerald-950/30">Online</span>
-                </div>
-
-                {/* Module 2: Student AI Assistant */}
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-400 group-hover:bg-blue-600 group-hover:text-slate-950 transition-all duration-300">
-                      <Bot className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="text-xs font-semibold text-white">Student AI Assistant</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        {t({
-                          vi: "Học tập & gia sư ảo cá nhân 24/7",
-                          en: "Learning & 24/7 personal virtual tutor",
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/30 text-amber-400 border border-amber-900/30">
-                    {t({ vi: "Lớp 1-12", en: "Grades 1-12" })}
-                  </span>
-                </div>
-
-                {/* Module 3: K-12 AI Curriculum */}
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-400 group-hover:bg-blue-600 group-hover:text-slate-950 transition-all duration-300">
-                      <BookOpen className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="text-xs font-semibold text-white">K-12 AI Curriculum</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        {t({
-                          vi: "Khung đào tạo STEM & AI chuẩn",
-                          en: "Standard STEM & AI training framework",
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/30 text-rose-400 border border-rose-900/30">
-                    {t({ vi: "4 Khóa", en: "4 Courses" })}
-                  </span>
-                </div>
-
-                {/* Grid for two smaller sub-widgets */}
-                <div className="grid grid-cols-2 gap-3">
-                  
-                  {/* Sub-Widget: Teacher Copilot */}
-                  <div className="p-3 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10.5px] font-semibold text-slate-400">Teacher Copilot</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
-                    </div>
-                    <div className="mt-2 text-base font-bold text-rose-400">95%</div>
-                    <p className="text-[10.5px] text-slate-400 font-medium">
-                      {t({ vi: "Giảm thời gian soạn bài", en: "Reduced lesson prep time" })}
-                    </p>
-                  </div>
-
-                  {/* Sub-Widget: Student AI Lab */}
-                  <div className="p-3 rounded-xl bg-slate-900/30 border border-slate-850 hover:border-blue-500/40 transition-all">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10.5px] font-semibold text-slate-400">Student AI Lab</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                    </div>
-                    <div className="mt-2 text-base font-bold text-amber-400">350+</div>
-                    <p className="text-[10.5px] text-slate-400 font-medium">
-                      {t({ vi: "Dự án STEM hoàn thành", en: "STEM projects completed" })}
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Floating micro metrics */}
-              <div className="mt-5 pt-4 border-t border-slate-900 flex justify-between items-center text-xs text-slate-500 font-mono">
-                <span>RAG LATENCY: 1.2s</span>
-                <span>SECURITY: ENCRYPTED</span>
-              </div>
-            </div>
+            <InteractiveBrain3D />
 
             {/* Absolute floating element */}
-            <div className="absolute -bottom-6 -left-6 md:-left-10 bg-slate-900/95 border border-slate-850 rounded-xl p-3.5 shadow-xl backdrop-blur-sm hidden sm:flex items-center gap-3 animate-bounce-slow">
+            <div className="absolute -bottom-6 -left-6 md:-left-10 bg-slate-900/95 border border-slate-800 rounded-xl p-3.5 shadow-xl backdrop-blur-sm hidden sm:flex items-center gap-3 animate-bounce-slow z-20">
               <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400">
                 <CheckCircle className="w-5 h-5" />
               </div>

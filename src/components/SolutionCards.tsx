@@ -42,6 +42,28 @@ export default function SolutionCards() {
   const { language, t } = useLanguage();
   const currentPillars = solutionPillars[language];
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const box = card.getBoundingClientRect();
+    const x = e.clientX - box.left - box.width / 2;
+    const y = e.clientY - box.top - box.height / 2;
+    // Sleek 5-degree maximum rotation for premium micro-interaction
+    const rotateX = -(y / (box.height / 2)) * 5;
+    const rotateY = (x / (box.width / 2)) * 5;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    
+    // Add subtle ambient spotlight glow following cursor inside the card
+    const glowX = ((e.clientX - box.left) / box.width) * 100;
+    const glowY = ((e.clientY - box.top) / box.height) * 100;
+    card.style.backgroundImage = `radial-gradient(circle 240px at ${glowX}% ${glowY}%, rgba(59, 130, 246, 0.05), transparent)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    card.style.backgroundImage = "";
+  };
+
   return (
     <section id="giai-phap" className="py-24 bg-transparent relative overflow-hidden">
       {/* Background radial glow */}
@@ -76,49 +98,52 @@ export default function SolutionCards() {
             return (
               <div
                 key={pillar.id}
-                className={`rounded-2xl border border-slate-200 bg-gradient-to-b ${theme.gradient} bg-white/95 p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 ${theme.border} shadow-sm hover:shadow-md`}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className={`rounded-2xl border border-slate-200 bg-white/95 p-6 sm:p-8 flex flex-col justify-between transition-all duration-200 ease-out ${theme.border} shadow-sm hover:shadow-lg`}
+                style={{ transformStyle: "preserve-3d" }}
               >
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {/* Icon and Title */}
                   <div className="flex items-center gap-4">
-                    <div className={`p-3.5 rounded-xl border ${theme.iconBg}`}>
+                    <div className={`p-3 rounded-xl border ${theme.iconBg}`}>
                       {icons[index]}
                     </div>
-                    <h3 className={`text-xl font-extrabold ${theme.textG} tracking-tight`}>
+                    <h3 className={`text-lg font-extrabold ${theme.textG} tracking-tight`}>
                       {pillar.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-slate-600 text-base leading-relaxed tracking-wide">
+                  <p className="text-slate-600 text-sm leading-relaxed tracking-wide">
                     {pillar.description}
                   </p>
 
                   {/* Tasks List */}
-                  <div className="space-y-4 pt-5 border-t border-slate-100">
-                    <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider font-bold">
+                  <div className="space-y-3 pt-4.5 border-t border-slate-100">
+                    <h4 className="text-[10.5px] font-mono uppercase text-slate-400 tracking-wider font-bold">
                       {t({ vi: "Hạng mục triển khai:", en: "Implementation Tasks:" })}
                     </h4>
-                    <ul className="space-y-3">
+                    <div className="grid grid-cols-2 gap-x-3.5 gap-y-2.5">
                       {pillar.tasks.map((task, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 leading-relaxed tracking-wide">
-                          <Check className={`w-4 h-4 ${theme.bulletColor} mt-0.5 flex-shrink-0`} />
+                        <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-700 leading-snug">
+                          <Check className={`w-3.5 h-3.5 ${theme.bulletColor} mt-0.5 flex-shrink-0`} />
                           <span>{task}</span>
-                        </li>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
                   {/* Use Cases */}
-                  <div className="space-y-4 pt-5 border-t border-slate-100">
-                    <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider font-bold">
+                  <div className="space-y-3 pt-4.5 border-t border-slate-100">
+                    <h4 className="text-[10.5px] font-mono uppercase text-slate-400 tracking-wider font-bold">
                       {t({ vi: "Ứng dụng thực tế:", en: "Real-world Applications:" })}
                     </h4>
-                    <div className="flex flex-wrap gap-2.5">
+                    <div className="flex flex-wrap gap-2">
                       {pillar.useCases.map((useCase, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-600 tracking-wide"
+                          className="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold bg-slate-50 border border-slate-200/80 text-slate-600 tracking-wide"
                         >
                           {useCase}
                         </span>

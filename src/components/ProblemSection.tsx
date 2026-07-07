@@ -86,6 +86,26 @@ export default function ProblemSection() {
     };
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const box = card.getBoundingClientRect();
+    const x = e.clientX - box.left - box.width / 2;
+    const y = e.clientY - box.top - box.height / 2;
+    const rotateX = -(y / (box.height / 2)) * 4;
+    const rotateY = (x / (box.width / 2)) * 4;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+    
+    const glowX = ((e.clientX - box.left) / box.width) * 100;
+    const glowY = ((e.clientY - box.top) / box.height) * 100;
+    card.style.backgroundImage = `radial-gradient(circle 200px at ${glowX}% ${glowY}%, rgba(59, 130, 246, 0.04), transparent)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    card.style.backgroundImage = "";
+  };
+
   return (
     <section className="py-24 relative overflow-hidden bg-slate-50 border-y border-slate-200/60">
       {/* Matrix data rain effect */}
@@ -129,7 +149,10 @@ export default function ProblemSection() {
           {currentPainPoints.map((item, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl bg-white border border-slate-200/60 hover:border-blue-500/30 shadow-sm hover:shadow-md transition-all duration-300 relative group flex gap-5"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className="p-8 rounded-2xl bg-white border border-slate-200/60 hover:border-blue-500/30 shadow-sm hover:shadow-lg transition-all duration-200 ease-out relative group flex gap-5"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
                 0{index + 1}

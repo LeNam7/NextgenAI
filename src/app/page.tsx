@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionCards from "@/components/SolutionCards";
+import AgentVsChatGPTSection from "@/components/AgentVsChatGPTSection";
 import PersonalizedLearningSection from "@/components/PersonalizedLearningSection";
 import ModelHubSection from "@/components/ModelHubSection";
 import EducationTabs from "@/components/EducationTabs";
@@ -124,6 +125,7 @@ export default function Home() {
           <TrustBar />
           <ProblemSection />
           <SolutionCards />
+          <AgentVsChatGPTSection />
           <PersonalizedLearningSection />
           <ModelHubSection />
           <EducationTabs />

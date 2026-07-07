@@ -179,10 +179,10 @@ export const solutionPillars: Record<"vi" | "en", SolutionPillar[]> = {
       title: "Cài đặt & Tư vấn AI Cá nhân",
       description: "Thiết kế trợ lý AI cá nhân bảo mật, có khả năng tra cứu và làm việc trực tiếp trên tài liệu nội bộ.",
       tasks: [
-        "Đánh giá nhu cầu và hạ tầng hiện tại",
-        "Thiết kế sơ đồ workflow và phân quyền dữ liệu",
-        "Cài đặt Chatbot / Assistant cá nhân (Private AI)",
-        "Tích hợp tài liệu nội bộ qua giải pháp RAG",
+        "Khảo sát hạ tầng & nhu cầu",
+        "Thiết kế workflow bảo mật",
+        "Cài đặt trợ lý Private AI",
+        "Tích hợp RAG tài liệu",
       ],
       useCases: [
         "AI soạn giáo án và chấm bài cho giáo viên",
@@ -195,10 +195,10 @@ export const solutionPillars: Record<"vi" | "en", SolutionPillar[]> = {
       title: "Cung cấp & Tích hợp Model AI",
       description: "Kết nối các model AI chuyên biệt tối ưu nhất về độ chính xác, chi phí, tốc độ và bảo mật dữ liệu.",
       tasks: [
-        "Tư vấn model theo chi phí và hiệu năng",
-        "Tích hợp LLMs xử lý văn bản chuyên sâu",
-        "Tích hợp Vision/Speech Models đa phương tiện",
-        "Triển khai qua API Cloud hoặc Local Server",
+        "Tư vấn tối ưu hiệu năng",
+        "Tích hợp LLM văn bản",
+        "Tích hợp Vision/Speech AI",
+        "Triển khai Cloud hoặc Local",
       ],
       useCases: [
         "Tích hợp AI vào hệ thống LMS/E-learning",
@@ -211,10 +211,10 @@ export const solutionPillars: Record<"vi" | "en", SolutionPillar[]> = {
       title: "Đào tạo & Giáo dục AI Thực chiến",
       description: "Xây dựng năng lực số (AI Literacy), giúp giáo viên giảng dạy tốt hơn và học sinh sáng tạo an toàn cùng AI.",
       tasks: [
-        "Đào tạo giáo viên thiết kế giáo án bằng AI",
-        "Giáo trình AI trực quan cho Cấp 1, 2, 3",
-        "Đào tạo đạo đức AI và bảo mật thông tin",
-        "Hướng dẫn tư duy phản biện khi sử dụng AI",
+        "Đào tạo giáo án AI giáo viên",
+        "Giáo trình AI trực quan K-12",
+        "Đào tạo đạo đức & bảo mật",
+        "Hướng dẫn tư duy phản biện",
       ],
       useCases: [
         "Chương trình ngoại khóa CLB AI trường phổ thông",
@@ -229,10 +229,10 @@ export const solutionPillars: Record<"vi" | "en", SolutionPillar[]> = {
       title: "Personal AI Deployment & Consulting",
       description: "Design secure personal AI assistants capable of searching and working directly on internal documents.",
       tasks: [
-        "Assess needs and existing infrastructure",
-        "Design workflow diagrams and data access controls",
-        "Install personal Chatbots / Assistants (Private AI)",
-        "Integrate internal documents using RAG solutions",
+        "Assess infrastructure & needs",
+        "Design secure workflows",
+        "Install Private AI assistants",
+        "Integrate document RAG",
       ],
       useCases: [
         "AI lesson planning and grading for teachers",
@@ -245,10 +245,10 @@ export const solutionPillars: Record<"vi" | "en", SolutionPillar[]> = {
       title: "AI Model Provisioning & Integration",
       description: "Connect specialized AI models optimized for accuracy, cost, speed, and data privacy.",
       tasks: [
-        "Consult on models based on cost and performance",
-        "Integrate LLMs for advanced text processing",
-        "Integrate Vision/Speech Models for multimedia",
-        "Deploy via Cloud API or Local Server",
+        "Optimize cost & speed",
+        "Integrate advanced LLMs",
+        "Integrate Vision/Speech AI",
+        "Deploy on Cloud or Local",
       ],
       useCases: [
         "Integrate AI into LMS/E-learning systems",
@@ -261,10 +261,10 @@ export const solutionPillars: Record<"vi" | "en", SolutionPillar[]> = {
       title: "Hands-on AI Education & Training",
       description: "Build digital literacy (AI Literacy) to help teachers instruct better and students create safely with AI.",
       tasks: [
-        "Train teachers to design lesson plans with AI",
-        "Visual AI textbooks for Grades 1, 2, 3",
-        "Train on AI ethics and data privacy",
-        "Guide critical thinking when using AI",
+        "AI lesson design for teachers",
+        "Visual K-12 AI curriculum",
+        "Ethics & security training",
+        "Critical thinking guidance",
       ],
       useCases: [
         "AI club extracurricular activities for K-12 schools",

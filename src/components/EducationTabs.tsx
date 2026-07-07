@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { educationPrograms } from "@/data/landingData";
 import { GraduationCap, Target, Clock, User, Award, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -9,7 +9,34 @@ export default function EducationTabs() {
   const { language, t } = useLanguage();
   const currentPrograms = educationPrograms[language];
   const [activeTab, setActiveTab] = useState("giao-vien");
+  const activeTabRef = useRef<HTMLButtonElement>(null);
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+
+  useEffect(() => {
+    const updateIndicator = () => {
+      if (activeTabRef.current) {
+        setIndicatorStyle({
+          left: activeTabRef.current.offsetLeft,
+          width: activeTabRef.current.offsetWidth,
+        });
+      }
+    };
+
+    // Run initially
+    updateIndicator();
+
+    // Use a small timeout to ensure DOM has fully painted
+    const timer = setTimeout(updateIndicator, 50);
+
+    window.addEventListener("resize", updateIndicator);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", updateIndicator);
+    };
+  }, [activeTab, language]);
+
   const activeProgram = currentPrograms.find((p) => p.id === activeTab) || currentPrograms[0];
+
 
   const getProgramImage = (tabId: string) => {
     switch (tabId) {
@@ -82,14 +109,26 @@ export default function EducationTabs() {
 
         {/* Tab Selector Buttons */}
         <div className="flex justify-center mb-12">
-          <div className="flex p-1.5 rounded-2xl bg-slate-100 border border-slate-200/80 max-w-full overflow-x-auto gap-1.5">
+          <div className="flex p-1.5 rounded-2xl bg-slate-100 border border-slate-200/80 max-w-full overflow-x-auto gap-1.5 relative scrollbar-none">
+            {/* Sliding Active Tab Background Indicator */}
+            {indicatorStyle.width > 0 && (
+              <div
+                className="absolute top-1.5 bottom-1.5 bg-blue-600 rounded-xl shadow-md shadow-blue-500/20 transition-all duration-300 ease-out pointer-events-none z-0"
+                style={{
+                  left: `${indicatorStyle.left}px`,
+                  width: `${indicatorStyle.width}px`,
+                }}
+              />
+            )}
+
             {currentPrograms.map((program) => (
               <button
                 key={program.id}
+                ref={activeTab === program.id ? activeTabRef : null}
                 onClick={() => setActiveTab(program.id)}
-                className={`px-5 sm:px-6 py-3 rounded-xl text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
+                className={`px-5 sm:px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 whitespace-nowrap cursor-pointer relative z-10 ${
                   activeTab === program.id
-                    ? "bg-blue-600 text-white shadow-sm shadow-blue-500/10"
+                    ? "text-white"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -103,7 +142,10 @@ export default function EducationTabs() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Column 1: Info Card Summary (4 cols) */}
-          <div className="lg:col-span-4 bg-white border border-slate-200/80 rounded-2xl p-8 space-y-6 shadow-sm flex flex-col justify-between">
+          <div
+            key={`${activeTab}-col1`}
+            className="lg:col-span-4 bg-white border border-slate-200/80 rounded-2xl p-8 space-y-6 shadow-sm flex flex-col justify-between animate-tab-col-0"
+          >
             <div className="space-y-6">
               <h3 className="text-xl font-bold text-slate-900 leading-snug">
                 {activeProgram.title}
@@ -147,7 +189,10 @@ export default function EducationTabs() {
           </div>
 
           {/* Column 2: Detailed Syllabus & Deliverables (5 cols) */}
-          <div className="lg:col-span-5 space-y-8">
+          <div
+            key={`${activeTab}-col2`}
+            className="lg:col-span-5 space-y-8 animate-tab-col-1"
+          >
             {/* Syllabus */}
             <div className="space-y-4">
               <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider font-bold">
@@ -157,7 +202,8 @@ export default function EducationTabs() {
                 {activeProgram.contents.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-white border border-slate-200/60 flex items-start gap-3.5 shadow-sm hover:border-blue-500/25 transition-all duration-300"
+                    className="p-4 rounded-xl bg-white border border-slate-200/60 flex items-start gap-3.5 shadow-sm hover:border-blue-500/25 transition-all duration-300 animate-list-item"
+                    style={{ animationDelay: `${0.1 + idx * 0.06}s` }}
                   >
                     <span className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-xs font-mono text-blue-600 flex-shrink-0 mt-0.5 font-bold">
                       {idx + 1}
@@ -178,7 +224,11 @@ export default function EducationTabs() {
                 </h4>
                 <ul className="space-y-2">
                   {activeProgram.activities.map((act, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-600 leading-relaxed tracking-wide">
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-sm text-slate-600 leading-relaxed tracking-wide animate-list-item"
+                      style={{ animationDelay: `${0.35 + idx * 0.05}s` }}
+                    >
                       <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                       <span>{act}</span>
                     </li>
@@ -193,7 +243,11 @@ export default function EducationTabs() {
                 </h4>
                 <ul className="space-y-2">
                   {activeProgram.deliverables.map((del, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-600 leading-relaxed tracking-wide">
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-sm text-slate-600 leading-relaxed tracking-wide animate-list-item"
+                      style={{ animationDelay: `${0.35 + idx * 0.05}s` }}
+                    >
                       <Award className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                       <span className="text-slate-800 font-bold">{del}</span>
                     </li>
@@ -205,12 +259,16 @@ export default function EducationTabs() {
           </div>
 
           {/* Column 3: Large Dynamic Graphic Illustration (3 cols) */}
-          <div className="lg:col-span-3 flex flex-col">
+          <div
+            key={`${activeTab}-col3`}
+            className="lg:col-span-3 flex flex-col animate-tab-col-2"
+          >
             <div className="relative w-full h-full min-h-[320px] lg:min-h-[440px] rounded-2xl overflow-hidden border border-slate-200 shadow-md group flex-grow flex">
               <img
+                key={activeTab}
                 src={getProgramImage(activeTab)}
                 alt={activeProgram.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 animate-img-fade"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-center">

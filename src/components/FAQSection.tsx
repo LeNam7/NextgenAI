@@ -10,13 +10,6 @@ export default function FAQSection() {
   const { language, t } = useLanguage();
   const currentFaqItems = faqItems[language];
 
-  const toggleFAQ = (index: number) => {
-    if (openIndexes.includes(index)) {
-      setOpenIndexes(openIndexes.filter((i) => i !== index));
-    } else {
-      setOpenIndexes([...openIndexes, index]);
-    }
-  };
 
   return (
     <section id="faq" className="py-24 bg-transparent border-t border-slate-200/60 relative overflow-hidden">
@@ -50,11 +43,11 @@ export default function FAQSection() {
               <div
                 key={index}
                 className="rounded-xl border border-slate-200 bg-white overflow-hidden transition-all duration-300 shadow-sm"
+                onMouseEnter={() => setOpenIndexes([index])}
+                onMouseLeave={() => setOpenIndexes([])}
               >
-                <button
-                  onClick={() => toggleFAQ(index)}
+                <div
                   className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors cursor-pointer group"
-                  aria-expanded={isOpen}
                 >
                   <span className="text-base font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
                     {item.question}
@@ -62,7 +55,7 @@ export default function FAQSection() {
                   <span className="p-1 rounded bg-slate-50 border border-slate-200 text-slate-500 flex-shrink-0 group-hover:border-blue-500/20 group-hover:text-blue-600 transition-all">
                     {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </span>
-                </button>
+                </div>
 
                 <div
                   className={`transition-all duration-300 ease-in-out ${
