@@ -499,15 +499,15 @@ export default function AgentVsChatGPTSection() {
       ctx.stroke();
       ctx.setLineDash([]); // Reset line dash
 
-      // Column Labels
+      // Column Labels (Chatbot vs AI Agent)
       ctx.fillStyle = "#94a3b8";
-      ctx.font = "bold 12px sans-serif";
+      ctx.font = "bold 11px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("CHATGPT (PUBLIC)", width / 4, 28);
+      ctx.fillText("Chatbot (Public)", width / 4, 25);
 
       ctx.fillStyle = "#6366f1";
-      ctx.font = "bold 12px sans-serif";
-      ctx.fillText("AI AGENT (PRIVATE)", (3 * width) / 4, 28);
+      ctx.font = "bold 11px sans-serif";
+      ctx.fillText("AI Agent (Private)", (3 * width) / 4, 25);
 
       if (activeIndex === 0) {
         // --- 1. SECURITY & DATA (Crying cloud vs Safe House) ---
@@ -624,7 +624,7 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.roundRect(width / 4 - 55, 86, 110, 36, 6);
+        ctx.roundRect(width / 4 - 65, 86, 130, 36, 6);
         ctx.fill();
         ctx.stroke();
 
@@ -654,7 +654,7 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.roundRect(-35, -12, 70, 24, 6);
+        ctx.roundRect(-42, -12, 84, 24, 6);
         ctx.fill();
         ctx.stroke();
 
@@ -682,10 +682,10 @@ export default function AgentVsChatGPTSection() {
 
         // Loop steps (Plan -> Search -> Process -> Reflect)
         const steps = [
-          { name: "1. Lập Kế Hoạch 📋", x: rx - 55, y: ry - 40, color: "#dbeafe", stroke: "#2563eb" },
-          { name: "2. Tìm Kiếm 🔍", x: rx + 55, y: ry - 40, color: "#e0f2fe", stroke: "#0284c7" },
-          { name: "3. Đọc / Viết 📝", x: rx + 55, y: ry + 40, color: "#fef3c7", stroke: "#d97706" },
-          { name: "4. Kiểm Tra 🧐", x: rx - 55, y: ry + 40, color: "#d1fae5", stroke: "#059669" }
+          { name: "1. Lập Kế Hoạch 📋", x: rx - 48, y: ry - 40, color: "#dbeafe", stroke: "#2563eb" },
+          { name: "2. Tìm Kiếm 🔍", x: rx + 48, y: ry - 40, color: "#e0f2fe", stroke: "#0284c7" },
+          { name: "3. Đọc / Viết 📝", x: rx + 48, y: ry + 40, color: "#fef3c7", stroke: "#d97706" },
+          { name: "4. Kiểm Tra 🧐", x: rx - 48, y: ry + 40, color: "#d1fae5", stroke: "#059669" }
         ];
 
         // Draw loop arrows connecting the steps in a circle
@@ -713,7 +713,7 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = s.stroke;
           ctx.lineWidth = isActive ? 1.8 : 1.2;
           ctx.beginPath();
-          ctx.roundRect(s.x - 48, s.y - 14, 96, 28, 6);
+          ctx.roundRect(s.x - 51, s.y - 14, 102, 28, 6);
           ctx.fill();
           ctx.stroke();
 
@@ -782,39 +782,39 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#f87171";
         ctx.lineWidth = 1.5;
         ctx.beginPath();
-        ctx.rect(10, 110, 44, 30);
+        ctx.roundRect(8, 110, 56, 30, 4);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "#ef4444";
         ctx.font = "bold 10px sans-serif";
-        ctx.fillText("TRƯỜNG", 32, 128);
+        ctx.fillText("TRƯỜNG", 36, 128);
 
         // Sad DB
         ctx.fillStyle = "#fee2e2";
         ctx.beginPath();
-        ctx.ellipse(32, 195, 22, 10, 0, 0, Math.PI * 2);
+        ctx.roundRect(8, 180, 56, 30, 4);
         ctx.fill();
         ctx.stroke();
-        ctx.fillText("DATA", 32, 198);
+        ctx.fillText("DATA", 36, 198);
 
-        // Grumpy ChatGPT box on the other side
+        // Grumpy Chatbot box on the other side
         ctx.fillStyle = "#f1f5f9";
         ctx.strokeStyle = "#cbd5e1";
         ctx.beginPath();
-        ctx.rect(120, 128, 52, 44);
+        ctx.roundRect(118, 128, 56, 44, 4);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "#64748b";
         ctx.font = "bold 10px sans-serif";
-        ctx.fillText("ChatGPT", 146, 154);
+        ctx.fillText("Chatbot", 146, 154);
 
         // Broken wire lines with red X
         ctx.strokeStyle = "#ef4444";
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(49, 125);
+        ctx.moveTo(64, 125);
         ctx.lineTo(82, 142);
-        ctx.moveTo(49, 190);
+        ctx.moveTo(64, 190);
         ctx.lineTo(82, 160);
         ctx.stroke();
 
@@ -861,7 +861,7 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = sys.stroke;
           ctx.lineWidth = 1.5;
           ctx.beginPath();
-          ctx.roundRect(sys.x - 42, sys.y - 14, 84, 28, 6);
+          ctx.roundRect(sys.x - 46, sys.y - 14, 92, 28, 6);
           ctx.fill();
           ctx.stroke();
 
@@ -982,8 +982,8 @@ export default function AgentVsChatGPTSection() {
 
         if (ratio < 0.35) {
           const tVal = ratio / 0.35;
-          px = (rx - 70) + 70 * tVal;
-          py = (ry - 40) + 40 * tVal;
+          px = (rx - 78) + 78 * tVal;
+          py = (ry - 50) + 50 * tVal;
           phase = "incoming";
         } else if (ratio < 0.75) {
           const tVal = (ratio - 0.35) / 0.40;
@@ -1002,12 +1002,12 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.roundRect(rx - 105, ry - 54, 56, 22, 4);
+        ctx.roundRect(rx - 110, ry - 64, 64, 22, 4);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "#1e293b";
         ctx.font = "bold 9px sans-serif";
-        ctx.fillText("Yêu cầu 💬", rx - 77, ry - 40);
+        ctx.fillText("Yêu cầu 💬", rx - 78, ry - 50);
 
         // Draw packet bubble
         if (showPacket) {
@@ -1031,7 +1031,7 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = m.stroke;
           ctx.lineWidth = isActive ? 1.8 : 1.2;
           ctx.beginPath();
-          ctx.roundRect(m.x - 42, m.y - 14, 84, 28, 5);
+          ctx.roundRect(m.x - 45, m.y - 14, 90, 28, 5);
           ctx.fill();
           ctx.stroke();
 
@@ -1045,13 +1045,13 @@ export default function AgentVsChatGPTSection() {
             ctx.strokeStyle = "#10b981";
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.roundRect(m.x - 62, m.y - 34, 124, 18, 4);
+            ctx.roundRect(m.x - 65, m.y - 36, 130, 18, 4);
             ctx.fill();
             ctx.stroke();
 
             ctx.fillStyle = "#047857";
             ctx.font = "bold 9px sans-serif";
-            ctx.fillText(activeTask.desc, m.x, m.y - 22);
+            ctx.fillText(activeTask.desc, m.x, m.y - 24);
           }
         });
       }
@@ -1125,95 +1125,160 @@ export default function AgentVsChatGPTSection() {
           </div>
         </div>
 
-        {/* Horizontal Segmented Tabs */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-2 p-1.5 bg-slate-100/90 backdrop-blur border border-slate-200/50 rounded-2xl">
+        {/* Main Split-Pane Card */}
+        <div className="max-w-5xl mx-auto bg-white rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden flex flex-col">
+          
+          <div className="flex flex-col lg:flex-row items-stretch min-h-[500px]">
+            
+            {/* Left Block: AI Agent Flagship (Slanted chevron style) */}
+            <div className="w-full lg:w-[58%] bg-gradient-to-br from-blue-600 to-indigo-750 text-white p-8 sm:p-12 lg:pr-20 relative overflow-hidden flex flex-col justify-between z-10 lg:clip-chevron">
+              {/* Decorative light reflection */}
+              <div className="absolute top-0 right-0 w-40 h-full bg-white/5 skew-x-12 transform translate-x-20 pointer-events-none"></div>
+              
+              <div>
+                {/* Badge/Tag */}
+                <div className="mb-6">
+                  <span className="inline-block px-4 py-1 text-xs font-black uppercase tracking-wider text-amber-950 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full shadow-sm">
+                    {t({ vi: "GIẢI PHÁP TỐI ƯU", en: "OPTIMIZED SOLUTION" })}
+                  </span>
+                </div>
+                
+                {/* Title */}
+                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white mb-6">
+                  {t({ vi: "AI AGENT", en: "AI AGENT" })}
+                  <br />
+                  <span className="text-amber-300 drop-shadow-sm font-black">
+                    {activeRow.title.toUpperCase()}
+                  </span>
+                </h2>
+
+                {/* Details/Description with arrow icon */}
+                <div className="space-y-5 my-6 max-w-lg">
+                  <div className="flex items-start gap-3">
+                    <span className="text-amber-400 font-extrabold text-lg mt-0.5 select-none animate-pulse">❯</span>
+                    <div>
+                      <p className="text-xs font-black text-slate-200 uppercase tracking-wider">
+                        {t({ vi: "Trạng thái:", en: "Status:" })} {activeRow.agent.status}
+                      </p>
+                      <p className="text-base text-white/95 leading-relaxed font-semibold mt-1">
+                        {activeRow.agent.text}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3 pt-3 border-t border-white/10">
+                    <span className="text-amber-400 font-extrabold text-lg mt-0.5 select-none">❯</span>
+                    <div>
+                      <p className="text-xs font-black text-slate-200 uppercase tracking-wider">
+                        {t({ vi: "Giải pháp thực tế:", en: "Real-world solution:" })}
+                      </p>
+                      <p className="text-sm text-slate-200/90 leading-relaxed font-medium mt-1">
+                        {activeRow.analogyVi.split(" vs. ")[0]}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Consultation Button */}
+              <div className="pt-4">
+                <a
+                  href="#lien-he"
+                  className="inline-flex items-center justify-center px-8 py-4 text-sm font-black text-amber-950 bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-300 hover:to-orange-355 rounded-full shadow-lg shadow-orange-500/20 hover:scale-[1.02] active:scale-98 transition-all gap-2"
+                >
+                  <span>{t({ vi: "Đăng ký tư vấn ngay", en: "Consult Solution Now" })}</span>
+                  <ArrowRight className="w-4 h-4 font-bold" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Block: Chatbot Public & Live Interactive Canvas */}
+            <div className="w-full lg:w-[42%] p-8 sm:p-12 lg:pl-16 flex flex-col justify-between bg-slate-50 relative min-h-[480px]">
+              
+              {/* Chatbot Warning Card */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold uppercase text-slate-400 tracking-wider">
+                    Chatbot (Public)
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[10px] px-2.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-600 font-black">
+                    <X className="w-3 h-3 stroke-[3]" />
+                    <span>{activeRow.chatgpt.status}</span>
+                  </span>
+                </div>
+                
+                <p className="text-sm text-slate-600 leading-relaxed font-medium">
+                  {activeRow.chatgpt.text}
+                </p>
+                
+                <div className="text-xs text-slate-500 font-bold flex items-center gap-2 pt-2">
+                  <span className="font-mono text-[10px] text-slate-400 uppercase">Đặc điểm:</span>
+                  <span className="text-rose-600 px-2 py-0.5 rounded bg-rose-50 border border-rose-100/50">
+                    {activeRow.analogyVi.split(" vs. ")[1]}
+                  </span>
+                </div>
+              </div>
+
+              {/* Live Canvas Monitor Wrapper with badge on top */}
+              <div className="mt-8 space-y-3">
+                <div className="flex justify-center">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-150 text-[9px] font-mono font-bold text-indigo-650 shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping"></span>
+                    <span>LIVE_MONITOR: STEP_0{activeIndex + 1}</span>
+                  </span>
+                </div>
+                
+                {/* Fixed aspect ratio container to prevent stretching and misalignment */}
+                <div className="w-full aspect-[450/280] max-w-[450px] mx-auto border border-slate-200/80 rounded-2xl bg-white relative overflow-hidden shadow-sm hover:border-indigo-300 transition-all duration-300 group">
+                  <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-2xl" />
+                  <div className="absolute bottom-2.5 right-2.5 bg-slate-900/5 border border-slate-900/10 rounded-lg px-2 py-0.5 text-[8px] font-mono font-bold text-slate-600 animate-pulse z-10">
+                    • RUNNING
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Bottom part: Horizontal Segmented Numbered Tabs */}
+          <div className="w-full border-t border-slate-200 bg-slate-100/40 flex flex-col md:flex-row overflow-hidden">
             {currentData.map((row, index) => {
               const isActive = activeIndex === index;
+              const numStr = `0${index + 1}`;
               return (
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
-                  className={`px-4 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 flex items-center justify-center md:justify-start gap-2.5 cursor-pointer ${
+                  className={`flex-1 p-5 flex items-center gap-4 transition-all duration-300 text-left border-b md:border-b-0 md:border-r border-slate-200 last:border-none relative cursor-pointer group ${
                     isActive
-                      ? "bg-white text-indigo-700 shadow-md shadow-slate-200 border border-slate-200/20 scale-[1.02]"
-                      : "text-slate-600 hover:text-slate-900 border border-transparent hover:bg-white/40"
+                      ? "bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-black shadow-inner z-20 scale-y-[1.01]"
+                      : "hover:bg-slate-100/80 text-slate-700 bg-white"
                   }`}
                 >
-                  <span className={`p-1 rounded-lg border transition-colors ${
-                    isActive 
-                      ? "bg-indigo-50 border-indigo-100 text-indigo-600" 
-                      : `bg-slate-50 border-slate-200 ${row.iconColor}`
+                  <span className={`text-3xl sm:text-4xl font-extrabold leading-none transition-opacity duration-300 ${
+                    isActive ? "text-slate-950/20" : "text-slate-300 group-hover:text-slate-400"
                   }`}>
-                    {row.icon}
+                    {numStr}
                   </span>
-                  <span>{row.title}</span>
+                  <div className="flex flex-col min-w-0">
+                    <span className={`text-[9px] uppercase font-extrabold tracking-wider ${
+                      isActive ? "text-slate-950/70" : "text-indigo-600/70"
+                    }`}>
+                      {t({ vi: "Khía cạnh", en: "Dimension" })} {numStr}
+                    </span>
+                    <span className={`text-xs sm:text-sm font-black truncate ${
+                      isActive ? "text-slate-950" : "text-slate-800"
+                    }`}>
+                      {row.title}
+                    </span>
+                  </div>
+                  {isActive && (
+                    <div className="absolute top-0 left-0 w-full h-1 bg-amber-600"></div>
+                  )}
                 </button>
               );
             })}
-          </div>
-        </div>
-
-        {/* 3-Column Visual Comparison Showdown */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
-          
-          {/* Left: ChatGPT Card (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col justify-center order-2 lg:order-1">
-            <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm relative overflow-hidden space-y-4 hover:shadow-md transition-all duration-300 group">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-rose-500/80"></div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold uppercase text-slate-400 tracking-wider">ChatGPT (Public)</span>
-                <span className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 font-extrabold">
-                  <X className="w-3 h-3" />
-                  <span>{activeRow.chatgpt.status}</span>
-                </span>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed min-h-[72px]">
-                {activeRow.chatgpt.text}
-              </p>
-              <div className="pt-4 border-t border-slate-100/80 text-xs text-slate-500 font-medium flex items-center justify-between">
-                <span className="font-mono text-[10px] text-slate-400 uppercase">Đặc điểm:</span>
-                <span className="font-bold text-rose-600 px-2 py-0.5 rounded bg-rose-50/50 border border-rose-100/50">
-                  {activeRow.analogyVi.split(" vs. ")[1]}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Center: Live Interactive Animator (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center order-1 lg:order-2">
-            <div className="w-full max-w-[450px] mx-auto bg-white border border-slate-200/80 rounded-3xl p-5 shadow-lg relative overflow-hidden flex items-center justify-center h-[280px] hover:border-indigo-300/80 transition-all duration-500 group">
-              <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-3xl" />
-              <div className="absolute top-3 left-3 bg-indigo-50 border border-indigo-150 rounded-full px-2.5 py-0.5 text-[8px] font-mono font-bold text-indigo-600">
-                LIVE_LAB_MONITOR: STEP_0{activeIndex + 1}
-              </div>
-              <div className="absolute bottom-3 right-3 bg-slate-900/5 border border-slate-900/10 rounded-lg px-2 py-0.5 text-[8.5px] font-mono font-bold text-slate-600 animate-pulse">
-                • RUNNING
-              </div>
-            </div>
-          </div>
-
-          {/* Right: AI Agent Card (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col justify-center order-3">
-            <div className="p-6 rounded-3xl bg-white border border-indigo-200/60 shadow-lg shadow-indigo-500/[0.02] relative overflow-hidden space-y-4 hover:shadow-xl hover:border-indigo-300 transition-all duration-300 group">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-emerald-500"></div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold uppercase text-indigo-500 tracking-wider">AI Agent (Private)</span>
-                <span className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-lg bg-emerald-50 border border-emerald-250 text-emerald-700 font-extrabold">
-                  <Check className="w-3 h-3" />
-                  <span>{activeRow.agent.status}</span>
-                </span>
-              </div>
-              <p className="text-sm text-slate-700 leading-relaxed font-semibold min-h-[72px]">
-                {activeRow.agent.text}
-              </p>
-              <div className="pt-4 border-t border-slate-100/80 text-xs text-slate-600 font-medium flex items-center justify-between">
-                <span className="font-mono text-[10px] text-slate-400 uppercase">Giải pháp:</span>
-                <span className="font-bold text-emerald-700 px-2 py-0.5 rounded bg-emerald-50/50 border border-emerald-100/50">
-                  {activeRow.analogyVi.split(" vs. ")[0]}
-                </span>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -1227,8 +1292,8 @@ export default function AgentVsChatGPTSection() {
             </h4>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               {t({
-                vi: "ChatGPT giống như chiếc xe máy bạn phải tự lái (tốn công gõ phím, copy-paste liên tục), còn AI Agent giống như chiếc xe tự lái (bạn chỉ cần ra lệnh điểm đến, xe tự chạy và bạn chỉ việc nhận kết quả cuối cùng).",
-                en: "ChatGPT is like a manual motorcycle (requires your constant effort, typing, copy-pasting), while an AI Agent is like a self-driving taxi (just state the destination, it drives itself and you receive the final output)."
+                vi: "Chatbot giống như chiếc xe máy bạn phải tự lái (tốn công gõ phím, copy-paste liên tục), còn AI Agent giống như chiếc xe tự lái (bạn chỉ cần ra lệnh điểm đến, xe tự chạy và bạn chỉ việc nhận kết quả cuối cùng).",
+                en: "Chatbot is like a manual motorcycle (requires your constant effort, typing, copy-pasting), while an AI Agent is like a self-driving taxi (just state the destination, it drives itself and you receive the final output)."
               })}
             </p>
           </div>
@@ -1247,8 +1312,8 @@ export default function AgentVsChatGPTSection() {
               </h3>
               <p className="text-slate-350 text-sm sm:text-base leading-relaxed">
                 {t({
-                  vi: "Đừng để dữ liệu quý giá của bạn rời rạc trên ChatGPT. Hãy thiết lập một hệ thống AI riêng hoạt động trên tri thức của bạn một cách bảo mật và thông minh.",
-                  en: "Stop scattering your data on public ChatGPT. Set up a private AI system that operates securely and intelligently on your own knowledge base.",
+                  vi: "Đừng để dữ liệu quý giá của bạn rời rạc trên Chatbot. Hãy thiết lập một hệ thống AI riêng hoạt động trên tri thức của bạn một cách bảo mật và thông minh.",
+                  en: "Stop scattering your data on public Chatbots. Set up a private AI system that operates securely and intelligently on your own knowledge base.",
                 })}
               </p>
             </div>
@@ -1263,7 +1328,6 @@ export default function AgentVsChatGPTSection() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

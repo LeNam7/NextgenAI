@@ -10,6 +10,7 @@ import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { faqItems } from "@/data/landingData";
+import MainHero from "@/components/MainHero";
 
 export const metadata: Metadata = {
   title: "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học",
@@ -94,6 +95,7 @@ export default function Home() {
         <Header />
 
         <main className="flex-grow">
+          <MainHero />
           <AgentVsChatGPTSection />
           <TrustBar />
           <ProblemSection />

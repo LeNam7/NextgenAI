@@ -351,3 +351,9 @@ body {
   animation: scaleDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+@media (min-width: 1024px) {
+  .lg-clip-chevron {
+    clip-path: polygon(0 0, 93% 0, 100% 50%, 93% 100%, 0 100%);
+  }
+}
+
