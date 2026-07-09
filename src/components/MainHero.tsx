@@ -16,7 +16,7 @@ export default function MainHero() {
   };
 
   return (
-    <section className="relative pt-32 pb-24 md:pt-40 md:pb-36 bg-[#f4f2ee] overflow-hidden">
+    <section className="relative pt-32 pb-24 md:pt-40 md:pb-36 bg-[#f4f2ee] overflow-hidden rounded-b-[48px] md:rounded-b-[80px] lg:rounded-b-[120px] border-b border-slate-250/20">
       {/* SVG Plaster Concrete Texture Noise Overlay */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
