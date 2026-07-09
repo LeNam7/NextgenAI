@@ -1084,7 +1084,7 @@ export default function AgentVsChatGPTSection() {
         <div className="text-center max-w-4xl mx-auto space-y-6 mb-20">
           <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-700 backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5 text-indigo-600 animate-pulse" />
-            <span>{t({ vi: "Trợ lý AI Thế hệ mới cho Giáo dục & Doanh nghiệp", en: "Next-Generation AI Assistant for Education & Business" })}</span>
+            <span>{t({ vi: "Trợ Lý AI Tự Hành & Tối Ưu Hóa Quy Trình Doanh Nghiệp", en: "Autonomous AI Assistant & Business Process Optimization" })}</span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
@@ -1094,16 +1094,16 @@ export default function AgentVsChatGPTSection() {
             <br />
             <span className="relative inline-block mt-2">
               <span className="text-slate-800">
-                {t({ vi: "Phương Pháp Tối Ưu Cho Các Model AI", en: "The Ultimate Solution for AI Models" })}
+                {t({ vi: "Phương Pháp Tối Ưu Hiệu Suất Cho Các Model AI", en: "The Ultimate Optimization for Enterprise AI Models" })}
               </span>
               <span className="absolute -bottom-2 left-0 w-full h-[3px] bg-indigo-500 rounded-full"></span>
             </span>
           </h1>
 
-          <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 leading-relaxed tracking-wide">
+          <p className="max-w-3xl mx-auto text-base sm:text-lg text-slate-600 leading-relaxed tracking-wide font-medium">
             {t({
-              vi: "Không chỉ dừng lại ở hỏi đáp cơ bản. AI Agent là trợ lý tự hành bảo mật tuyệt đối, có khả năng tự động hóa quy trình phức tạp và làm việc trực tiếp trên tài liệu tri thức của riêng bạn.",
-              en: "Not just basic Q&A. AI Agent is a highly secure autonomous assistant capable of automating complex workflows and working directly on your own knowledge base.",
+              vi: "Vượt trội hơn các chatbot hỏi đáp thông thường, giải pháp AI Agent tự hành từ NextgenAI giúp doanh nghiệp tự động hóa quy trình vận hành phức tạp, kết nối trực tiếp với hệ cơ sở tri thức nội bộ và tối ưu hóa hiệu năng các mô hình LLM với độ bảo mật dữ liệu tuyệt đối.",
+              en: "Going beyond basic Q&A chatbots, NextgenAI's autonomous AI Agent solutions automate complex operational workflows, securely connect to your internal knowledge base, and maximize the efficiency of LLMs with enterprise-grade data security.",
             })}
           </p>
 
@@ -1113,14 +1113,14 @@ export default function AgentVsChatGPTSection() {
               href="#lien-he"
               className="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white rounded-xl bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-500/10 active:scale-98 transition-all gap-2 cursor-pointer"
             >
-              <span>{t({ vi: "Nhận tư vấn AI Agent", en: "Get AI Agent Consultation" })}</span>
+              <span>{t({ vi: "Tư vấn Giải pháp AI Agent", en: "Get AI Agent Consultation" })}</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#so-sanh-ai"
               className="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-slate-700 hover:text-slate-900 rounded-xl bg-white border border-slate-200 hover:border-slate-300 active:scale-98 transition-all hover:bg-slate-50"
             >
-              {t({ vi: "Xem so sánh trực quan", en: "See Visual Comparison" })}
+              {t({ vi: "So sánh tính năng trực quan", en: "Compare Features" })}
             </a>
           </div>
         </div>
@@ -1257,7 +1257,7 @@ export default function AgentVsChatGPTSection() {
                 href="#lien-he"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 text-sm font-extrabold shadow-md hover:shadow-lg transition-all duration-300 group"
               >
-                <span>{t({ vi: "Nhận tư vấn AI Agent", en: "Get AI Agent Consultation" })}</span>
+                <span>{t({ vi: "Tư vấn Giải pháp AI Agent", en: "Get AI Agent Consultation" })}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-indigo-600" />
               </a>
             </div>
