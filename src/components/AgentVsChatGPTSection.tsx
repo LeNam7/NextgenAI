@@ -18,6 +18,81 @@ export default function AgentVsChatGPTSection() {
   const { language, t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rainCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Matrix Rain background effect
+  useEffect(() => {
+    const canvas = rainCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+
+    const resizeCanvas = () => {
+      canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth;
+      canvas.height = canvas.parentElement?.offsetHeight || 900;
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // AI binary data characters
+    const alphabet = "0101010101010101NEXTGENAI";
+    const fontSize = 14;
+    const columns = Math.ceil(canvas.width / fontSize);
+
+    const rainDrops = Array(columns).fill(1).map(() => Math.floor(Math.random() * -50));
+
+    let lastTime = 0;
+    const fps = 15; // Slow down rain speed
+    const interval = 1000 / fps;
+
+    const draw = (timestamp: number = 0) => {
+      animationFrameId = requestAnimationFrame(draw);
+
+      const elapsed = timestamp - lastTime;
+      if (elapsed < interval) return;
+      lastTime = timestamp - (elapsed % interval);
+
+      // Clear with trailing alpha to create fading rain effect
+      ctx.fillStyle = "rgba(248, 250, 252, 0.15)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        
+        const x = i * fontSize;
+        const y = rainDrops[i] * fontSize;
+
+        if (y > 0) {
+          if (Math.random() > 0.98) {
+            ctx.fillStyle = "rgba(224, 30, 90, 0.65)"; // Vibrant pink accent
+          } else if (Math.random() > 0.95) {
+            ctx.fillStyle = "rgba(217, 119, 6, 0.65)"; // Vibrant amber accent
+          } else {
+            ctx.fillStyle = "rgba(79, 70, 229, 0.35)"; // Darker Indigo-600 with 35% opacity for high contrast on light background
+          }
+          ctx.fillText(text, x, y);
+        }
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          rainDrops[i] = 0;
+        }
+
+        rainDrops[i]++;
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(draw);
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
 
   const simplifiedData = {
     vi: [
@@ -77,10 +152,10 @@ export default function AgentVsChatGPTSection() {
         iconColor: "text-violet-600 border-violet-100 bg-violet-50/30",
         title: "Tùy chọn Model AI",
         subtitle: "Lựa chọn bộ não AI tối ưu nhất",
-        analogyVi: "Kết hợp nhiều bộ não vs. Bị khóa cứng 1 hãng",
+        analogyVi: "Kết hợp nhiều bộ não vs. Bị khóa cứng 1 model",
         chatgpt: {
           status: "Khóa chặt Model",
-          text: "Chỉ được sử dụng các mô hình của OpenAI (như GPT-4o, o1). Không thể kết hợp các model mạnh của hãng khác hay chạy model offline.",
+          text: "Chỉ được sử dụng một mô hình duy nhất do hãng cung cấp (như GPT-4o). Không thể tùy ý kết hợp các model mạnh của hãng khác hay chạy model offline.",
           isGood: false,
         },
         agent: {
@@ -147,10 +222,10 @@ export default function AgentVsChatGPTSection() {
         iconColor: "text-violet-600 border-violet-100 bg-violet-50/30",
         title: "AI Model Choices",
         subtitle: "Select the best AI brains",
-        analogyVi: "Multi-Brain Hub vs. Single Brain Lock-in",
+        analogyVi: "Multi-Brain Hub vs. Single Model Lock-in",
         chatgpt: {
-          status: "Locked to OpenAI",
-          text: "Strictly limited to OpenAI models (like GPT-4o, o1). Cannot switch to other powerful models or run secure local/offline models.",
+          status: "Locked to 1 Model",
+          text: "Strictly limited to a single OpenAI model (like GPT-4o). Cannot switch to other powerful models or run secure local/offline models.",
           isGood: false,
         },
         agent: {
@@ -179,8 +254,9 @@ export default function AgentVsChatGPTSection() {
 
     canvas.width = width * window.devicePixelRatio;
     canvas.height = height * window.devicePixelRatio;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
+    canvas.style.width = "100%";
+    canvas.style.maxWidth = `${width}px`;
+    canvas.style.height = "auto";
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
     // Cute Document drawing helper
@@ -425,12 +501,13 @@ export default function AgentVsChatGPTSection() {
 
       // Column Labels
       ctx.fillStyle = "#94a3b8";
-      ctx.font = "bold 9px sans-serif";
+      ctx.font = "bold 12px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("CHATGPT (PUBLIC)", width / 4, 30);
+      ctx.fillText("CHATGPT (PUBLIC)", width / 4, 28);
 
       ctx.fillStyle = "#6366f1";
-      ctx.fillText("AI AGENT (PRIVATE)", (3 * width) / 4, 30);
+      ctx.font = "bold 12px sans-serif";
+      ctx.fillText("AI AGENT (PRIVATE)", (3 * width) / 4, 28);
 
       if (activeIndex === 0) {
         // --- 1. SECURITY & DATA (Crying cloud vs Safe House) ---
@@ -531,7 +608,7 @@ export default function AgentVsChatGPTSection() {
 
         // Tiny stars surrounding
         ctx.fillStyle = "#facc15";
-        ctx.font = "10px sans-serif";
+        ctx.font = "14px sans-serif";
         ctx.fillText("★", vaultX + Math.sin(time) * 65, vaultY + 5 + Math.cos(time) * 65);
         ctx.fillText("★", vaultX - Math.sin(time + 1) * 65, vaultY + 5 - Math.cos(time + 1) * 65);
 
@@ -547,26 +624,26 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.roundRect(width / 4 - 45, 90, 90, 32, 6);
+        ctx.roundRect(width / 4 - 55, 86, 110, 36, 6);
         ctx.fill();
         ctx.stroke();
 
         ctx.fillStyle = "#1e293b";
-        ctx.font = "bold 7px sans-serif";
+        ctx.font = "bold 10px sans-serif";
         if (promptCycle === 0) {
-          ctx.fillText("Lần 1: 'Tìm tài liệu...'", width / 4, 104);
+          ctx.fillText("Lần 1: 'Tìm tài liệu...'", width / 4, 102);
           ctx.fillStyle = "#64748b";
-          ctx.font = "6px sans-serif";
+          ctx.font = "8px sans-serif";
           ctx.fillText("(User tự gõ & chờ)", width / 4, 114);
         } else if (promptCycle === 1) {
-          ctx.fillText("Lần 2: 'Tổng hợp lại...'", width / 4, 104);
+          ctx.fillText("Lần 2: 'Tổng hợp lại...'", width / 4, 102);
           ctx.fillStyle = "#64748b";
-          ctx.font = "6px sans-serif";
+          ctx.font = "8px sans-serif";
           ctx.fillText("(User chép nội dung vào)", width / 4, 114);
         } else {
-          ctx.fillText("Lần 3: 'Lọc & Viết báo cáo'", width / 4, 104);
+          ctx.fillText("Lần 3: 'Lọc & Báo cáo'", width / 4, 102);
           ctx.fillStyle = "#64748b";
-          ctx.font = "6px sans-serif";
+          ctx.font = "8px sans-serif";
           ctx.fillText("(User tự tải file về)", width / 4, 114);
         }
 
@@ -577,13 +654,13 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.roundRect(-24, -10, 48, 20, 5);
+        ctx.roundRect(-35, -12, 70, 24, 6);
         ctx.fill();
         ctx.stroke();
 
         ctx.fillStyle = isClickFrame ? "#ffffff" : "#475569";
-        ctx.font = "bold 7px sans-serif";
-        ctx.fillText("GỬI LỆNH ↵", 0, 2);
+        ctx.font = "bold 10px sans-serif";
+        ctx.fillText("GỬI LỆNH ↵", 0, 3);
 
         if (isClickFrame) {
           // click spark stars
@@ -596,7 +673,7 @@ export default function AgentVsChatGPTSection() {
 
         // Label for ChatGPT
         ctx.fillStyle = "#94a3b8";
-        ctx.font = "bold 6px sans-serif";
+        ctx.font = "bold 9px sans-serif";
         ctx.fillText("PHẢI HỎI 3-4 LẦN THỦ CÔNG", width / 4, 215);
 
         // RIGHT (AI Agent - Autonomous Agentic Loop)
@@ -636,12 +713,12 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = s.stroke;
           ctx.lineWidth = isActive ? 1.8 : 1.2;
           ctx.beginPath();
-          ctx.roundRect(s.x - 38, s.y - 12, 76, 24, 5);
+          ctx.roundRect(s.x - 48, s.y - 14, 96, 28, 6);
           ctx.fill();
           ctx.stroke();
 
           ctx.fillStyle = isActive ? "#0f172a" : "#64748b";
-          ctx.font = "bold 7px sans-serif";
+          ctx.font = "bold 10px sans-serif";
           ctx.fillText(s.name, s.x, s.y + 4);
         });
 
@@ -687,12 +764,12 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = "#10b981";
           ctx.lineWidth = 1;
           ctx.beginPath();
-          ctx.roundRect(rx - 32, ry - 32, 64, 15, 4);
+          ctx.roundRect(rx - 48, ry - 34, 96, 18, 5);
           ctx.fill();
           ctx.stroke();
 
           ctx.fillStyle = "#ffffff";
-          ctx.font = "bold 6.5px sans-serif";
+          ctx.font = "bold 9px sans-serif";
           ctx.fillText("HOÀN THÀNH! 🎉", rx, ry - 22);
         }
 
@@ -705,17 +782,17 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#f87171";
         ctx.lineWidth = 1.5;
         ctx.beginPath();
-        ctx.rect(15, 110, 34, 30);
+        ctx.rect(10, 110, 44, 30);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "#ef4444";
-        ctx.font = "bold 7px sans-serif";
-        ctx.fillText("TRƯỜNG", 32, 126);
+        ctx.font = "bold 10px sans-serif";
+        ctx.fillText("TRƯỜNG", 32, 128);
 
         // Sad DB
         ctx.fillStyle = "#fee2e2";
         ctx.beginPath();
-        ctx.ellipse(32, 195, 17, 7, 0, 0, Math.PI * 2);
+        ctx.ellipse(32, 195, 22, 10, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
         ctx.fillText("DATA", 32, 198);
@@ -724,11 +801,12 @@ export default function AgentVsChatGPTSection() {
         ctx.fillStyle = "#f1f5f9";
         ctx.strokeStyle = "#cbd5e1";
         ctx.beginPath();
-        ctx.rect(125, 130, 42, 42);
+        ctx.rect(120, 128, 52, 44);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "#64748b";
-        ctx.fillText("ChatGPT", 146, 155);
+        ctx.font = "bold 10px sans-serif";
+        ctx.fillText("ChatGPT", 146, 154);
 
         // Broken wire lines with red X
         ctx.strokeStyle = "#ef4444";
@@ -741,8 +819,8 @@ export default function AgentVsChatGPTSection() {
         ctx.stroke();
 
         ctx.fillStyle = "#ef4444";
-        ctx.font = "bold 14px sans-serif";
-        ctx.fillText("✕", 90, 153);
+        ctx.font = "bold 18px sans-serif";
+        ctx.fillText("✕", 90, 154);
 
         // RIGHT (Hand holding connect network)
         const cx = (3 * width) / 4;
@@ -783,12 +861,12 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = sys.stroke;
           ctx.lineWidth = 1.5;
           ctx.beginPath();
-          ctx.roundRect(sys.x - 30, sys.y - 12, 60, 24, 5);
+          ctx.roundRect(sys.x - 42, sys.y - 14, 84, 28, 6);
           ctx.fill();
           ctx.stroke();
 
           ctx.fillStyle = "#1e293b";
-          ctx.font = "bold 7px sans-serif";
+          ctx.font = "bold 10px sans-serif";
           ctx.fillText(sys.name, sys.x, sys.y + 4);
         });
 
@@ -800,19 +878,19 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#94a3b8";
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.roundRect(width / 4 - 30, 100, 60, 60, 6);
+        ctx.roundRect(width / 4 - 40, 96, 80, 68, 6);
         ctx.fill();
         ctx.stroke();
 
         ctx.fillStyle = "#475569";
-        ctx.font = "bold 8px sans-serif";
-        ctx.fillText("Chỉ được dùng", width / 4, 122);
-        ctx.fillText("GPT-4o", width / 4, 137);
+        ctx.font = "bold 10px sans-serif";
+        ctx.fillText("Chỉ được dùng", width / 4, 118);
+        ctx.fillText("GPT-4o", width / 4, 134);
 
         // Locked padlock
         ctx.fillStyle = "#ef4444";
-        ctx.font = "12px sans-serif";
-        ctx.fillText("😡", width / 4, 154);
+        ctx.font = "14px sans-serif";
+        ctx.fillText("😡", width / 4, 152);
 
         // RIGHT (Cute Router Hub)
         const rx = (3 * width) / 4;
@@ -879,7 +957,7 @@ export default function AgentVsChatGPTSection() {
 
         // Label above Router
         ctx.fillStyle = "#4f46e5";
-        ctx.font = "bold 7px sans-serif";
+        ctx.font = "bold 9px sans-serif";
         ctx.fillText("ROUTER", rx, ry - 20);
 
         // Animation of incoming tasks and routing
@@ -924,12 +1002,12 @@ export default function AgentVsChatGPTSection() {
         ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.roundRect(rx - 95, ry - 50, 45, 18, 4);
+        ctx.roundRect(rx - 105, ry - 54, 56, 22, 4);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "#1e293b";
-        ctx.font = "bold 6.5px sans-serif";
-        ctx.fillText("Yêu cầu 💬", rx - 72, ry - 39);
+        ctx.font = "bold 9px sans-serif";
+        ctx.fillText("Yêu cầu 💬", rx - 77, ry - 40);
 
         // Draw packet bubble
         if (showPacket) {
@@ -937,13 +1015,13 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = "#f59e0b";
           ctx.lineWidth = 1.2;
           ctx.beginPath();
-          ctx.roundRect(px - 22, py - 9, 44, 16, 4);
+          ctx.roundRect(px - 28, py - 11, 56, 20, 4);
           ctx.fill();
           ctx.stroke();
 
           ctx.fillStyle = "#b45309";
-          ctx.font = "bold 6.5px sans-serif";
-          ctx.fillText(activeTask.name, px, py + 1);
+          ctx.font = "bold 9px sans-serif";
+          ctx.fillText(activeTask.name, px, py + 2);
         }
 
         // Draw Target models
@@ -953,12 +1031,12 @@ export default function AgentVsChatGPTSection() {
           ctx.strokeStyle = m.stroke;
           ctx.lineWidth = isActive ? 1.8 : 1.2;
           ctx.beginPath();
-          ctx.roundRect(m.x - 36, m.y - 12, 72, 24, 5);
+          ctx.roundRect(m.x - 42, m.y - 14, 84, 28, 5);
           ctx.fill();
           ctx.stroke();
 
           ctx.fillStyle = "#1e293b";
-          ctx.font = "bold 7px sans-serif";
+          ctx.font = "bold 9px sans-serif";
           ctx.fillText(m.name, m.x, m.y + 4);
 
           // Success speech bubbles on completion
@@ -967,13 +1045,13 @@ export default function AgentVsChatGPTSection() {
             ctx.strokeStyle = "#10b981";
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.roundRect(m.x - 52, m.y - 30, 104, 14, 4);
+            ctx.roundRect(m.x - 62, m.y - 34, 124, 18, 4);
             ctx.fill();
             ctx.stroke();
 
             ctx.fillStyle = "#047857";
-            ctx.font = "bold 6.5px sans-serif";
-            ctx.fillText(activeTask.desc, m.x, m.y - 21);
+            ctx.font = "bold 9px sans-serif";
+            ctx.fillText(activeTask.desc, m.x, m.y - 22);
           }
         });
       }
@@ -989,145 +1067,171 @@ export default function AgentVsChatGPTSection() {
   }, [activeIndex]);
 
   return (
-    <section id="so-sanh-ai" className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden border-t border-slate-200/50">
+    <section id="so-sanh-ai" className="pt-32 pb-24 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+      {/* Matrix data rain effect */}
+      <canvas ref={rainCanvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+
+      {/* Grid Pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-35 pointer-events-none"></div>
+
       {/* Decorative Blur Orbs */}
-      <div className="absolute top-0 right-1/4 w-[350px] h-[350px] bg-indigo-500/[0.02] rounded-full blur-[80px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-1/4 w-[350px] h-[350px] bg-blue-500/[0.02] rounded-full blur-[80px] pointer-events-none"></div>
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-indigo-500/[0.04] rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-blue-500/[0.04] rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-700">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-            <span>{t({ vi: "Bản chất công nghệ", en: "Technology Essence" })}</span>
+        {/* Header (Intro Hero Style) */}
+        <div className="text-center max-w-4xl mx-auto space-y-6 mb-20">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-700 backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5 text-indigo-600 animate-pulse" />
+            <span>{t({ vi: "Trợ lý AI Thế hệ mới cho Giáo dục & Doanh nghiệp", en: "Next-Generation AI Assistant for Education & Business" })}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            {t({ vi: "AI Agent Khác Biệt Gì Với ", en: "How does AI Agent Differ from " })}
-            <span className="text-indigo-600">ChatGPT?</span>
-          </h2>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed tracking-wide">
+          
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            <span className="text-indigo-600">
+              {t({ vi: "AI Agent", en: "AI Agent" })}
+            </span>
+            <br />
+            <span className="relative inline-block mt-2">
+              <span className="text-slate-800">
+                {t({ vi: "Phương Pháp Tối Ưu Cho Các Model AI", en: "The Ultimate Solution for AI Models" })}
+              </span>
+              <span className="absolute -bottom-2 left-0 w-full h-[3px] bg-indigo-500 rounded-full"></span>
+            </span>
+          </h1>
+
+          <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 leading-relaxed tracking-wide">
             {t({
-              vi: "Xem so sánh trực quan dưới đây để hiểu vì sao các trường học và doanh nghiệp đang chuyển dịch từ ChatGPT sang AI Agent chuyên biệt.",
-              en: "See the visual comparison below to understand why schools and businesses are shifting from ChatGPT to specialized AI Agents.",
+              vi: "Không chỉ dừng lại ở hỏi đáp cơ bản. AI Agent là trợ lý tự hành bảo mật tuyệt đối, có khả năng tự động hóa quy trình phức tạp và làm việc trực tiếp trên tài liệu tri thức của riêng bạn.",
+              en: "Not just basic Q&A. AI Agent is a highly secure autonomous assistant capable of automating complex workflows and working directly on your own knowledge base.",
             })}
           </p>
+
+          {/* Intro CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <a
+              href="#lien-he"
+              className="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white rounded-xl bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-500/10 active:scale-98 transition-all gap-2 cursor-pointer"
+            >
+              <span>{t({ vi: "Nhận tư vấn AI Agent", en: "Get AI Agent Consultation" })}</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#so-sanh-ai"
+              className="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-slate-700 hover:text-slate-900 rounded-xl bg-white border border-slate-200 hover:border-slate-300 active:scale-98 transition-all hover:bg-slate-50"
+            >
+              {t({ vi: "Xem so sánh trực quan", en: "See Visual Comparison" })}
+            </a>
+          </div>
         </div>
 
-        {/* Dynamic Split Screen Interactive Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
-          
-          {/* Left Column (Selector Stack - 7 cols) */}
-          <div className="lg:col-span-7 space-y-4 flex flex-col justify-between">
+        {/* Horizontal Segmented Tabs */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-2 p-1.5 bg-slate-100/90 backdrop-blur border border-slate-200/50 rounded-2xl">
             {currentData.map((row, index) => {
               const isActive = activeIndex === index;
               return (
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
-                  className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 cursor-pointer relative group ${
+                  className={`px-4 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 flex items-center justify-center md:justify-start gap-2.5 cursor-pointer ${
                     isActive
-                      ? "bg-white border-indigo-500 shadow-lg shadow-indigo-500/5 translate-x-1"
-                      : "bg-white/40 border-slate-200 hover:bg-white hover:border-slate-350"
+                      ? "bg-white text-indigo-700 shadow-md shadow-slate-200 border border-slate-200/20 scale-[1.02]"
+                      : "text-slate-600 hover:text-slate-900 border border-transparent hover:bg-white/40"
                   }`}
                 >
-                  <div className={`p-2.5 rounded-xl border transition-all duration-300 ${
+                  <span className={`p-1 rounded-lg border transition-colors ${
                     isActive 
-                      ? "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-600/10 scale-105" 
-                      : `bg-slate-50 border-slate-200 ${(row as any).iconColor}`
+                      ? "bg-indigo-50 border-indigo-100 text-indigo-600" 
+                      : `bg-slate-50 border-slate-200 ${row.iconColor}`
                   }`}>
                     {row.icon}
-                  </div>
-                  
-                  <div className="flex-grow space-y-1">
-                    <div className="flex items-center justify-between">
-                      <h3 className={`text-base font-extrabold tracking-tight ${
-                        isActive ? "text-indigo-700" : "text-slate-800"
-                      }`}>
-                        {row.title}
-                      </h3>
-                      {/* Analogy badge */}
-                      <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${
-                        isActive ? "bg-indigo-50 border-indigo-200/50 text-indigo-700" : "bg-slate-100 border-slate-200 text-slate-500"
-                      }`}>
-                        {row.analogyVi}
-                      </span>
-                    </div>
-                    <p className={`text-xs leading-relaxed ${isActive ? "text-slate-600 font-medium" : "text-slate-500"}`}>
-                      {row.subtitle}
-                    </p>
-                  </div>
-                  
-                  {isActive && (
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-indigo-600 animate-ping"></span>
-                  )}
+                  </span>
+                  <span>{row.title}</span>
                 </button>
               );
             })}
+          </div>
+        </div>
 
-            {/* Simple Summary Box inside left column */}
-            <div className="p-5 rounded-2xl bg-indigo-50/60 border border-indigo-100/60 flex items-start gap-3 mt-2">
-              <HelpCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-              <div className="space-y-1">
-                <h4 className="text-xs font-bold text-indigo-900">
-                  {t({ vi: "Dành cho người không chuyên công nghệ:", en: "Simple Non-Tech Analogy:" })}
-                </h4>
-                <p className="text-xs text-slate-600 leading-normal">
-                  {t({
-                    vi: "Nghĩ đơn giản: ChatGPT là chiếc xe máy tự bạn phải lái (tốn công), còn AI Agent là chiếc xe tự lái (giao việc và chỉ việc nhận kết quả).",
-                    en: "Think simply: ChatGPT is like a manual bicycle (requires your constant effort), while an AI Agent is like a self-driving taxi (takes you directly to the destination)."
-                  })}
-                </p>
+        {/* 3-Column Visual Comparison Showdown */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
+          
+          {/* Left: ChatGPT Card (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col justify-center order-2 lg:order-1">
+            <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm relative overflow-hidden space-y-4 hover:shadow-md transition-all duration-300 group">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-rose-500/80"></div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-bold uppercase text-slate-400 tracking-wider">ChatGPT (Public)</span>
+                <span className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 font-extrabold">
+                  <X className="w-3 h-3" />
+                  <span>{activeRow.chatgpt.status}</span>
+                </span>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed min-h-[72px]">
+                {activeRow.chatgpt.text}
+              </p>
+              <div className="pt-4 border-t border-slate-100/80 text-xs text-slate-500 font-medium flex items-center justify-between">
+                <span className="font-mono text-[10px] text-slate-400 uppercase">Đặc điểm:</span>
+                <span className="font-bold text-rose-600 px-2 py-0.5 rounded bg-rose-50/50 border border-rose-100/50">
+                  {activeRow.analogyVi.split(" vs. ")[1]}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column (Visual Animation and Side-by-side details - 5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            
-            {/* 1. Animation Display Screen */}
-            <div className="w-full bg-white border border-slate-200/80 rounded-3xl p-5 shadow-md relative overflow-hidden flex items-center justify-center h-[260px]">
+          {/* Center: Live Interactive Animator (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col items-center justify-center order-1 lg:order-2">
+            <div className="w-full max-w-[450px] mx-auto bg-white border border-slate-200/80 rounded-3xl p-5 shadow-lg relative overflow-hidden flex items-center justify-center h-[280px] hover:border-indigo-300/80 transition-all duration-500 group">
               <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-3xl" />
-              <div className="absolute top-3 left-3 bg-indigo-50 border border-indigo-150 rounded-full px-2.5 py-0.5 text-[9px] font-mono font-bold text-indigo-600">
-                LIVE_ANIMATOR: STEP_0{activeIndex + 1}
+              <div className="absolute top-3 left-3 bg-indigo-50 border border-indigo-150 rounded-full px-2.5 py-0.5 text-[8px] font-mono font-bold text-indigo-600">
+                LIVE_LAB_MONITOR: STEP_0{activeIndex + 1}
+              </div>
+              <div className="absolute bottom-3 right-3 bg-slate-900/5 border border-slate-900/10 rounded-lg px-2 py-0.5 text-[8.5px] font-mono font-bold text-slate-600 animate-pulse">
+                • RUNNING
               </div>
             </div>
-
-            {/* 2. Side-by-side detail summary */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              
-              {/* ChatGPT card */}
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-bold uppercase text-slate-500">ChatGPT</span>
-                  <span className="inline-flex items-center gap-0.5 text-[9px] px-1.5 py-0.2 rounded bg-rose-50 border border-rose-200 text-rose-600 font-bold">
-                    <X className="w-2.5 h-2.5" />
-                    <span>{activeRow.chatgpt.status}</span>
-                  </span>
-                </div>
-                <p className="text-xs text-slate-600 leading-normal">
-                  {activeRow.chatgpt.text}
-                </p>
-              </div>
-
-              {/* AI Agent card */}
-              <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-150 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-extrabold uppercase text-indigo-600">AI Agent</span>
-                  <span className="inline-flex items-center gap-0.5 text-[9px] px-1.5 py-0.2 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold">
-                    <Check className="w-2.5 h-2.5" />
-                    <span>{activeRow.agent.status}</span>
-                  </span>
-                </div>
-                <p className="text-xs text-slate-700 leading-normal font-medium">
-                  {activeRow.agent.text}
-                </p>
-              </div>
-
-            </div>
-
           </div>
 
+          {/* Right: AI Agent Card (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col justify-center order-3">
+            <div className="p-6 rounded-3xl bg-white border border-indigo-200/60 shadow-lg shadow-indigo-500/[0.02] relative overflow-hidden space-y-4 hover:shadow-xl hover:border-indigo-300 transition-all duration-300 group">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-emerald-500"></div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-bold uppercase text-indigo-500 tracking-wider">AI Agent (Private)</span>
+                <span className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-lg bg-emerald-50 border border-emerald-250 text-emerald-700 font-extrabold">
+                  <Check className="w-3 h-3" />
+                  <span>{activeRow.agent.status}</span>
+                </span>
+              </div>
+              <p className="text-sm text-slate-700 leading-relaxed font-semibold min-h-[72px]">
+                {activeRow.agent.text}
+              </p>
+              <div className="pt-4 border-t border-slate-100/80 text-xs text-slate-600 font-medium flex items-center justify-between">
+                <span className="font-mono text-[10px] text-slate-400 uppercase">Giải pháp:</span>
+                <span className="font-bold text-emerald-700 px-2 py-0.5 rounded bg-emerald-50/50 border border-emerald-100/50">
+                  {activeRow.analogyVi.split(" vs. ")[0]}
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Full-width Analogy Banner */}
+        <div className="max-w-4xl mx-auto p-5 rounded-2xl bg-indigo-50/50 border border-indigo-100/50 flex items-start gap-4 mt-12 hover:bg-indigo-50/70 transition-colors">
+          <HelpCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5 animate-bounce-slow" />
+          <div className="space-y-1.5">
+            <h4 className="text-xs sm:text-sm font-extrabold text-indigo-950">
+              {t({ vi: "Cách ví von dễ hiểu cho người không chuyên:", en: "Simple Non-Tech Analogy:" })}
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              {t({
+                vi: "ChatGPT giống như chiếc xe máy bạn phải tự lái (tốn công gõ phím, copy-paste liên tục), còn AI Agent giống như chiếc xe tự lái (bạn chỉ cần ra lệnh điểm đến, xe tự chạy và bạn chỉ việc nhận kết quả cuối cùng).",
+                en: "ChatGPT is like a manual motorcycle (requires your constant effort, typing, copy-pasting), while an AI Agent is like a self-driving taxi (just state the destination, it drives itself and you receive the final output)."
+              })}
+            </p>
+          </div>
         </div>
 
         {/* Dynamic CTA Banner */}

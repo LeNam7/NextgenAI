@@ -86,10 +86,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-slate-50">
-      {/* Matrix data rain effect */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
-
+    <section className="relative py-20 overflow-hidden bg-slate-50/50">
       {/* Background glow effects - ocean blues */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/[0.03] rounded-full blur-[120px] -translate-y-1/2 pointer-events-none animate-pulse-slow"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-sky-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>

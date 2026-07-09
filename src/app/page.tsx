@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import ProblemSection from "@/components/ProblemSection";
-import SolutionCards from "@/components/SolutionCards";
 import AgentVsChatGPTSection from "@/components/AgentVsChatGPTSection";
-import PersonalizedLearningSection from "@/components/PersonalizedLearningSection";
-import ModelHubSection from "@/components/ModelHubSection";
-import EducationTabs from "@/components/EducationTabs";
-import WorkflowSection from "@/components/WorkflowSection";
 import CaseStudySection from "@/components/CaseStudySection";
 import ResponsibleAISection from "@/components/ResponsibleAISection";
 import PricingSection from "@/components/PricingSection";
@@ -51,47 +45,26 @@ export default function Home() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": "https://nextgenai.vn/#organization",
-        "name": "NextgenAI",
+        "@type": "WebSite",
+        "@id": "https://nextgenai.vn/#website",
         "url": "https://nextgenai.vn",
-        "logo": "https://nextgenai.vn/logo.png",
-        "sameAs": [],
-        "contactPoint": [
-          {
-            "@type": "ContactPoint",
-            "telephone": "+84-989-92-92-69",
-            "contactType": "customer service",
-            "email": "anhdt@anf-technology.com",
-            "areaServed": "VN",
-            "availableLanguage": "Vietnamese",
-          },
-        ],
+        "name": "NextgenAI",
+        "description": "Cài đặt AI cá nhân, Model AI & Đào tạo AI Thực chiến cho giáo viên, học sinh, trường học, doanh nghiệp.",
+        "inLanguage": "vi-VN"
       },
       {
-        "@type": "Service",
-        "@id": "https://nextgenai.vn/#service-ai-private",
-        "name": "Cài đặt & Tư vấn AI cá nhân",
-        "provider": { "@id": "https://nextgenai.vn/#organization" },
-        "description": "Thiết kế, cài đặt và vận hành một AI Assistant cá nhân có khả năng hỏi đáp dựa trên tài liệu, kiến thức và quy trình nội bộ của cá nhân, doanh nghiệp hoặc tổ chức giáo dục.",
-      },
-      {
-        "@type": "Service",
-        "@id": "https://nextgenai.vn/#service-ai-models",
-        "name": "Cung cấp & Tích hợp Model AI",
-        "provider": { "@id": "https://nextgenai.vn/#organization" },
-        "description": "Lựa chọn, tinh chỉnh và kết nối các model AI chuyên biệt phù hợp nhất với mục tiêu hoạt động: hỏi đáp, phân tích dữ liệu, xử lý hình ảnh, giọng nói.",
-      },
-      {
-        "@type": "Service",
-        "@id": "https://nextgenai.vn/#service-ai-education",
-        "name": "Đào tạo & Giáo dục AI Thực chiến",
-        "provider": { "@id": "https://nextgenai.vn/#organization" },
-        "description": "Xây dựng lộ trình phát triển năng lực số (AI Literacy) bài bản cho giáo viên và học sinh từ cấp 1 đến cấp 3.",
+        "@type": "WebPage",
+        "@id": "https://nextgenai.vn/#webpage",
+        "url": "https://nextgenai.vn",
+        "name": "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học",
+        "isPartOf": { "@id": "https://nextgenai.vn/#website" },
+        "description": "Tư vấn triển khai AI cá nhân, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ tại Việt Nam.",
+        "inLanguage": "vi-VN"
       },
       {
         "@type": "FAQPage",
         "@id": "https://nextgenai.vn/#faq",
+        "isPartOf": { "@id": "https://nextgenai.vn/#webpage" },
         "mainEntity": faqItems.vi.map((item) => ({
           "@type": "Question",
           "name": item.question,
@@ -121,15 +94,9 @@ export default function Home() {
         <Header />
 
         <main className="flex-grow">
-          <HeroSection />
+          <AgentVsChatGPTSection />
           <TrustBar />
           <ProblemSection />
-          <SolutionCards />
-          <AgentVsChatGPTSection />
-          <PersonalizedLearningSection />
-          <ModelHubSection />
-          <EducationTabs />
-          <WorkflowSection />
           <CaseStudySection />
           <ResponsibleAISection />
           <PricingSection />

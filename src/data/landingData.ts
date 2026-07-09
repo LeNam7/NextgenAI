@@ -75,22 +75,18 @@ export interface PricingPackage {
 
 export const menuItems: Record<"vi" | "en", MenuItem[]> = {
   vi: [
-    { label: "Giải pháp AI", href: "#giai-phap" },
-    { label: "Model AI", href: "#model-hub" },
-    { label: "Giáo dục AI", href: "#giao-duc" },
-    { label: "Quy trình", href: "#quy-trinh" },
-    { label: "Case Study", href: "#case-study" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Liên hệ", href: "#lien-he" },
+    { label: "Quy trình & Giải pháp", href: "/quy-trinh-giai-phap" },
+    { label: "Giáo dục AI", href: "/giao-duc-ai" },
+    { label: "Case Study", href: "/#case-study" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Liên hệ", href: "/#lien-he" },
   ],
   en: [
-    { label: "AI Solutions", href: "#giai-phap" },
-    { label: "AI Models", href: "#model-hub" },
-    { label: "AI Education", href: "#giao-duc" },
-    { label: "Process", href: "#quy-trinh" },
-    { label: "Case Studies", href: "#case-study" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: "#lien-he" },
+    { label: "Process & Solutions", href: "/quy-trinh-giai-phap" },
+    { label: "AI Education", href: "/giao-duc-ai" },
+    { label: "Case Studies", href: "/#case-study" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Contact", href: "/#lien-he" },
   ],
 };
 
