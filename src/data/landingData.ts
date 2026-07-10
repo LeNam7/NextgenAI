@@ -737,7 +737,7 @@ export const caseStudies: Record<"vi" | "en", CaseStudyScenario[]> = {
 export const faqItems: Record<"vi" | "en", FAQItem[]> = {
   vi: [
     {
-      question: "AI cá nhân khác gì so với việc sử dụng ChatGPT Plus thông thường?",
+      question: "AI cá nhân khác gì so với việc sử dụng chatbot thông thường?",
       answer: "AI cá nhân hoạt động hoàn toàn trên dữ liệu tri thức nội bộ của bạn, cam kết bảo mật 100%, không chia sẻ dữ liệu huấn luyện và có thể tùy chỉnh sâu theo quy trình hoạt động của tổ chức.",
     },
     {
@@ -753,13 +753,13 @@ export const faqItems: Record<"vi" | "en", FAQItem[]> = {
       answer: "Chi phí dựa trên dung lượng cơ sở tri thức nạp vào, số lượng người dùng đồng thời và mô hình hạ tầng (Cloud API hay Server vật lý). Chúng tôi sẽ tư vấn phương án tối ưu nhất cho ngân sách.",
     },
     {
-      question: "Học sinh cấp 1 tiếp cận AI có quá sớm hay không?",
-      answer: "Không. Học sinh tiểu học chỉ học về 'AI Literacy' (nhận thức số) thông qua trò chơi logic và các bài học sử dụng thiết bị số an toàn, bảo vệ thông tin cá nhân dưới sự giám sát.",
+      question: "Doanh nghiệp/tổ chức cần chuẩn bị dữ liệu thế nào để nạp vào AI?",
+      answer: "NextgenAI sẽ đồng hành hướng dẫn quy trình chuẩn hóa dữ liệu. Hệ thống AI cá nhân có khả năng tiếp nhận tự động nhiều định dạng dữ liệu phổ biến như PDF, Word, Excel, SQL database hay các trang Wiki nội bộ một cách an toàn.",
     },
   ],
   en: [
     {
-      question: "How is personal AI different from ChatGPT Plus?",
+      question: "How is personal AI different from standard chatbots?",
       answer: "Personal AI works entirely on your internal knowledge base, commits to 100% security, never shares training data, and can be deeply integrated into workflows.",
     },
     {
@@ -775,8 +775,8 @@ export const faqItems: Record<"vi" | "en", FAQItem[]> = {
       answer: "Based on knowledge base size, concurrent users, and infrastructure style. We will recommend the best option for your budget.",
     },
     {
-      question: "Is it too early for elementary students to learn AI?",
-      answer: "No. Elementary students only learn 'AI Literacy' through logic games and digital safety lessons, supervised at all times.",
+      question: "How should our organization prepare data to feed into the AI?",
+      answer: "NextgenAI will guide you through the data preparation process. Our personal AI systems can automatically ingest various formats including PDF, Word, Excel, SQL databases, and internal Wikis securely.",
     },
   ],
 };

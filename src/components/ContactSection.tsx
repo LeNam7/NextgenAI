@@ -40,9 +40,7 @@ export default function ContactSection() {
       tempErrors.email = t({ vi: "Email không hợp lệ", en: "Invalid email address" });
     }
 
-    if (!formData.organization.trim()) {
-      tempErrors.organization = t({ vi: "Vui lòng nhập tên đơn vị", en: "Please enter organization name" });
-    }
+
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -121,40 +119,32 @@ export default function ContactSection() {
         
         {/* Final CTA Banner Part */}
         <div className="text-center max-w-3xl mx-auto space-y-6 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-55 border border-blue-200 text-xs font-bold text-blue-700">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-            <span>{t({ vi: "Liên hệ tư vấn miễn phí", en: "Free Consultation" })}</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono font-bold text-blue-700 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.08)]">
+            <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-pulse" />
+            <span>{t({ vi: "LIÊN HỆ TƯ VẤN MIỄN PHÍ", en: "FREE CONSULTATION" })}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t({
-              vi: "Sẵn Sàng Xây AI Cá Nhân & Chương Trình Giáo Dục AI Cho Tổ Chức Của Bạn?",
-              en: "Ready to Build Personal AI & AI Training Programs for Your Organization?",
+              vi: "Sẵn Sàng Tối Ưu Hóa & Tự Động Hóa Tổ Chức Bằng Giải Pháp AI?",
+              en: "Ready to Optimize & Automate Your Organization with AI Solutions?",
             })}
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
             {t({
               vi: "Hãy điền thông tin bên dưới để nhận cuộc gọi tư vấn chuyên sâu, khảo sát nhu cầu thực tế và thiết kế demo thử nghiệm hoàn toàn miễn phí.",
               en: "Fill in the form below to receive a deep-dive consultation call, practical needs assessment, and a custom demo design entirely for free.",
             })}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a
-              href="#lien-he"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white rounded-xl bg-blue-600 hover:bg-blue-700 shadow shadow-blue-500/10 cursor-pointer"
-            >
-              {t({ vi: "Đặt lịch tư vấn miễn phí", en: "Schedule Free Consultation" })}
-            </a>
-            <a
-              href="#giao-duc"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-slate-700 hover:text-slate-900 rounded-xl bg-white border border-slate-200"
-            >
-              {t({ vi: "Nhận đề xuất lộ trình AI", en: "Get AI Roadmap Proposal" })}
-            </a>
-          </div>
         </div>
 
-        {/* Contact Form Part */}
-        <div className="max-w-2xl mx-auto bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg">
+        {/* Contact Form Part - High-tech Glassmorphism */}
+        <div className="max-w-2xl mx-auto bg-white/60 backdrop-blur-md border border-slate-200/80 rounded-3xl p-8 sm:p-10 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.03)] relative overflow-hidden group">
+          {/* Tech corner accents */}
+          <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-blue-500/30 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-blue-500/30 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-blue-500/30 pointer-events-none"></div>
+          <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-blue-500/30 pointer-events-none"></div>
+
           {isSubmitted ? (
             <div className="text-center py-10 space-y-4">
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600">
@@ -181,7 +171,7 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Full Name */}
                 <div className="space-y-2">
-                  <label htmlFor="fullName" className="text-sm font-bold text-slate-700">
+                  <label htmlFor="fullName" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 block whitespace-nowrap">
                     {t({ vi: "Họ và tên", en: "Full name" })} <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -190,8 +180,8 @@ export default function ContactSection() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
-                      errors.fullName ? "border-red-500" : "border-slate-200"
+                    className={`w-full px-4.5 py-3 text-sm rounded-xl bg-slate-50/50 border text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 ${
+                      errors.fullName ? "border-red-500" : "border-slate-200/80"
                     }`}
                     placeholder="Nguyễn Văn A"
                   />
@@ -204,7 +194,7 @@ export default function ContactSection() {
 
                 {/* Phone Number */}
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-bold text-slate-700">
+                  <label htmlFor="phone" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 block whitespace-nowrap">
                     {t({ vi: "Số điện thoại", en: "Phone number" })} <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -213,8 +203,8 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
-                      errors.phone ? "border-red-500" : "border-slate-200"
+                    className={`w-full px-4.5 py-3 text-sm rounded-xl bg-slate-50/50 border text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 ${
+                      errors.phone ? "border-red-500" : "border-slate-200/80"
                     }`}
                     placeholder="0912345678"
                   />
@@ -229,7 +219,7 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Email Address */}
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-bold text-slate-700">
+                  <label htmlFor="email" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 block whitespace-nowrap">
                     {t({ vi: "Email liên hệ", en: "Contact email" })} <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -238,8 +228,8 @@ export default function ContactSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
-                      errors.email ? "border-red-500" : "border-slate-200"
+                    className={`w-full px-4.5 py-3 text-sm rounded-xl bg-slate-50/50 border text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 ${
+                      errors.email ? "border-red-500" : "border-slate-200/80"
                     }`}
                     placeholder="name@company.com"
                   />
@@ -252,8 +242,8 @@ export default function ContactSection() {
 
                 {/* Organization name */}
                 <div className="space-y-2">
-                  <label htmlFor="organization" className="text-sm font-bold text-slate-700">
-                    {t({ vi: "Đơn vị / Trường học / Doanh nghiệp", en: "Organization / School / Enterprise" })} <span className="text-red-500">*</span>
+                  <label htmlFor="organization" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 block whitespace-nowrap">
+                    {t({ vi: "Tổ chức / Doanh nghiệp (nếu có)", en: "Organization / Enterprise (optional)" })}
                   </label>
                   <input
                     type="text"
@@ -261,22 +251,15 @@ export default function ContactSection() {
                     name="organization"
                     value={formData.organization}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all ${
-                      errors.organization ? "border-red-500" : "border-slate-200"
-                    }`}
-                    placeholder={t({ vi: "Trường THPT X hoặc Doanh nghiệp Y", en: "School X or Enterprise Y" })}
+                    className="w-full px-4.5 py-3 text-sm rounded-xl bg-slate-50/50 border border-slate-200/80 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200"
+                    placeholder={t({ vi: "Tên doanh nghiệp hoặc ghi 'Cá nhân'", en: "Enterprise name or type 'Individual'" })}
                   />
-                  {errors.organization && (
-                    <p className="text-xs text-red-500 flex items-center gap-1.5 font-semibold">
-                      <AlertCircle className="w-3.5 h-3.5" /> {errors.organization}
-                    </p>
-                  )}
                 </div>
               </div>
 
               {/* Service Interest Option Dropdown */}
               <div className="space-y-2">
-                <label htmlFor="interest" className="text-sm font-bold text-slate-700">
+                <label htmlFor="interest" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 block whitespace-nowrap">
                   {t({ vi: "Giải pháp bạn quan tâm nhất", en: "Solution you are interested in" })} <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -284,7 +267,7 @@ export default function ContactSection() {
                   name="interest"
                   value={formData.interest}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  className="w-full px-4.5 py-3 text-sm rounded-xl bg-slate-50/50 border border-slate-200/80 text-slate-700 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200"
                 >
                   <option value="ai-rieng">
                     {t({ vi: "Cài đặt & Tư vấn AI cá nhân cho tổ chức", en: "Deploy & Consult Personal AI for Organizations" })}
@@ -293,7 +276,7 @@ export default function ContactSection() {
                     {t({ vi: "Cung cấp, tích hợp AI Model (API, Private Cloud)", en: "Provide & Integrate AI Models (API, Private Cloud)" })}
                   </option>
                   <option value="ai-edu">
-                    {t({ vi: "Giáo dục, đào tạo AI cho Giáo viên / Học sinh", en: "AI Education & Training for Teachers / Students" })}
+                    {t({ vi: "Đào tạo quy trình & Kỹ năng ứng dụng AI cho nhân sự", en: "AI Workflow & Prompt Engineering Training for Staff" })}
                   </option>
                   <option value="khac">
                     {t({ vi: "Khác (Yêu cầu tư vấn tổng hợp)", en: "Other (General Consultation Inquiry)" })}
@@ -303,7 +286,7 @@ export default function ContactSection() {
 
               {/* Description textarea */}
               <div className="space-y-2">
-                <label htmlFor="description" className="text-sm font-bold text-slate-700">
+                <label htmlFor="description" className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 block whitespace-nowrap">
                   {t({ vi: "Mô tả cụ thể nhu cầu của bạn", en: "Specific details of your requirements" })}
                 </label>
                 <textarea
@@ -312,29 +295,38 @@ export default function ContactSection() {
                   rows={4}
                   value={formData.description}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-200 text-slate-950 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
+                  className="w-full px-4.5 py-3 text-sm rounded-xl bg-slate-50/50 border border-slate-200/80 text-slate-950 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 resize-none"
                   placeholder={t({
-                    vi: "Vui lòng chia sẻ thêm về số lượng nhân sự/học sinh, hạ tầng hiện tại hoặc bài toán cụ thể bạn cần giải quyết...",
-                    en: "Please share details about the number of staff/students, current infrastructure, or the specific problem you need to solve...",
+                    vi: "Vui lòng chia sẻ thêm về quy trình hiện tại, số lượng nhân sự, hoặc bài toán cụ thể bạn cần giải quyết...",
+                    en: "Please share details about your current workflow, number of staff, or the specific problem you need to solve...",
                   })}
                 />
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-bold text-white transition-all hover:opacity-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-blue-500/10 cursor-pointer"
-              >
-                {isSubmitting ? (
-                  <span>{t({ vi: "Đang gửi thông tin...", en: "Submitting details..." })}</span>
-                ) : (
-                  <>
-                    <span>{t({ vi: "Gửi yêu cầu tư vấn", en: "Submit Consultation Request" })}</span>
-                    <Send className="w-4 h-4" />
-                  </>
-                )}
-              </button>
+              <div className="space-y-3 pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-sm font-bold text-white transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/15 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                >
+                  {isSubmitting ? (
+                    <span>{t({ vi: "Đang gửi thông tin...", en: "Submitting details..." })}</span>
+                  ) : (
+                    <>
+                      <span>{t({ vi: "Gửi yêu cầu tư vấn", en: "Submit Consultation Request" })}</span>
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+
+                {/* Tech compliance footer */}
+                <div className="text-center">
+                  <span className="inline-block text-[10px] font-mono tracking-widest text-slate-400 uppercase">
+                    [ secure transmission: ssl encrypted ]
+                  </span>
+                </div>
+              </div>
             </form>
           )}
         </div>

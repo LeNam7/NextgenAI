@@ -55,19 +55,27 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {currentMenuItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-semibold transition-colors ${
-                  useDarkText 
-                    ? "text-slate-700 hover:text-blue-600" 
-                    : "text-slate-200 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {currentMenuItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-sm font-semibold transition-colors relative ${
+                    isActive
+                      ? "text-blue-600 font-bold"
+                      : useDarkText 
+                      ? "text-slate-700 hover:text-blue-600" 
+                      : "text-slate-200 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full"></span>
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA & Language Switcher */}
@@ -128,18 +136,25 @@ export default function Header() {
         }`}
       >
         <div className="px-4 space-y-3">
-          {currentMenuItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => {
-                setIsOpen(false);
-              }}
-              className="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {currentMenuItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+                className={`block px-4 py-3 rounded-xl text-base font-bold transition-all border ${
+                  isActive
+                    ? "text-blue-600 bg-blue-50/50 border-blue-100"
+                    : "text-slate-700 hover:text-blue-600 hover:bg-slate-50 border-transparent hover:border-slate-100"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <div className="pt-4 px-4 flex items-center justify-between gap-4">
             {/* Language Switcher Mobile */}
             <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">

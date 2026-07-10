@@ -1,11 +1,89 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 export default function MainHero() {
   const { language, t } = useLanguage();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+
+    const resizeCanvas = () => {
+      canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth;
+      canvas.height = canvas.parentElement?.offsetHeight || 800;
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // AI binary data characters
+    const alphabet = "0101010101010101NEXTGENAI";
+    const fontSize = 14;
+    const columns = Math.ceil(canvas.width / fontSize);
+
+    const rainDrops = Array(columns).fill(1).map(() => Math.floor(Math.random() * -50));
+
+    let lastTime = 0;
+    const fps = 15; // Set target FPS to slow down the rain
+    const interval = 1000 / fps;
+
+    const draw = (timestamp: number = 0) => {
+      animationFrameId = requestAnimationFrame(draw);
+
+      const elapsed = timestamp - lastTime;
+      if (elapsed < interval) return;
+      lastTime = timestamp - (elapsed % interval);
+
+      // Clear with trailing alpha to create fading rain effect on light background
+      ctx.fillStyle = "rgba(251, 250, 248, 0.15)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        
+        const x = i * fontSize;
+        const y = rainDrops[i] * fontSize;
+
+        // Draw character only when it's on screen
+        if (y > 0) {
+          // Occasional warm color rain drops (AI glowing anomalies)
+          if (Math.random() > 0.98) {
+            ctx.fillStyle = "rgba(244, 63, 94, 0.4)"; // Pink accent
+          } else if (Math.random() > 0.95) {
+            ctx.fillStyle = "rgba(245, 158, 11, 0.4)"; // Amber accent
+          } else {
+            ctx.fillStyle = "rgba(30, 96, 255, 0.15)"; // Soft brand blue (1e60ff)
+          }
+          ctx.fillText(text, x, y);
+        }
+
+        // Reset condition
+        if (y > canvas.height && Math.random() > 0.975) {
+          rainDrops[i] = 0;
+        }
+
+        rainDrops[i]++;
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(draw);
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
 
   const handleCompareClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     e.preventDefault();
@@ -16,7 +94,7 @@ export default function MainHero() {
   };
 
   return (
-    <section className="relative pt-32 pb-24 md:pt-40 md:pb-36 bg-[#f4f2ee] overflow-hidden rounded-b-[48px] md:rounded-b-[80px] lg:rounded-b-[120px] border-b border-slate-250/20">
+    <section className="relative pt-32 pb-24 md:pt-40 md:pb-36 bg-[#fbfaf8] overflow-hidden rounded-b-[48px] md:rounded-b-[80px] lg:rounded-b-[120px]">
       {/* SVG Plaster Concrete Texture Noise Overlay */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
@@ -25,12 +103,15 @@ export default function MainHero() {
         }}
       />
 
+      {/* Matrix data rain effect */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-45" />
+
       {/* Grid Pattern overlay with masked opacity */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e1d8_1px,transparent_1px),linear-gradient(to_bottom,#e5e1d8_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-40 pointer-events-none"></div>
 
       {/* Decorative Blur Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-orange-200/20 rounded-full blur-[100px] pointer-events-none animate-pulse-slow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-200/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-200/10 rounded-full blur-[100px] pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-200/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
@@ -39,18 +120,18 @@ export default function MainHero() {
           <div className="lg:col-span-6 space-y-6 text-left">
             
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-[11px] font-bold text-orange-700 backdrop-blur-sm shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping"></span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[11px] font-bold text-blue-700 backdrop-blur-sm shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping"></span>
               <span>{t({ vi: "v2.0 (thực chiến) đã ra mắt →", en: "v2.0 (production-ready) is live →" })}</span>
             </div>
 
             {/* Title / Brand */}
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-tight">
-              NextgenAI
+              Nextgen<span className="text-blue-600">AI</span>
             </h1>
 
-            {/* Subtitle in elegant serif font */}
-            <h2 className="font-serif italic text-3xl md:text-5xl text-slate-800 tracking-tight leading-tight">
+            {/* Subtitle in clean bold sans-serif font */}
+            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
               {t({ 
                 vi: "Hệ Sinh Thái AI Cá Nhân & Tự Động Hóa Doanh Nghiệp", 
                 en: "The Personalized AI Ecosystem for Individuals & Enterprise" 
@@ -58,32 +139,32 @@ export default function MainHero() {
             </h2>
 
             {/* Highlight Line */}
-            <p className="text-orange-600 font-bold text-base md:text-lg tracking-wide uppercase">
+            <p className="text-blue-600 font-bold text-base md:text-lg tracking-wide uppercase">
               {t({ vi: "Bảo mật tối đa, hiệu năng đột phá.", en: "Max security, breakout performance." })}
             </p>
 
             {/* Description */}
             <p className="text-slate-500 text-sm sm:text-base max-w-xl leading-relaxed font-semibold">
               {t({
-                vi: "Giải pháp cài đặt AI cá nhân, tối ưu hóa các model AI chạy offline bảo mật 100% và đào tạo AI thực chiến chuẩn STEM K-12, giúp doanh nghiệp và trường học đi đầu làn sóng công nghệ.",
-                en: "Personalized AI installations, 100% secure offline model optimization, and hands-on K-12 STEM AI training, empowering schools and enterprises to lead the digital wave."
+                vi: "Khác với các Chatbot thông thường (như ChatGPT, Gemini) chỉ hoạt động thụ động dạng hỏi-đáp trên web, AI Agent của chúng tôi là hệ thống tự hành vượt trội: tự động lập kế hoạch, thực hiện quy trình đa bước phức tạp, kết nối trực tiếp với cơ sở dữ liệu nội bộ và bảo mật tuyệt đối 100% Offline.",
+                en: "Unlike basic web chatbots (ChatGPT, Gemini) that only answer questions passively in isolation, our AI Agents are autonomous systems: they plan, execute complex multi-step workflows, connect directly with your internal database, and run 100% offline for absolute data privacy."
               })}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <a
-                href="#lien-he"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-white rounded-xl bg-slate-950 hover:bg-slate-850 shadow-md shadow-slate-950/10 active:scale-98 transition-all gap-2 cursor-pointer border border-transparent"
+              <Link
+                href="/quy-trinh-giai-phap"
+                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-white rounded-xl bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/10 active:scale-98 transition-all gap-2 cursor-pointer border border-transparent"
               >
-                <span>{t({ vi: "Đăng ký tư vấn ngay", en: "Book Consultation Now" })}</span>
-                <ArrowRight className="w-4 h-4 text-orange-400" />
-              </a>
+                <span>{t({ vi: "Quy trình & Giải pháp", en: "Process & Solutions" })}</span>
+                <ArrowRight className="w-4 h-4 text-white" />
+              </Link>
               <button
                 onClick={handleCompareClick}
                 className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-slate-700 hover:text-slate-900 rounded-xl bg-white border border-slate-200 hover:border-slate-300 active:scale-98 transition-all shadow-sm hover:bg-slate-50"
               >
-                <span>{t({ vi: "So sánh tính năng", en: "Compare Features" })}</span>
+                <span>{t({ vi: "Xem sự vượt trội của AI Agent", en: "See AI Agent's Superiority" })}</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </button>
             </div>
@@ -176,3 +257,5 @@ export default function MainHero() {
     </section>
   );
 }
+
+

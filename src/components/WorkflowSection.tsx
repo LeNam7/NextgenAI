@@ -69,7 +69,7 @@ const stepDetails = {
     },
     {
       bullets: [
-        "Tập huấn viết Prompt cho nhân sự/giáo viên",
+        "Tập huấn viết Prompt cho nhân sự vận hành",
         "Cẩm nang hướng dẫn sử dụng công cụ AI",
         "Chuyển giao tài liệu kỹ thuật chi tiết"
       ],
@@ -127,7 +127,7 @@ const stepDetails = {
     },
     {
       bullets: [
-        "Deliver prompt engineering training for staff/teachers",
+        "Deliver prompt engineering training for operational staff",
         "Provide AI tool usage manuals",
         "Transfer detailed technical documents"
       ],

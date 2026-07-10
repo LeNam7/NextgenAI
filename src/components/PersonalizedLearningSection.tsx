@@ -15,60 +15,60 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-// Student-centric active AI learning steps bilingual data
+// Professional active AI collaboration steps bilingual data
 const studentAiSteps = {
   vi: [
     {
       step: 1,
-      title: "Đặt câu hỏi gợi mở",
-      description: "Học sinh ra lệnh cho AI giải thích nguyên lý và đưa ra ví dụ trực quan, thay vì yêu cầu giải hộ bài tập.",
+      title: "Định nghĩa mục tiêu",
+      description: "Xác định rõ vai trò và yêu cầu AI giải thích nguyên lý, đề xuất giải pháp thay vì nhờ làm hộ từ A-Z.",
     },
     {
       step: 2,
-      title: "Tư duy phản biện",
-      description: "Chủ động đối chiếu câu trả lời của AI với sách giáo khoa để phát hiện lỗi logic hoặc thông tin ảo giác.",
+      title: "Kiểm chứng độc lập",
+      description: "Chủ động đối chiếu, xác minh thông tin từ AI với cơ sở dữ liệu tin cậy để loại bỏ lỗi logic và thông tin ảo giác.",
     },
     {
       step: 3,
-      title: "Hỏi đáp đào sâu",
-      description: "Liên tục đặt câu hỏi bổ trợ ('Tại sao...', 'Nếu như...') để nắm vững gốc rễ vấn đề thay vì học vẹt.",
+      title: "Tối ưu hóa liên tục",
+      description: "Liên tục đặt câu hỏi bổ trợ và thử nghiệm các kịch bản khác nhau để tìm ra phương án tối ưu và hiểu sâu gốc rễ vấn đề.",
     },
     {
       step: 4,
-      title: "Ứng dụng sáng tạo",
-      description: "Sử dụng AI làm trợ lý viết mã lập trình, phác thảo cốt truyện, vẽ tranh minh họa hoặc chế tạo robot STEM.",
+      title: "Tự động hóa quy trình",
+      description: "Sử dụng AI để tăng tốc viết mã, thiết kế tài liệu, xây dựng quy trình tự động và vận hành các hệ thống thông minh.",
     },
     {
       step: 5,
-      title: "Liêm chính học thuật",
-      description: "Cam kết tự làm bài tập về nhà, ghi công nguồn tham khảo từ AI và tuân thủ đạo đức học thuật số.",
+      title: "Trách nhiệm & Đạo đức",
+      description: "Sử dụng AI minh bạch, kiểm soát kết quả đầu ra và cam kết tuân thủ các quy tắc bảo mật thông tin.",
     },
   ],
   en: [
     {
       step: 1,
-      title: "Ask Open-ended Questions",
-      description: "Students prompt the AI to explain principles and provide visual examples, rather than asking it to solve the homework directly.",
+      title: "Define Objectives",
+      description: "Clearly define roles and ask AI to explain principles or propose solutions rather than doing all work from scratch.",
     },
     {
       step: 2,
-      title: "Critical Thinking",
-      description: "Actively cross-check the AI's answers with textbooks to detect logical errors or hallucinations.",
+      title: "Independent Verification",
+      description: "Actively cross-check and verify AI output with trusted databases to eliminate logical errors and hallucinations.",
     },
     {
       step: 3,
-      title: "Deep-dive Q&A",
-      description: "Continuously ask auxiliary questions ('Why...', 'What if...') to understand the root cause rather than rote learning.",
+      title: "Continuous Optimization",
+      description: "Continuously ask follow-up questions and test scenarios to find optimal solutions and understand root causes.",
     },
     {
       step: 4,
-      title: "Creative Application",
-      description: "Use AI as an assistant to write code, draft storylines, draw illustrations, or build STEM robots.",
+      title: "Workflow Automation",
+      description: "Leverage AI to accelerate coding, document design, build automated workflows, and run smart systems.",
     },
     {
       step: 5,
-      title: "Academic Integrity",
-      description: "Pledge to do homework independently, cite AI references, and adhere to digital academic ethics.",
+      title: "Responsibility & Ethics",
+      description: "Use AI transparently, govern outputs, and commit to strict data security and compliance rules.",
     },
   ],
 };
@@ -263,19 +263,19 @@ export default function PersonalizedLearningSection() {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700">
             <BrainCircuit className="w-3.5 h-3.5 text-blue-600" />
-            <span>{t({ vi: "Học Tập Chủ Động (Active Learning)", en: "Active Learning" })}</span>
+            <span>{t({ vi: "Cộng Tác AI Chủ Động (Active Collaboration)", en: "Active AI Collaboration" })}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t({ vi: "Làm Chủ AI – ", en: "Master AI – " })}
             <span className="text-blue-600">
-              {t({ vi: "Kiến Tạo Tư Duy", en: "Foster Critical Thinking" })}
+              {t({ vi: "Kiến Tạo Quy Trình", en: "Design Workflows" })}
             </span>{" "}
-            {t({ vi: "Tự Học Chủ Động", en: "for Active Self-Study" })}
+            {t({ vi: "Tối Ưu Hiệu Suất", en: "Optimize Performance" })}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed tracking-wide">
             {t({
-              vi: "Không lạm dụng, không chép bài. Chúng tôi định hướng học sinh Việt Nam sử dụng AI như một cộng sự học tập thông minh qua phương pháp khoa học và đạo đức công nghệ chuẩn mực.",
-              en: "No reliance, no direct copying. We orient Vietnamese K-12 students to use AI as a smart learning partner through structured scientific methods and high ethical technology standards.",
+              vi: "Không lạm dụng thụ động, không sao chép nguyên bản. Chúng tôi định hướng người dùng và doanh nghiệp làm việc cùng AI như một cộng sự đắc lực thông qua phương pháp khoa học và quy chuẩn đạo đức công nghệ vững vàng.",
+              en: "No passive reliance, no plain copying. We guide professionals and enterprises to collaborate with AI as an efficient partner through structured methodologies and solid digital ethics.",
             })}
           </p>
         </div>
@@ -288,7 +288,7 @@ export default function PersonalizedLearningSection() {
               <Activity className="w-4.5 h-4.5 text-blue-600" />
               {t({
                 vi: "Phương pháp đồng hành cùng AI đúng cách:",
-                en: "The Right Method to Study with AI:",
+                en: "The Right Method to Collaborate with AI:",
               })}
             </h3>
 
@@ -375,11 +375,9 @@ export default function PersonalizedLearningSection() {
                 </div>
               </div>
 
-              {/* Dynamic Content Body based on Active Student Step */}
-              {/* Added key={activeStep} to reset entrance animations on step changes */}
               <div key={activeStep} className="flex-grow py-5 flex flex-col justify-center">
                 
-                {/* STEP 1: Đặt câu hỏi gợi mở */}
+                {/* STEP 1: Định nghĩa mục tiêu */}
                 {activeStep === 0 && (
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between anim-slide-up">
@@ -387,36 +385,36 @@ export default function PersonalizedLearningSection() {
                         {t({ vi: "KỸ THUẬT PROMPTING CHỦ ĐỘNG", en: "ACTIVE PROMPTING TECHNIQUE" })}
                       </span>
                       <span className="text-[9px] font-mono text-blue-400 bg-blue-950/40 px-2 py-0.5 rounded border border-blue-900/30">
-                        {t({ vi: "HỌC SINH KHỞI TẠO", en: "STUDENT INITIALIZED" })}
+                        {t({ vi: "KHỞI TẠO CÔNG VIỆC", en: "TASK INITIALIZED" })}
                       </span>
                     </div>
-
-                    {/* Student Prompt Input Card */}
+ 
+                    {/* User Prompt Input Card */}
                     <div className="p-3.5 rounded-xl bg-slate-900/50 border border-slate-850 space-y-1.5 anim-slide-left">
                       <div className="flex items-center gap-1.5 text-[11px] font-bold text-blue-400">
-                        <span>{t({ vi: "Học sinh:", en: "Student:" })}</span>
+                        <span>{t({ vi: "Người dùng:", en: "User:" })}</span>
                       </div>
                       <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium italic tracking-wide">
                         "
                         {simPhase === "typing1" ? (
                           <TypewriterText
                             text={t({
-                              vi: "Hãy giải thích cho em nguyên lý Archimedes bằng ví dụ đời sống thực tế, nhưng vui lòng không giải hộ bài tập về nhà của em nhé.",
-                              en: "Please explain Archimedes' principle using a real-world example, but please do not solve my homework for me."
+                              vi: "Hãy giải thích nguyên lý hoạt động của mô hình RAG trong doanh nghiệp và đề xuất cách tối ưu dữ liệu nội bộ.",
+                              en: "Please explain the principle of RAG in enterprises and suggest ways to optimize internal data retrieval."
                             })}
                             onComplete={() => setSimPhase("thinking")}
                             speed={12}
                           />
                         ) : (
                           t({
-                            vi: "Hãy giải thích cho em nguyên lý Archimedes bằng ví dụ đời sống thực tế, nhưng vui lòng không giải hộ bài tập về nhà của em nhé.",
-                            en: "Please explain Archimedes' principle using a real-world example, but please do not solve my homework for me."
+                            vi: "Hãy giải thích nguyên lý hoạt động của mô hình RAG trong doanh nghiệp và đề xuất cách tối ưu dữ liệu nội bộ.",
+                            en: "Please explain the principle of RAG in enterprises and suggest ways to optimize internal data retrieval."
                           })
                         )}
                         "
                       </p>
                     </div>
-
+ 
                     {/* AI Thinking indicator */}
                     {simPhase === "thinking" && (
                       <div className="anim-slide-up py-1 space-y-1">
@@ -424,7 +422,7 @@ export default function PersonalizedLearningSection() {
                         <ThinkingBubble />
                       </div>
                     )}
-
+ 
                     {/* AI Response Card */}
                     {(simPhase === "typing2" || simPhase === "complete") && (
                       <div className="p-3.5 rounded-xl bg-slate-900/20 border border-slate-900 space-y-1.5 anim-slide-right">
@@ -437,49 +435,49 @@ export default function PersonalizedLearningSection() {
                           {simPhase === "typing2" ? (
                             <TypewriterText
                               text={t({
-                                vi: "Chào em! Hãy tưởng tượng khi em bước chân vào một bồn tắm chứa đầy nước, em sẽ thấy một phần nước tràn ra ngoài và cơ thể em nhẹ bẫng đi...",
-                                en: "Hi there! Imagine stepping into a bathtub filled with water; you notice some water overflows and your body feels lighter..."
+                                vi: "Chào bạn! Hệ thống RAG (Retrieval-Augmented Generation) hoạt động bằng cách truy xuất dữ liệu từ kho tri thức nội bộ trước khi tạo câu trả lời...",
+                                en: "Hello! RAG works by retrieving relevant documents from your internal knowledge base first, then using an LLM to generate the answer..."
                               })}
                               onComplete={() => setSimPhase("complete")}
                               speed={12}
                             />
                           ) : (
                             t({
-                              vi: "Chào em! Hãy tưởng tượng khi em bước chân vào một bồn tắm chứa đầy nước, em sẽ thấy một phần nước tràn ra ngoài và cơ thể em nhẹ bẫng đi...",
-                              en: "Hi there! Imagine stepping into a bathtub filled with water; you notice some water overflows and your body feels lighter..."
+                              vi: "Chào bạn! Hệ thống RAG (Retrieval-Augmented Generation) hoạt động bằng cách truy xuất dữ liệu từ kho tri thức nội bộ trước khi tạo câu trả lời...",
+                              en: "Hello! RAG works by retrieving relevant documents from your internal knowledge base first, then using an LLM to generate the answer..."
                             })
                           )}
                           "
                         </p>
                       </div>
                     )}
-
+ 
                     {simPhase === "complete" && (
                       <div className="flex items-center gap-2 text-[10px] text-slate-400 font-mono leading-relaxed anim-slide-up">
                         <HelpCircle className="w-3.5 h-3.5 text-blue-500 flex-shrink-0 animate-bounce" />
                         <span>
                           {t({
-                            vi: "Thói quen tốt: Giới hạn AI không làm thay mà chỉ giải thích lý thuyết.",
-                            en: "Good Habit: Limit AI from doing the work, use it to explain the theory instead.",
+                            vi: "Thói quen tốt: Yêu cầu giải thích phương pháp thay vì copy-paste kết quả.",
+                            en: "Good Habit: Ask for methodology instead of blindly copy-pasting answers."
                           })}
                         </span>
                       </div>
                     )}
                   </div>
                 )}
-
-                {/* STEP 2: Tư duy phản biện */}
+ 
+                {/* STEP 2: Kiểm chứng độc lập */}
                 {activeStep === 1 && (
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between anim-slide-up">
                       <span className="text-[10px] font-bold text-slate-400 font-mono tracking-wider">
-                        {t({ vi: "ĐỐI CHIẾU & KIỂM CHỨNG TRI THỨC", en: "CROSS-REFERENCE & VERIFY KNOWLEDGE" })}
+                        {t({ vi: "ĐỐI CHIẾU & KIỂM CHỨNG TRI THỨC", en: "KNOWLEDGE CROSS-REFERENCE" })}
                       </span>
                       <span className="text-[9px] font-mono text-rose-400 bg-rose-950/20 px-2 py-0.5 rounded border border-rose-900/30 font-bold animate-pulse">
                         {t({ vi: "XÁC MINH TIN CẬY", en: "TRUSTED VERIFICATION" })}
                       </span>
                     </div>
-
+ 
                     <div className="grid grid-cols-2 gap-3.5">
                       {/* AI Output */}
                       <div className="p-3 rounded-xl bg-slate-900/40 border border-rose-950/50 space-y-1.5 anim-slide-left">
@@ -491,51 +489,51 @@ export default function PersonalizedLearningSection() {
                           {simPhase === "typing1" ? (
                             <TypewriterText
                               text={t({
-                                vi: "Lực đẩy Archimedes phụ thuộc trực tiếp vào khối lượng riêng của vật thể chìm trong nước...",
-                                en: "Archimedes' buoyant force directly depends on the density of the object submerged in water..."
+                                vi: "Mô hình này chạy 100% cloud công cộng mà không có rủi ro rò rỉ dữ liệu doanh nghiệp...",
+                                en: "This model runs 100% on public cloud with zero risk of enterprise data leaks..."
                               })}
                               onComplete={() => setSimPhase("thinking")}
                               speed={12}
                             />
                           ) : (
                             t({
-                              vi: "Lực đẩy Archimedes phụ thuộc trực tiếp vào khối lượng riêng của vật thể chìm trong nước...",
-                              en: "Archimedes' buoyant force directly depends on the density of the object submerged in water..."
+                              vi: "Mô hình này chạy 100% cloud công cộng mà không có rủi ro rò rỉ dữ liệu doanh nghiệp...",
+                              en: "This model runs 100% on public cloud with zero risk of enterprise data leaks..."
                             })
                           )}
                           "
                         </p>
                       </div>
-
+ 
                       {/* Fact Check loader */}
                       {simPhase === "thinking" && (
                         <div className="flex flex-col items-center justify-center p-3 anim-slide-up">
-                          <span className="text-[9px] font-mono text-slate-500 mb-1">{t({ vi: "Đang tra cứu SGK...", en: "Checking textbook..." })}</span>
+                          <span className="text-[9px] font-mono text-slate-500 mb-1">{t({ vi: "Đang tra cứu chính sách...", en: "Checking policies..." })}</span>
                           <ThinkingBubble />
                         </div>
                       )}
-
+ 
                       {/* Fact Check Text */}
                       {(simPhase === "typing2" || simPhase === "complete") && (
                         <div className="p-3 rounded-xl bg-slate-900/40 border border-emerald-950/50 space-y-1.5 anim-slide-right">
                           <span className="text-[9px] font-bold text-emerald-400 font-mono">
-                            {t({ vi: "SÁCH GIÁO KHOA VẬT LÝ 8:", en: "PHYSICS 8 TEXTBOOK:" })}
+                            {t({ vi: "CHÍNH SÁCH BẢO MẬT NỘI BỘ:", en: "INTERNAL PRIVACY POLICY:" })}
                           </span>
                           <p className="text-[11px] text-emerald-100 leading-relaxed">
                             "
                             {simPhase === "typing2" ? (
                               <TypewriterText
                                 text={t({
-                                  vi: "Lực đẩy phụ thuộc vào trọng lượng riêng của chất lỏng và thể tích phần chất lỏng bị chiếm chỗ.",
-                                  en: "The buoyant force depends on the specific weight of the liquid and the volume of the liquid displaced."
+                                  vi: "Mọi dữ liệu nhạy cảm của khách hàng bắt buộc phải xử lý offline hoặc qua mạng nội bộ được mã hóa.",
+                                  en: "All sensitive customer data must be processed offline or via encrypted local networks."
                                 })}
                                 onComplete={() => setSimPhase("complete")}
                                 speed={12}
                               />
                             ) : (
                               t({
-                                vi: "Lực đẩy phụ thuộc vào trọng lượng riêng của chất lỏng và thể tích phần chất lỏng bị chiếm chỗ.",
-                                en: "The buoyant force depends on the specific weight of the liquid and the volume of the liquid displaced."
+                                vi: "Mọi dữ liệu nhạy cảm của khách hàng bắt buộc phải xử lý offline hoặc qua mạng nội bộ được mã hóa.",
+                                en: "All sensitive customer data must be processed offline or via encrypted local networks."
                               })
                             )}
                             "
@@ -543,34 +541,34 @@ export default function PersonalizedLearningSection() {
                         </div>
                       )}
                     </div>
-
+ 
                     {/* AI Hallucination Warning Banner */}
                     {simPhase === "complete" && (
                       <div className="p-2.5 rounded-lg bg-rose-950/20 border border-rose-900/30 flex items-center gap-2 text-[11px] text-rose-350 font-semibold anim-slide-up anim-alert-glow leading-relaxed">
                         <XCircle className="w-4 h-4 text-rose-500 flex-shrink-0 animate-bounce" />
                         <span className="text-rose-400">
                           {t({
-                            vi: "PHÁT HIỆN ẢO GIÁC AI: AI đã nhầm lẫn giữa khối lượng vật và thể tích chiếm chỗ!",
-                            en: "AI HALLUCINATION DETECTED: AI confused the object's mass with the displaced volume!",
+                            vi: "CẢNH BÁO BẢO MẬT: AI đề xuất giải pháp cloud công cộng vi phạm quy định bảo mật nội bộ!",
+                            en: "SECURITY ALERT: AI proposed public cloud solutions which violate internal privacy policies!"
                           })}
                         </span>
                       </div>
                     )}
                   </div>
                 )}
-
-                {/* STEP 3: Hỏi đáp đào sâu */}
+ 
+                {/* STEP 3: Tối ưu hóa liên tục */}
                 {activeStep === 2 && (
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between anim-slide-up">
                       <span className="text-[10px] font-bold text-slate-400 font-mono tracking-wider">
-                        {t({ vi: "HỎI XOÁY ĐÁP XOAY ĐỂ HIỂU SÂU", en: "DEEP-DIVE Q&A FOR BETTER UNDERSTANDING" })}
+                        {t({ vi: "TRUY VẤN SÂU ĐỂ TỐI ƯU HÓA", en: "DEEP-DIVE FOR OPTIMIZATION" })}
                       </span>
                       <span className="text-[9px] font-mono text-indigo-400 bg-indigo-950/20 px-2 py-0.5 rounded border border-indigo-900/30">
                         {t({ vi: "LIÊN TỤC TRUY VẤN", en: "CONTINUOUS QUERYING" })}
                       </span>
                     </div>
-
+ 
                     <div className="space-y-2.5">
                       {/* Sub-question 1 */}
                       <div className="p-2 rounded bg-slate-900/30 border border-slate-900 text-xs text-slate-200 flex justify-between items-center leading-relaxed anim-slide-left">
@@ -578,16 +576,16 @@ export default function PersonalizedLearningSection() {
                           {simPhase === "typing1" ? (
                             <TypewriterText
                               text={t({
-                                vi: '❓ "Tại sao cùng thể tích mà sắt lại chìm còn gỗ lại nổi?"',
-                                en: '❓ "Why does iron sink while wood floats if they have the same volume?"'
+                                vi: '❓ "Làm thế nào để giảm thời gian phản hồi (latency) xuống dưới 100ms?"',
+                                en: '❓ "How to reduce retrieval latency to under 100ms?"'
                               })}
                               onComplete={() => setSimPhase("thinking")}
                               speed={12}
                             />
                           ) : (
                             t({
-                              vi: '❓ "Tại sao cùng thể tích mà sắt lại chìm còn gỗ lại nổi?"',
-                              en: '❓ "Why does iron sink while wood floats if they have the same volume?"'
+                              vi: '❓ "Làm thế nào để giảm thời gian phản hồi (latency) xuống dưới 100ms?"',
+                              en: '❓ "How to reduce retrieval latency to under 100ms?"'
                             })
                           )}
                         </span>
@@ -604,7 +602,7 @@ export default function PersonalizedLearningSection() {
                           <ThinkingBubble />
                         </div>
                       )}
-
+ 
                       {/* Sub-question 2 */}
                       {(simPhase === "typing2" || simPhase === "complete") && (
                         <div className="p-2 rounded bg-slate-900/30 border border-slate-900 text-xs text-slate-200 flex justify-between items-center leading-relaxed anim-slide-right">
@@ -612,16 +610,16 @@ export default function PersonalizedLearningSection() {
                             {simPhase === "typing2" ? (
                               <TypewriterText
                                 text={t({
-                                  vi: '❓ "Nếu em đổ thêm một lớp dầu nhẹ lên trên nước thì gỗ có nổi cao hơn?"',
-                                  en: '❓ "If I pour a layer of light oil on top of the water, will the wood float higher?"'
+                                  vi: '❓ "Nếu dùng Vector Database lưu local thì hiệu năng tìm kiếm thay đổi ra sao?"',
+                                  en: '❓ "If we use a local Vector Database, how will search performance be affected?"'
                                 })}
                                 onComplete={() => setSimPhase("complete")}
                                 speed={12}
                               />
                             ) : (
                               t({
-                                vi: '❓ "Nếu em đổ thêm một lớp dầu nhẹ lên trên nước thì gỗ có nổi cao hơn?"',
-                                en: '❓ "If I pour a layer of light oil on top of the water, will the wood float higher?"'
+                                vi: '❓ "Nếu dùng Vector Database lưu local thì hiệu năng tìm kiếm thay đổi ra sao?"',
+                                en: '❓ "If we use a local Vector Database, how will search performance be affected?"'
                               })
                             )}
                           </span>
@@ -631,45 +629,45 @@ export default function PersonalizedLearningSection() {
                         </div>
                       )}
                     </div>
-
+ 
                     {simPhase === "complete" && (
                       <div className="p-3 rounded-lg bg-indigo-950/20 border border-indigo-900/30 text-xs text-indigo-100 leading-relaxed anim-slide-up">
                         <span className="font-bold text-indigo-300">
-                          {t({ vi: "Nextgen AI gợi ý hướng tư duy: ", en: "Nextgen AI hint: " })}
+                          {t({ vi: "Nextgen AI gợi ý hướng tư duy: ", en: "Nextgen AI suggestion: " })}
                         </span>
                         {t({
-                          vi: "Hãy so sánh trọng lượng riêng của gỗ với trọng lượng riêng trung bình của nước và dầu mà nó chiếm chỗ.",
-                          en: "Compare the specific gravity of the wood with the average density of the water and oil it displaces.",
+                          vi: "Hãy thử tối ưu hóa kích thước chunk (chunk size) và sử dụng thuật toán Index thích hợp (HNSW).",
+                          en: "Try optimizing chunk size and using an appropriate Index algorithm like HNSW."
                         })}
                       </div>
                     )}
                   </div>
                 )}
-
-                {/* STEP 4: Ứng dụng sáng tạo */}
+ 
+                {/* STEP 4: Tự động hóa quy trình */}
                 {activeStep === 3 && (
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between anim-slide-up">
                       <span className="text-[10px] font-bold text-slate-400 font-mono tracking-wider">
-                        {t({ vi: "ĐỒNG HÀNH SÁNG TẠO DỰ ÁN STEM", en: "STEM PROJECT CREATIVE COMPANION" })}
+                        {t({ vi: "TỰ ĐỘNG HÓA VÀ TRIỂN KHAI", en: "AUTOMATION & DEPLOYMENT" })}
                       </span>
                       <span className="text-[9px] font-mono text-emerald-400 bg-emerald-950/20 px-2 py-0.5 rounded border border-emerald-900/30 font-bold">PYTHON CODE ASSISTANT</span>
                     </div>
-
+ 
                     {/* Mini code block */}
                     <div className="bg-slate-900 border border-slate-800 rounded-lg p-3 font-mono text-[11px] text-slate-200 space-y-1 anim-slide-left relative overflow-hidden min-h-[95px]">
                       {/* Scanning beam on code block */}
                       <div className="absolute left-0 right-0 h-[1.5px] bg-indigo-500/20 anim-scan-line"></div>
                       
                       <div className="text-slate-400 font-semibold mb-1">
-                        {t({ vi: "# Viết code tính lực đẩy Archimedes", en: "# Python code for buoyant force" })}
+                        {t({ vi: "# Viết code tính độ tương đồng cosine", en: "# Python code for cosine similarity" })}
                       </div>
                       {simPhase === "typing1" ? (
                         <div className="text-emerald-400 whitespace-pre">
                           <TypewriterText
                             text={t({
-                              vi: "def luc_day_archimedes(d_long, v_chiem):\n    g = 9.81\n    return d_long * v_chiem * g",
-                              en: "def buoyant_force(density, volume):\n    g = 9.81\n    return density * volume * g"
+                              vi: "import numpy as np\ndef cosine_similarity(a, b):\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))",
+                              en: "import numpy as np\ndef cosine_similarity(a, b):\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))"
                             })}
                             onComplete={() => setSimPhase("thinking")}
                             speed={7} // fast typing for code
@@ -677,20 +675,20 @@ export default function PersonalizedLearningSection() {
                         </div>
                       ) : (
                         <>
-                          <div><span className="text-blue-400">def</span> <span className="text-indigo-400 font-semibold">{t({ vi: "luc_day_archimedes", en: "buoyant_force" })}</span>({t({ vi: "d_long, v_chiem", en: "density, volume" })}):</div>
-                          <div>    g = <span className="text-amber-400">9.81</span></div>
-                          <div>    <span className="text-blue-400">return</span> {t({ vi: "d_long * v_chiem * g", en: "density * volume * g" })}</div>
+                          <div><span className="text-blue-400">import</span> numpy <span className="text-blue-400">as</span> np</div>
+                          <div><span className="text-blue-400">def</span> <span className="text-indigo-400 font-semibold">cosine_similarity</span>(a, b):</div>
+                          <div>    <span className="text-blue-400">return</span> np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))</div>
                         </>
                       )}
                     </div>
-
+ 
                     {simPhase === "thinking" && (
                       <div className="flex flex-col items-center justify-center p-2 anim-slide-up">
-                        <span className="text-[9px] font-mono text-slate-500 mb-1">{t({ vi: "AI đang đề xuất dự án...", en: "AI proposing project ideas..." })}</span>
+                        <span className="text-[9px] font-mono text-slate-500 mb-1">{t({ vi: "AI đang phân tích mã nguồn...", en: "AI analyzing code..." })}</span>
                         <ThinkingBubble />
                       </div>
                     )}
-
+ 
                     {(simPhase === "typing2" || simPhase === "complete") && (
                       <div className="p-3 rounded bg-slate-900/50 border border-slate-800 text-xs text-slate-200 flex items-center gap-2 anim-slide-right leading-relaxed">
                         <Sparkles className="w-4 h-4 text-amber-400 flex-shrink-0 animate-bounce" />
@@ -698,16 +696,16 @@ export default function PersonalizedLearningSection() {
                           {simPhase === "typing2" ? (
                             <TypewriterText
                               text={t({
-                                vi: 'AI đề xuất: "Em hãy dùng thư viện Pygame vẽ một chiếc thuyền chìm dần để trực quan hóa!"',
-                                en: 'AI Suggestion: "Try using the Pygame library to draw a slowly sinking boat to visualize it!"'
+                                vi: 'AI đề xuất: "Bạn nên viết thêm API Endpoint bằng FastAPI để tích hợp hàm này vào luồng xử lý chính!"',
+                                en: 'AI Suggestion: "You should create a FastAPI endpoint to integrate this function into your main workflow!"'
                               })}
                               onComplete={() => setSimPhase("complete")}
                               speed={12}
                             />
                           ) : (
                             t({
-                              vi: 'AI đề xuất: "Em hãy dùng thư viện Pygame vẽ một chiếc thuyền chìm dần để trực quan hóa!"',
-                              en: 'AI Suggestion: "Try using the Pygame library to draw a slowly sinking boat to visualize it!"'
+                              vi: 'AI đề xuất: "Bạn nên viết thêm API Endpoint bằng FastAPI để tích hợp hàm này vào luồng xử lý chính!"',
+                              en: 'AI Suggestion: "You should create a FastAPI endpoint to integrate this function into your main workflow!"'
                             })
                           )}
                         </span>
@@ -715,19 +713,19 @@ export default function PersonalizedLearningSection() {
                     )}
                   </div>
                 )}
-
-                {/* STEP 5: Liêm chính học thuật */}
+ 
+                {/* STEP 5: Trách nhiệm & Đạo đức */}
                 {activeStep === 4 && (
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between anim-slide-up">
                       <span className="text-[10px] font-bold text-slate-400 font-mono tracking-wider">
-                        {t({ vi: "CHỨNG NHẬN LIÊM CHÍNH HỌC THUẬT SỐ", en: "DIGITAL ACADEMIC INTEGRITY CERTIFICATION" })}
+                        {t({ vi: "CHỨNG NHẬN ĐẠO ĐỨC & TRÁCH NHIỆM SỐ", en: "DIGITAL ETHICS & COMPLIANCE CERTIFICATION" })}
                       </span>
                       <span className="text-[9px] text-emerald-400 bg-emerald-950/30 px-2 py-0.5 rounded border border-emerald-900/30 font-bold animate-pulse">
-                        {t({ vi: "AN TOÀN - ĐẠO ĐỨC", en: "SAFE & ETHICAL" })}
+                        {t({ vi: "AN TOÀN - ĐẠO ĐỨC", en: "SAFE & COMPLIANT" })}
                       </span>
                     </div>
-
+ 
                     <div className="space-y-2.5">
                       <div className="flex items-center gap-2 text-xs text-slate-200 leading-relaxed anim-slide-left">
                         <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 animate-pulse" />
@@ -735,27 +733,27 @@ export default function PersonalizedLearningSection() {
                           {simPhase === "typing1" ? (
                             <TypewriterText
                               text={t({
-                                vi: "Tự suy nghĩ làm bài (Không sao chép trực tiếp bài giải của AI)",
-                                en: "Do homework independently (No direct copying of AI answers)"
+                                vi: "Sử dụng AI minh bạch (Không che giấu việc dùng AI hỗ trợ công việc)",
+                                en: "Transparent AI usage (No hiding of AI assistance in workflows)"
                               })}
                               onComplete={() => setSimPhase("thinking")}
                               speed={12}
                             />
                           ) : (
                             t({
-                              vi: "Tự suy nghĩ làm bài (Không sao chép trực tiếp bài giải của AI)",
-                              en: "Do homework independently (No direct copying of AI answers)"
+                              vi: "Sử dụng AI minh bạch (Không che giấu việc dùng AI hỗ trợ công việc)",
+                              en: "Transparent AI usage (No hiding of AI assistance in workflows)"
                             })
                           )}
                         </span>
                       </div>
-
+ 
                       {simPhase === "thinking" && (
                         <div className="py-1">
                           <ThinkingBubble />
                         </div>
                       )}
-
+ 
                       {(simPhase === "typing2" || simPhase === "complete") && (
                         <div className="flex items-center gap-2 text-xs text-slate-200 leading-relaxed anim-slide-left">
                           <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 animate-pulse" />
@@ -763,43 +761,43 @@ export default function PersonalizedLearningSection() {
                             {simPhase === "typing2" ? (
                               <TypewriterText
                                 text={t({
-                                  vi: "Trích dẫn rõ ràng nguồn dữ liệu & trợ lý AI hỗ trợ dự án",
-                                  en: "Clearly cite data sources & AI assistants supporting the project"
+                                  vi: "Kiểm soát dữ liệu đầu vào (Tuyệt đối không đưa dữ liệu mật lên AI công cộng)",
+                                  en: "Input data governance (Never upload confidential data to public LLMs)"
                                 })}
                                 onComplete={() => setSimPhase("complete")}
                                 speed={12}
                               />
                             ) : (
                               t({
-                                vi: "Trích dẫn rõ ràng nguồn dữ liệu & trợ lý AI hỗ trợ dự án",
-                                en: "Clearly cite data sources & AI assistants supporting the project"
+                                vi: "Kiểm soát dữ liệu đầu vào (Tuyệt đối không đưa dữ liệu mật lên AI công cộng)",
+                                en: "Input data governance (Never upload confidential data to public LLMs)"
                               })
                             )}
                           </span>
                         </div>
                       )}
-
+ 
                       {simPhase === "complete" && (
                         <div className="flex items-center gap-2 text-xs text-slate-200 leading-relaxed anim-slide-left">
                           <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 animate-bounce" />
                           <span>
                             {t({
-                              vi: "Sử dụng AI như người gợi ý tư duy, huấn luyện và kiểm thử",
-                              en: "Use AI as a thinking guide, coach, and tester",
+                              vi: "Đóng gói & tự chủ công nghệ (Ứng dụng AI để tự đào tạo và nâng cao nghiệp vụ)",
+                              en: "Own & master the tech (Leverage AI to upskill and self-train)"
                             })}
                           </span>
                         </div>
                       )}
                     </div>
-
+ 
                     {simPhase === "complete" && (
                       <div className="pt-2.5 border-t border-slate-900 flex justify-center anim-slide-up">
                         <div className="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-200 font-mono flex items-center gap-1.5 animate-pulse">
                           <ShieldCheck className="w-4 h-4 text-emerald-400" />
                           <span>
                             {t({
-                              vi: "Chuẩn Whitelist AI Trường học phổ thông Việt Nam",
-                              en: "Vietnam K-12 AI Whitelist Standards",
+                              vi: "Chuẩn Bảo mật dữ liệu & Đạo đức AI Doanh nghiệp",
+                              en: "Enterprise Data Security & AI Ethics Standards"
                             })}
                           </span>
                         </div>
@@ -807,14 +805,15 @@ export default function PersonalizedLearningSection() {
                     )}
                   </div>
                 )}
-
+ 
               </div>
-
+ 
               {/* Card Footer: Metadata */}
               <div className="pt-3 border-t border-slate-900 flex justify-between items-center text-[9px] text-slate-400 font-mono">
                 <span>ETHICS COMPLIANCE: 100%</span>
-                <span>ACADEMIC INTEGRITY: SECURE</span>
+                <span>DATA SECURITY: SECURE</span>
               </div>
+
             </div>
           </div>
 
