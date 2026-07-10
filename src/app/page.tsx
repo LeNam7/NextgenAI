@@ -13,26 +13,24 @@ import { faqItems } from "@/data/landingData";
 import MainHero from "@/components/MainHero";
 
 export const metadata: Metadata = {
-  title: "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học",
+  title: "NextgenAI | Triển khai AI Cá nhân, Tích hợp AI Model & Đào tạo AI Doanh nghiệp",
   description:
-    "Tư vấn triển khai AI cá nhân, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ tại Việt Nam.",
+    "Tư vấn triển khai AI cá nhân, cung cấp & tích hợp AI Model (API, Private Cloud) và đào tạo quy trình ứng dụng AI thực chiến cho doanh nghiệp và tổ chức tại Việt Nam.",
   keywords: [
     "NextgenAI",
     "cài đặt AI cá nhân",
     "tư vấn AI",
     "model AI",
-    "giáo dục AI",
-    "AI cho giáo viên",
-    "AI cho học sinh cấp 1",
-    "AI cho học sinh cấp 2",
-    "AI cho học sinh cấp 3",
+    "tích hợp AI model",
+    "đào tạo AI doanh nghiệp",
+    "private cloud AI",
     "đào tạo AI thực chiến",
-    "AI trong giáo dục",
+    "tối ưu quy trình AI",
   ],
   openGraph: {
-    title: "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học",
+    title: "NextgenAI | Triển khai AI Cá nhân, Tích hợp AI Model & Đào tạo AI Doanh nghiệp",
     description:
-      "Tư vấn triển khai AI cá nhân, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ.",
+      "Tư vấn triển khai AI cá nhân, cung cấp & tích hợp AI Model (API, Private Cloud) và đào tạo quy trình ứng dụng AI thực chiến cho doanh nghiệp và tổ chức.",
     url: "https://nextgenai.vn",
     siteName: "NextgenAI",
     locale: "vi_VN",
@@ -50,16 +48,16 @@ export default function Home() {
         "@id": "https://nextgenai.vn/#website",
         "url": "https://nextgenai.vn",
         "name": "NextgenAI",
-        "description": "Cài đặt AI cá nhân, Model AI & Đào tạo AI Thực chiến cho giáo viên, học sinh, trường học, doanh nghiệp.",
+        "description": "Triển khai AI Cá nhân, Tích hợp AI Model & Đào tạo AI Thực chiến cho doanh nghiệp và tổ chức.",
         "inLanguage": "vi-VN"
       },
       {
         "@type": "WebPage",
         "@id": "https://nextgenai.vn/#webpage",
         "url": "https://nextgenai.vn",
-        "name": "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học",
+        "name": "NextgenAI | Triển khai AI Cá nhân, Tích hợp AI Model & Đào tạo AI Doanh nghiệp",
         "isPartOf": { "@id": "https://nextgenai.vn/#website" },
-        "description": "Tư vấn triển khai AI cá nhân, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ tại Việt Nam.",
+        "description": "Tư vấn triển khai AI cá nhân, cung cấp & tích hợp AI Model (API, Private Cloud) và đào tạo quy trình ứng dụng AI thực chiến cho doanh nghiệp và tổ chức tại Việt Nam.",
         "inLanguage": "vi-VN"
       },
       {
