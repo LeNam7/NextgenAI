@@ -32,6 +32,18 @@ const steps = [
     step: 1,
     title: { vi: "Bước 1 – Thiết kế vai trò", en: "Step 1 – Design Role" },
     desc: { vi: "Định hình mục tiêu và nhiệm vụ trợ lý AI xử lý", en: "Define goals and tasks the AI assistant handles" },
+    bullets: {
+      vi: [
+        "Định hình trợ lý AI sẽ làm nhiệm vụ gì (viết bài, phân tích CRM, trả lời email...).",
+        "Phân tách các công việc lặp đi lặp lại để chuẩn bị chuyển giao cho AI.",
+        "Thiết lập giọng văn, phong cách và giới hạn hành vi bảo mật của trợ lý."
+      ],
+      en: [
+        "Define what tasks the AI assistant will handle (writing, CRM analysis, emailing).",
+        "Identify repetitive workflows to prepare for delegation to the AI.",
+        "Set tone of voice, style, and security guidelines for the assistant."
+      ]
+    },
     bg: "bg-blue-50/70 border-blue-200",
     activeBorder: "border-blue-500 shadow-blue-500/20",
     bulletBg: "bg-blue-600",
@@ -40,6 +52,18 @@ const steps = [
     step: 2,
     title: { vi: "Bước 2 – Nạp tri thức & Ngữ cảnh", en: "Step 2 – Context & Knowledge" },
     desc: { vi: "Tích hợp tài liệu, dữ liệu nội bộ & quy trình", en: "Integrate docs, internal data & workflows" },
+    bullets: {
+      vi: [
+        "Nạp tài liệu hướng dẫn, quy trình vận hành, file Excel/PDF vào bộ nhớ trợ lý.",
+        "AI hiểu sâu sắc sản phẩm, dịch vụ và tệp khách hàng riêng biệt của bạn.",
+        "Loại bỏ hoàn toàn việc phải copy-paste hoặc giải thích lại thông tin mỗi lần ra lệnh."
+      ],
+      en: [
+        "Load guides, operational procedures, and Excel/PDF files into assistant memory.",
+        "AI deeply understands your unique products, services, and client profiles.",
+        "Completely eliminate the need to copy-paste or re-explain context each time."
+      ]
+    },
     bg: "bg-indigo-50/70 border-indigo-200",
     activeBorder: "border-indigo-500 shadow-indigo-500/20",
     bulletBg: "bg-indigo-600",
@@ -48,6 +72,18 @@ const steps = [
     step: 3,
     title: { vi: "Bước 3 – Lập trình chuỗi tư duy", en: "Step 3 – Chain of Thought" },
     desc: { vi: "Thiết lập quy trình xử lý đa bước tự động", en: "Configure automated multi-step logic paths" },
+    bullets: {
+      vi: [
+        "Chia nhỏ công việc phức tạp thành chuỗi các bước xử lý tuần tự logic từ A-Z.",
+        "AI tự lập kế hoạch hành động và kiểm tra chéo kết quả trước khi đưa ra phản hồi.",
+        "Xử lý trọn gói luồng việc: Tự đọc database ➔ Tổng hợp dữ liệu ➔ Tự tạo báo cáo."
+      ],
+      en: [
+        "Break down complex tasks into sequential logic steps from A to Z.",
+        "AI plans its own actions and cross-checks output quality before submitting.",
+        "Fully handle multi-step flows: Read database ➔ Summarize data ➔ Generate report."
+      ]
+    },
     bg: "bg-teal-50/70 border-teal-200",
     activeBorder: "border-teal-500 shadow-teal-500/20",
     bulletBg: "bg-teal-600",
@@ -56,6 +92,18 @@ const steps = [
     step: 4,
     title: { vi: "Bước 4 – Kết nối công cụ", en: "Step 4 – System Integration" },
     desc: { vi: "Tích hợp API, cơ sở dữ liệu & app nội bộ", en: "Integrate APIs, databases & local apps" },
+    bullets: {
+      vi: [
+        "Cấp quyền thao tác nâng cao: Đọc/ghi cơ sở dữ liệu, gọi API ngoài, xử lý folder.",
+        "Đồng bộ trực tiếp với CRM, Website, Email hoặc các phần mềm quản lý sẵn có.",
+        "Đóng gói thành ứng dụng/công cụ độc lập chạy trực tiếp trên thiết bị của bạn."
+      ],
+      en: [
+        "Grant advanced permissions: Read/write databases, call external APIs, manage folders.",
+        "Sync directly with existing CRM, Website, Email, or business software.",
+        "Package everything into an independent app running directly on your local device."
+      ]
+    },
     bg: "bg-purple-50/70 border-purple-200",
     activeBorder: "border-purple-500 shadow-purple-500/20",
     bulletBg: "bg-purple-600",
@@ -64,6 +112,18 @@ const steps = [
     step: 5,
     title: { vi: "Bước 5 – Triển khai tự hành", en: "Step 5 – Autonomous Deployment" },
     desc: { vi: "Vận hành 100% Offline, tự chạy theo sự kiện", en: "Run 100% offline, triggered by schedules/events" },
+    bullets: {
+      vi: [
+        "Hệ thống tự động chạy 24/7 theo lịch hẹn hoặc kích hoạt ngay khi có dữ liệu mới.",
+        "Vận hành hoàn toàn độc lập, con người chỉ đóng vai trò kiểm tra và giám sát.",
+        "Chạy offline cục bộ an toàn, trở thành một cộng sự tự hành thực thụ của bạn."
+      ],
+      en: [
+        "System automatically runs 24/7 on schedules or when new data arrives.",
+        "Operates fully independently, with humans only auditing high-level actions.",
+        "Runs securely on local hardware, acting as a true autonomous teammate."
+      ]
+    },
     bg: "bg-amber-50/70 border-amber-300",
     activeBorder: "border-amber-500 shadow-amber-500/20",
     bulletBg: "bg-amber-600",
@@ -78,6 +138,7 @@ export default function MainHero() {
   const [currentLogIndex, setCurrentLogIndex] = React.useState(0);
   const [logsList, setLogsList] = React.useState<string[]>([]);
   const isStep5Active = activeStep === 5;
+  const currentStepData = steps.find((s) => s.step === activeStep) || steps[0];
 
   // Cycle steps 1 -> 5
   useEffect(() => {
@@ -303,95 +364,68 @@ export default function MainHero() {
               {/* Card Body */}
               <div className="mt-4 flex-1 flex flex-col justify-between gap-4">
                 
-                {isStep5Active ? (
-                  /* STEP 5 ACTIVE VIEW (DEPLOYED) */
-                  <div className="space-y-4">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[9px] font-extrabold text-amber-500">
-                          {t({ vi: "TỰ ĐỘNG HÓA HOÀN TOÀN", en: "FULL AUTOMATION" })}
-                        </span>
-                        <span className="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-extrabold text-blue-400">
+                {/* DYNAMIC VIEW FOR STEPS 1-5 */}
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className={`px-2 py-0.5 rounded text-[9px] font-extrabold font-mono border ${
+                        isStep5Active 
+                          ? "bg-amber-500/10 border-amber-500/20 text-amber-500" 
+                          : "bg-blue-500/10 border-blue-500/20 text-blue-400"
+                      }`}>
+                        {t({ vi: "BƯỚC", en: "STEP" })} {activeStep} / 5
+                      </span>
+                      {isStep5Active && (
+                        <span className="px-2 py-0.5 rounded bg-teal-500/10 border border-teal-500/20 text-[9px] font-extrabold text-teal-400 font-mono">
                           100% OFFLINE
                         </span>
-                      </div>
-                      <h3 className="text-sm font-extrabold text-white mt-1.5">
-                        {t({ 
-                          vi: "Trợ lý Máy tính Tự hành đã sẵn sàng", 
-                          en: "Autonomous Computer Assistant Active" 
-                        })}
-                      </h3>
-                      <p className="text-[11px] text-slate-400 leading-relaxed font-semibold">
-                        {t({
-                          vi: "Hệ thống tự động thực hiện mọi quy trình xử lý đa bước và tác vụ trực tiếp trên thiết bị của bạn mà không cần can thiệp.",
-                          en: "System automatically executes all multi-step processes and tasks directly on your machine without intervention."
-                        })}
-                      </p>
+                      )}
                     </div>
+                    <h3 className="text-sm font-extrabold text-white mt-1.5 leading-snug">
+                      {t(currentStepData.title)}
+                    </h3>
+                  </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-[10px] text-slate-300 font-semibold font-mono">
-                      <div className="bg-slate-900/60 border border-slate-800 p-2.5 rounded-xl flex items-center gap-2">
-                        <Cpu className="w-4 h-4 text-blue-400 shrink-0" />
-                        <div>
-                          <p className="text-[8px] text-slate-500 uppercase">{t({ vi: "Vận hành", en: "Running" })}</p>
-                          <p className="text-[10px] text-slate-200 mt-0.5">Local Offline</p>
-                        </div>
-                      </div>
-                      <div className="bg-slate-900/60 border border-slate-800 p-2.5 rounded-xl flex items-center gap-2">
-                        <Database className="w-4 h-4 text-teal-400 shrink-0" />
-                        <div>
-                          <p className="text-[8px] text-slate-500 uppercase">{t({ vi: "Kết nối", en: "Integration" })}</p>
-                          <p className="text-[10px] text-slate-200 mt-0.5">Database & APIs</p>
-                        </div>
-                      </div>
+                  {/* Bullet points mapping the Image 2 visual hierarchy */}
+                  <ul className="space-y-2.5">
+                    {currentStepData.bullets[language].map((bullet, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-[11px] text-slate-300 leading-relaxed font-semibold">
+                        <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${
+                          isStep5Active ? "bg-amber-400" : "bg-blue-400"
+                        }`} />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Progress bar showing upgrade path */}
+                <div className="bg-slate-900/40 border border-slate-800/60 p-3 rounded-xl space-y-2">
+                  <div className="flex items-center justify-between text-[9px] font-mono font-bold">
+                    <span className="text-slate-400 uppercase">
+                      {t({ vi: "Tiến độ lộ trình", en: "Roadmap Progress" })}
+                    </span>
+                    <span className={isStep5Active ? "text-amber-400" : "text-blue-400"}>
+                      {Math.round((activeStep / 5) * 100)}%
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full transition-all duration-500 ${
+                          isStep5Active ? "bg-amber-500" : "bg-blue-500"
+                        }`} 
+                        style={{ width: `${(activeStep / 5) * 100}%` }}
+                      />
                     </div>
                   </div>
-                ) : (
-                  /* STEPS 1-4 INACTIVE VIEW (IN PROGRESS) */
-                  <div className="space-y-4">
-                    <div className="space-y-1">
-                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-extrabold text-blue-400">
-                        <span>{t({ vi: "ĐANG XÂY DỰNG: BƯỚC", en: "BUILDING: STEP" })} {activeStep}</span>
-                      </div>
-                      <h3 className="text-sm font-extrabold text-white mt-1.5">
-                        {t({ 
-                          vi: "Từng bước hiện thực hóa Trợ lý riêng", 
-                          en: "Bringing Your Custom Assistant to Life" 
-                        })}
-                      </h3>
-                      <p className="text-[11px] text-slate-400 leading-relaxed font-semibold">
-                        {t({
-                          vi: "NextgenAI đồng hành thiết kế & cài đặt từng giai đoạn, giúp bạn nhanh chóng tiến tới bước 5 để đạt khả năng tự động hóa tự hành hoàn chỉnh.",
-                          en: "NextgenAI guides and deploys each phase, helping you rapidly reach step 5 for full autonomous automation."
-                        })}
-                      </p>
-                    </div>
-
-                    {/* Progress indicators showing upgrade path */}
-                    <div className="bg-slate-900/40 border border-slate-800/60 p-3 rounded-xl space-y-2.5">
-                      <p className="text-[9px] text-slate-400 uppercase font-mono font-bold">
-                        {t({ vi: "Tiến độ xây dựng", en: "Build Progress" })}
-                      </p>
-                      <div className="flex items-center gap-3">
-                        <div className="flex-1 bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                          <div 
-                            className="bg-blue-500 h-full transition-all duration-500" 
-                            style={{ width: `${(activeStep / 5) * 100}%` }}
-                          />
-                        </div>
-                        <span className="text-[10px] text-slate-300 font-bold font-mono">
-                          {Math.round((activeStep / 5) * 100)}%
-                        </span>
-                      </div>
-                      <p className="text-[9px] text-slate-500 leading-normal font-semibold">
-                        {t({
-                          vi: "Chuyển giao từ khâu lên kịch bản ban đầu cho tới một hệ thống tự chạy hoàn toàn cục bộ 24/7.",
-                          en: "From initial scenario planning to a fully local self-running 24/7 system."
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                )}
+                  <p className="text-[9.5px] text-slate-500 leading-relaxed font-bold font-sans italic">
+                    {t({
+                      vi: "💡 Càng tiến lên bước cao, bạn càng ít phải 'chat hỏi đáp' thủ công và càng có nhiều 'tự động hóa tự vận hành'.",
+                      en: "💡 The further you step up, the less manual chatting you do, and the more autonomy you achieve."
+                    })}
+                  </p>
+                </div>
 
                 {/* Console Log Area (Always present, but shines differently) */}
                 <div className={`bg-black/95 border p-3.5 rounded-xl font-mono text-[9px] space-y-1.5 min-h-[120px] flex flex-col justify-end transition-colors duration-500 ${
