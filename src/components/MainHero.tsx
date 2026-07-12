@@ -1,13 +1,113 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight, Bot, Cpu, Database, Activity, Zap } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
+
+const logs = [
+  "⚙️ Khởi động NextgenAI Core (Offline)...",
+  "🧠 Đang nạp mô hình DeepSeek-R1 (Local)... Sẵn sàng.",
+  "⏰ [Lịch trình 09:00] Bắt đầu đồng bộ cơ sở dữ liệu...",
+  "📂 [Tác vụ 1/3] Truy xuất dữ liệu CRM nội bộ...",
+  "📊 [Tác vụ 2/3] Phân tích xu hướng và lập báo cáo...",
+  "📁 [Tác vụ 3/3] Xuất file PDF & lưu trữ bảo mật cục bộ...",
+  "✅ [Hoàn thành] Quy trình tự động kết thúc. 0% can thiệp thủ công.",
+  "💤 Hệ thống đang chờ sự kiện kích hoạt tiếp theo..."
+];
+
+const logsEn = [
+  "⚙️ Initializing NextgenAI Core (Offline)...",
+  "🧠 Loading local DeepSeek-R1 model... Ready.",
+  "⏰ [Scheduler 09:00] Starting database synchronization...",
+  "📂 [Task 1/3] Extracting local CRM database...",
+  "📊 [Task 2/3] Analyzing trends and compiling PDF report...",
+  "📁 [Task 3/3] Exporting report to secure offline folder...",
+  "✅ [Success] Workflow completed. 0% human input required.",
+  "💤 System sleeping. Awaiting next trigger event..."
+];
+
+const steps = [
+  {
+    step: 1,
+    title: { vi: "Bước 1 – Thiết kế vai trò", en: "Step 1 – Design Role" },
+    desc: { vi: "Định hình mục tiêu và nhiệm vụ trợ lý AI xử lý", en: "Define goals and tasks the AI assistant handles" },
+    bg: "bg-blue-50/70 border-blue-200",
+    activeBorder: "border-blue-500 shadow-blue-500/20",
+    bulletBg: "bg-blue-600",
+  },
+  {
+    step: 2,
+    title: { vi: "Bước 2 – Nạp tri thức & Ngữ cảnh", en: "Step 2 – Context & Knowledge" },
+    desc: { vi: "Tích hợp tài liệu, dữ liệu nội bộ & quy trình", en: "Integrate docs, internal data & workflows" },
+    bg: "bg-indigo-50/70 border-indigo-200",
+    activeBorder: "border-indigo-500 shadow-indigo-500/20",
+    bulletBg: "bg-indigo-600",
+  },
+  {
+    step: 3,
+    title: { vi: "Bước 3 – Lập trình chuỗi tư duy", en: "Step 3 – Chain of Thought" },
+    desc: { vi: "Thiết lập quy trình xử lý đa bước tự động", en: "Configure automated multi-step logic paths" },
+    bg: "bg-teal-50/70 border-teal-200",
+    activeBorder: "border-teal-500 shadow-teal-500/20",
+    bulletBg: "bg-teal-600",
+  },
+  {
+    step: 4,
+    title: { vi: "Bước 4 – Kết nối công cụ", en: "Step 4 – System Integration" },
+    desc: { vi: "Tích hợp API, cơ sở dữ liệu & app nội bộ", en: "Integrate APIs, databases & local apps" },
+    bg: "bg-purple-50/70 border-purple-200",
+    activeBorder: "border-purple-500 shadow-purple-500/20",
+    bulletBg: "bg-purple-600",
+  },
+  {
+    step: 5,
+    title: { vi: "Bước 5 – Triển khai tự hành", en: "Step 5 – Autonomous Deployment" },
+    desc: { vi: "Vận hành 100% Offline, tự chạy theo sự kiện", en: "Run 100% offline, triggered by schedules/events" },
+    bg: "bg-amber-50/70 border-amber-300",
+    activeBorder: "border-amber-500 shadow-amber-500/20",
+    bulletBg: "bg-amber-600",
+  }
+];
 
 export default function MainHero() {
   const { language, t } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const [activeStep, setActiveStep] = React.useState(1);
+  const [currentLogIndex, setCurrentLogIndex] = React.useState(0);
+  const [logsList, setLogsList] = React.useState<string[]>([]);
+  const isStep5Active = activeStep === 5;
+
+  // Cycle steps 1 -> 5
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev % 5) + 1);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Cycle console logs and update list
+  useEffect(() => {
+    const activeLogs = language === "vi" ? logs : logsEn;
+    // Reset list when language changes
+    setLogsList([activeLogs[0]]);
+    setCurrentLogIndex(0);
+
+    const logInterval = setInterval(() => {
+      setCurrentLogIndex((prev) => {
+        const nextIndex = (prev + 1) % activeLogs.length;
+        setLogsList((list) => {
+          const updated = [...list, activeLogs[nextIndex]];
+          if (updated.length > 3) updated.shift();
+          return updated;
+        });
+        return nextIndex;
+      });
+    }, 3000);
+
+    return () => clearInterval(logInterval);
+  }, [language]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -146,8 +246,8 @@ export default function MainHero() {
             {/* Description */}
             <p className="text-slate-500 text-sm sm:text-base max-w-xl leading-relaxed font-semibold">
               {t({
-                vi: "Khác với các Chatbot thông thường (như ChatGPT, Gemini) chỉ hoạt động thụ động dạng hỏi-đáp trên web, AI Agent của chúng tôi là hệ thống tự hành vượt trội: tự động lập kế hoạch, thực hiện quy trình đa bước phức tạp, kết nối trực tiếp với cơ sở dữ liệu nội bộ và bảo mật tuyệt đối 100% Offline.",
-                en: "Unlike basic web chatbots (ChatGPT, Gemini) that only answer questions passively in isolation, our AI Agents are autonomous systems: they plan, execute complex multi-step workflows, connect directly with your internal database, and run 100% offline for absolute data privacy."
+                vi: "Khác với các chatbot chỉ biết trò chuyện và đưa ra lời khuyên trên trình duyệt, chúng tôi giúp bạn sở hữu một Trợ lý Máy tính thực sự hành động. AI Agent này chạy trực tiếp trên máy của bạn: tự chủ lập kế hoạch, vận hành các công cụ và trực tiếp thực thi các quy trình phức tạp thay bạn.",
+                en: "Unlike standard chatbots that only chat and give advice in a browser, we help you own a computer assistant that actually takes action. Operating directly on your machine, this AI Agent autonomously plans, coordinates tools, and executes complex workflows for you."
               })}
             </p>
 
@@ -171,83 +271,198 @@ export default function MainHero() {
 
           </div>
 
-          {/* Right Column: Three Overlapping Showcase Cards */}
-          <div className="lg:col-span-6 relative h-[450px] w-full flex items-center justify-center mt-10 lg:mt-0">
+          {/* Right Column: Dynamic 5-Step AI Assistant Build Roadmap */}
+          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch mt-10 lg:mt-0 relative min-h-[420px]">
             
-            {/* Card 1: Dashboard UI (Top Left/Center floating) */}
-            <div className="absolute top-4 left-6 md:left-12 w-[340px] md:w-[380px] bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xl shadow-slate-900/10 transform -rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-300 z-20">
-              {/* Window Controls */}
-              <div className="flex items-center gap-1.5 mb-3.5 border-b border-slate-100 pb-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-400"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-green-400"></span>
-                <span className="text-[10px] text-slate-400 font-semibold font-mono ml-2">nextgen-admin.ai</span>
+            {/* Big Card: AI Assistant Builder / Control Center */}
+            <div className={`md:col-span-7 bg-[#0b0c10] border rounded-2xl p-5 shadow-2xl transition-all duration-700 flex flex-col justify-between min-h-[380px] ${
+              isStep5Active 
+                ? "border-amber-500/80 shadow-[0_0_35px_rgba(245,158,11,0.25)] scale-[1.02]" 
+                : "border-slate-800/80 shadow-slate-950/20"
+            }`}>
+              
+              {/* Card Header */}
+              <div className="flex items-center justify-between pb-3.5 border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <Bot className={`w-5 h-5 transition-all duration-500 ${isStep5Active ? "text-amber-500 animate-bounce" : "text-blue-500"}`} />
+                  <span className="text-[11px] font-bold text-slate-200 tracking-wider uppercase font-mono">
+                    {isStep5Active 
+                      ? t({ vi: "Hệ thống tự hành hoàn tất", en: "Autonomous Core Active" })
+                      : t({ vi: "Lộ trình xây dựng Trợ lý AI", en: "AI Assistant Build Roadmap" })
+                    }
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className={`w-2 h-2 rounded-full ${isStep5Active ? "bg-amber-500 animate-ping" : "bg-blue-500 animate-pulse"}`}></span>
+                  <span className="text-[10px] text-slate-400 font-mono font-bold">
+                    {isStep5Active ? "ACTIVE" : "BUILDING"}
+                  </span>
+                </div>
               </div>
-              {/* Dashboard Content Mockup */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-800">{t({ vi: "Hệ thống AI tự hành", en: "Autonomous AI System" })}</span>
-                  <span className="px-2 py-0.5 rounded bg-green-50 border border-green-200 text-[10px] font-bold text-green-700">ONLINE</span>
-                </div>
-                <div className="h-[2px] bg-slate-100 w-full" />
-                <div className="grid grid-cols-2 gap-2.5">
-                  <div className="bg-slate-50 border border-slate-100 p-2 rounded-lg">
-                    <p className="text-[9px] text-slate-400 font-bold uppercase">{t({ vi: "Model cục bộ", en: "Local Model" })}</p>
-                    <p className="text-xs font-extrabold text-slate-700 mt-0.5">DeepSeek-R1</p>
+
+              {/* Card Body */}
+              <div className="mt-4 flex-1 flex flex-col justify-between gap-4">
+                
+                {isStep5Active ? (
+                  /* STEP 5 ACTIVE VIEW (DEPLOYED) */
+                  <div className="space-y-4">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[9px] font-extrabold text-amber-500">
+                          {t({ vi: "TỰ ĐỘNG HÓA HOÀN TOÀN", en: "FULL AUTOMATION" })}
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-extrabold text-blue-400">
+                          100% OFFLINE
+                        </span>
+                      </div>
+                      <h3 className="text-sm font-extrabold text-white mt-1.5">
+                        {t({ 
+                          vi: "Trợ lý Máy tính Tự hành đã sẵn sàng", 
+                          en: "Autonomous Computer Assistant Active" 
+                        })}
+                      </h3>
+                      <p className="text-[11px] text-slate-400 leading-relaxed font-semibold">
+                        {t({
+                          vi: "Hệ thống tự động thực hiện mọi quy trình xử lý đa bước và tác vụ trực tiếp trên thiết bị của bạn mà không cần can thiệp.",
+                          en: "System automatically executes all multi-step processes and tasks directly on your machine without intervention."
+                        })}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 text-[10px] text-slate-300 font-semibold font-mono">
+                      <div className="bg-slate-900/60 border border-slate-800 p-2.5 rounded-xl flex items-center gap-2">
+                        <Cpu className="w-4 h-4 text-blue-400 shrink-0" />
+                        <div>
+                          <p className="text-[8px] text-slate-500 uppercase">{t({ vi: "Vận hành", en: "Running" })}</p>
+                          <p className="text-[10px] text-slate-200 mt-0.5">Local Offline</p>
+                        </div>
+                      </div>
+                      <div className="bg-slate-900/60 border border-slate-800 p-2.5 rounded-xl flex items-center gap-2">
+                        <Database className="w-4 h-4 text-teal-400 shrink-0" />
+                        <div>
+                          <p className="text-[8px] text-slate-500 uppercase">{t({ vi: "Kết nối", en: "Integration" })}</p>
+                          <p className="text-[10px] text-slate-200 mt-0.5">Database & APIs</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="bg-slate-50 border border-slate-100 p-2 rounded-lg">
-                    <p className="text-[9px] text-slate-400 font-bold uppercase">{t({ vi: "Độ bảo mật", en: "Data Privacy" })}</p>
-                    <p className="text-xs font-extrabold text-indigo-600 mt-0.5">100% Offline</p>
+                ) : (
+                  /* STEPS 1-4 INACTIVE VIEW (IN PROGRESS) */
+                  <div className="space-y-4">
+                    <div className="space-y-1">
+                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-extrabold text-blue-400">
+                        <span>{t({ vi: "ĐANG XÂY DỰNG: BƯỚC", en: "BUILDING: STEP" })} {activeStep}</span>
+                      </div>
+                      <h3 className="text-sm font-extrabold text-white mt-1.5">
+                        {t({ 
+                          vi: "Từng bước hiện thực hóa Trợ lý riêng", 
+                          en: "Bringing Your Custom Assistant to Life" 
+                        })}
+                      </h3>
+                      <p className="text-[11px] text-slate-400 leading-relaxed font-semibold">
+                        {t({
+                          vi: "NextgenAI đồng hành thiết kế & cài đặt từng giai đoạn, giúp bạn nhanh chóng tiến tới bước 5 để đạt khả năng tự động hóa tự hành hoàn chỉnh.",
+                          en: "NextgenAI guides and deploys each phase, helping you rapidly reach step 5 for full autonomous automation."
+                        })}
+                      </p>
+                    </div>
+
+                    {/* Progress indicators showing upgrade path */}
+                    <div className="bg-slate-900/40 border border-slate-800/60 p-3 rounded-xl space-y-2.5">
+                      <p className="text-[9px] text-slate-400 uppercase font-mono font-bold">
+                        {t({ vi: "Tiến độ xây dựng", en: "Build Progress" })}
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <div className="flex-1 bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                          <div 
+                            className="bg-blue-500 h-full transition-all duration-500" 
+                            style={{ width: `${(activeStep / 5) * 100}%` }}
+                          />
+                        </div>
+                        <span className="text-[10px] text-slate-300 font-bold font-mono">
+                          {Math.round((activeStep / 5) * 100)}%
+                        </span>
+                      </div>
+                      <p className="text-[9px] text-slate-500 leading-normal font-semibold">
+                        {t({
+                          vi: "Chuyển giao từ khâu lên kịch bản ban đầu cho tới một hệ thống tự chạy hoàn toàn cục bộ 24/7.",
+                          en: "From initial scenario planning to a fully local self-running 24/7 system."
+                        })}
+                      </p>
+                    </div>
                   </div>
+                )}
+
+                {/* Console Log Area (Always present, but shines differently) */}
+                <div className={`bg-black/95 border p-3.5 rounded-xl font-mono text-[9px] space-y-1.5 min-h-[120px] flex flex-col justify-end transition-colors duration-500 ${
+                  isStep5Active ? "border-amber-500/30" : "border-slate-900"
+                }`}>
+                  <div className="flex items-center justify-between text-slate-500 pb-1 border-b border-slate-900/80 mb-1">
+                    <div className="flex items-center gap-1.5">
+                      <Activity className={`w-3 h-3 ${isStep5Active ? "animate-pulse text-amber-500" : "text-slate-500"}`} />
+                      <span>{t({ vi: "Trình giả lập AI Agent Lvl 5", en: "Level 5 Agent Emulator" })}</span>
+                    </div>
+                    <span className="text-[8px] bg-slate-900 px-1 py-0.5 rounded text-slate-400 uppercase font-bold">
+                      {t({ vi: "Thời gian thực", en: "Real-time" })}
+                    </span>
+                  </div>
+                  {logsList.map((log, index) => (
+                    <p key={index} className={`truncate transition-all duration-300 ${
+                      log.includes("✅") ? "text-green-400 font-bold" :
+                      log.includes("⚙️") || log.includes("🧠") ? "text-slate-300" :
+                      log.includes("⏰") ? "text-amber-400 font-semibold animate-pulse" :
+                      "text-slate-400"
+                    }`}>
+                      {log}
+                    </p>
+                  ))}
                 </div>
-                <div className="bg-slate-900 text-slate-300 p-3 rounded-lg font-mono text-[10px] space-y-1">
-                  <p className="text-slate-500">{"// Running database analysis..."}</p>
-                  <p className="text-orange-400">{"[Success] Connected to Local CRM"}</p>
-                  <p className="text-green-400">{"[Agent] Task 'Daily Report' Completed"}</p>
-                </div>
+
               </div>
             </div>
 
-            {/* Card 2: Process Flow (Middle Right floating) */}
-            <div className="absolute right-0 md:right-8 top-1/4 w-[280px] bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xl shadow-slate-900/10 transform rotate-2 hover:rotate-0 hover:-translate-y-1 transition-all duration-300 z-30">
-              <p className="text-xs font-bold text-slate-800 mb-3">{t({ vi: "Định tuyến Thông minh", en: "Intelligent AI Routing" })}</p>
-              <div className="space-y-2.5">
-                <div className="flex items-center gap-2 p-1.5 rounded-lg bg-indigo-50/50 border border-indigo-100">
-                  <div className="w-5 h-5 rounded-full bg-indigo-600 flex items-center justify-center text-[10px] text-white font-bold">1</div>
-                  <div className="text-[10px] font-bold text-slate-700">{t({ vi: "Tiếp nhận Yêu cầu 💬", en: "Receive Task 💬" })}</div>
-                </div>
-                <div className="flex items-center gap-2 p-1.5 rounded-lg bg-orange-50/50 border border-orange-100">
-                  <div className="w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center text-[10px] text-white font-bold">2</div>
-                  <div className="text-[10px] font-bold text-slate-700">{t({ vi: "Phân tích & Lập Kế Hoạch", en: "Deconstruct & Plan" })}</div>
-                </div>
-                <div className="flex items-center gap-2 p-1.5 rounded-lg bg-green-50/50 border border-green-100">
-                  <div className="w-5 h-5 rounded-full bg-green-600 flex items-center justify-center text-[10px] text-white font-bold">3</div>
-                  <div className="text-[10px] font-bold text-slate-700">{t({ vi: "Chọn Model Tối Ưu Nhất 🚀", en: "Route to Best Model 🚀" })}</div>
-                </div>
-              </div>
-            </div>
+            {/* Stepper with 5 Steps */}
+            <div className="relative space-y-2 md:col-span-5 flex flex-col justify-between py-1">
+              {/* Stepper connector line */}
+              <div className="absolute left-[23px] top-4 bottom-4 w-0.5 bg-slate-200 pointer-events-none -z-10" />
 
-            {/* Card 3: Code Snippet mock (Bottom Right/Center floating) */}
-            <div className="absolute bottom-4 left-10 md:left-24 w-[300px] md:w-[350px] bg-[#0c0d0f] border border-slate-800/80 rounded-2xl p-4 shadow-2xl shadow-slate-900/20 transform -rotate-2 hover:rotate-0 hover:-translate-y-1 transition-all duration-300 z-10 font-mono text-[10px]">
-              {/* Window Controls */}
-              <div className="flex items-center gap-1.5 mb-3.5 border-b border-slate-800 pb-2">
-                <span className="w-2 h-2 rounded-full bg-red-400/80"></span>
-                <span className="w-2 h-2 rounded-full bg-yellow-400/80"></span>
-                <span className="w-2 h-2 rounded-full bg-green-400/80"></span>
-                <span className="text-[9px] text-slate-500 font-semibold ml-2">nextgen-config.ts</span>
-              </div>
-              {/* Code */}
-              <div className="space-y-1.5 text-slate-400">
-                <p><span className="text-purple-400">import</span> {"{ NextgenAI }"} <span className="text-purple-400">from</span> <span className="text-green-400">"nextgenai"</span>;</p>
-                <p className="text-slate-600">{"//"}</p>
-                <p><span className="text-purple-400">const</span> agent = <span className="text-purple-400">new</span> <span className="text-blue-400">NextgenAI</span>({"{"}</p>
-                <p>&nbsp;&nbsp;model: <span className="text-green-400">"deepseek-r1"</span>,</p>
-                <p>&nbsp;&nbsp;privacy: <span className="text-green-400">"local-offline"</span>,</p>
-                <p>&nbsp;&nbsp;autoExecute: <span className="text-orange-400">true</span></p>
-                <p>{"});"}</p>
-                <p className="text-slate-600">{"//"}</p>
-                <p><span className="text-purple-400">await</span> agent.<span className="text-blue-400">run</span>(<span className="text-green-400">"process_workflow"</span>);</p>
-              </div>
+              {steps.map((lvl) => {
+                const isActive = activeStep === lvl.step;
+                return (
+                  <button
+                    key={lvl.step}
+                    onClick={() => setActiveStep(lvl.step)}
+                    className={`w-full text-left p-2.5 rounded-xl border transition-all duration-500 ease-in-out cursor-pointer relative overflow-hidden flex items-start gap-3 select-none ${
+                      isActive
+                        ? `${lvl.bg} ${lvl.activeBorder} scale-[1.03] shadow-md z-10`
+                        : "bg-white/40 border-slate-200/60 hover:bg-white/70 opacity-75 hover:opacity-100"
+                    }`}
+                  >
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors duration-500 ${
+                      isActive ? `${lvl.bulletBg} text-white animate-pulse` : "bg-slate-200 text-slate-600"
+                    }`}>
+                      {lvl.step}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <h4 className={`text-[11px] font-bold transition-colors duration-500 ${isActive ? "text-slate-900" : "text-slate-700"}`}>
+                          {t(lvl.title)}
+                        </h4>
+                        {lvl.step === 5 && (
+                          <span className={`text-[7px] font-extrabold px-1 py-0.5 rounded uppercase tracking-wider ${
+                            isActive ? "bg-amber-200 text-amber-800" : "bg-slate-200 text-slate-500"
+                          }`}>
+                            {t({ vi: "Mục tiêu", en: "Goal" })}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[9px] text-slate-500 font-semibold leading-tight mt-0.5 whitespace-normal break-words">
+                        {t(lvl.desc)}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
 
           </div>
