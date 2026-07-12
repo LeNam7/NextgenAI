@@ -27,16 +27,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (mounted) {
       if (language === "vi") {
-        document.title = "NextgenAI | Cài đặt AI cá nhân, Model AI và Giáo dục AI cho trường học";
+        document.title = "NextgenAI | Triển khai AI Cá nhân, Tích hợp Model & Tự động hóa Doanh nghiệp";
         document.querySelector('meta[name="description"]')?.setAttribute(
           "content",
-          "Tư vấn triển khai AI cá nhân, cung cấp model AI và đào tạo AI thực chiến cho giáo viên, học sinh cấp 1, cấp 2, cấp 3 và doanh nghiệp vừa và nhỏ tại Việt Nam."
+          "Tư vấn triển khai AI cá nhân, cung cấp & tích hợp AI Model và xây dựng hệ thống tự động hóa, tối ưu hóa quy trình cho cá nhân và doanh nghiệp tại Việt Nam."
         );
       } else {
-        document.title = "NextgenAI | Custom AI, AI Models & K-12 AI Education";
+        document.title = "NextgenAI | Personal AI Deployment, Model Integration & Business Automation";
         document.querySelector('meta[name="description"]')?.setAttribute(
           "content",
-          "Consulting for custom AI, providing AI models and hands-on AI training for teachers, K-12 students, and small-to-medium enterprises in Vietnam."
+          "Consulting for personal AI, provisioning & integrating AI models, and building autonomous systems to optimize workflows for individuals and businesses in Vietnam."
         );
       }
     }
