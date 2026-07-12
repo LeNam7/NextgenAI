@@ -30,18 +30,18 @@ const logsEn = [
 const steps = [
   {
     step: 1,
-    title: { vi: "Bước 1 – Thiết kế vai trò", en: "Step 1 – Design Role" },
-    desc: { vi: "Định hình mục tiêu và nhiệm vụ trợ lý AI xử lý", en: "Define goals and tasks the AI assistant handles" },
+    title: { vi: "Bước 1 – Hỏi đáp", en: "Step 1 – Q&A" },
+    desc: { vi: "Hỏi AI từng câu một, mỗi việc đều phải prompt lại", en: "Ask AI one question at a time, re-prompting every task" },
     bullets: {
       vi: [
-        "Định hình trợ lý AI sẽ làm nhiệm vụ gì (viết bài, phân tích CRM, trả lời email...).",
-        "Phân tách các công việc lặp đi lặp lại để chuẩn bị chuyển giao cho AI.",
-        "Thiết lập giọng văn, phong cách và giới hạn hành vi bảo mật của trợ lý."
+        "Hỏi AI từng câu một phục vụ nhu cầu tức thời.",
+        "Dùng để viết bài, tóm tắt, dịch thuật, brainstorm nhanh.",
+        "Mỗi công việc đều phải viết lại câu lệnh (prompt) từ đầu."
       ],
       en: [
-        "Define what tasks the AI assistant will handle (writing, CRM analysis, emailing).",
-        "Identify repetitive workflows to prepare for delegation to the AI.",
-        "Set tone of voice, style, and security guidelines for the assistant."
+        "Ask AI one question at a time for immediate needs.",
+        "Used for quick writing, summarizing, translating, or brainstorming.",
+        "Must rewrite prompt from scratch for every single task."
       ]
     },
     bg: "bg-blue-50/70 border-blue-200",
@@ -50,18 +50,18 @@ const steps = [
   },
   {
     step: 2,
-    title: { vi: "Bước 2 – Nạp tri thức & Ngữ cảnh", en: "Step 2 – Context & Knowledge" },
-    desc: { vi: "Tích hợp tài liệu, dữ liệu nội bộ & quy trình", en: "Integrate docs, internal data & workflows" },
+    title: { vi: "Bước 2 – Có ngữ cảnh", en: "Step 2 – Contextualized" },
+    desc: { vi: "Cung cấp tài liệu và hướng dẫn cụ thể cho AI", en: "Provide specific documents and guidelines to AI" },
     bullets: {
       vi: [
-        "Nạp tài liệu hướng dẫn, quy trình vận hành, file Excel/PDF vào bộ nhớ trợ lý.",
-        "AI hiểu sâu sắc sản phẩm, dịch vụ và tệp khách hàng riêng biệt của bạn.",
-        "Loại bỏ hoàn toàn việc phải copy-paste hoặc giải thích lại thông tin mỗi lần ra lệnh."
+        "Biết cách sử dụng Projects, tài liệu & hướng dẫn cụ thể.",
+        "Trợ lý AI hiểu sâu sắc công việc và cách bạn muốn nó phản hồi.",
+        "Không cần phải giải thích hay copy-paste lại thông tin mỗi lần."
       ],
       en: [
-        "Load guides, operational procedures, and Excel/PDF files into assistant memory.",
-        "AI deeply understands your unique products, services, and client profiles.",
-        "Completely eliminate the need to copy-paste or re-explain context each time."
+        "Know how to use Projects, documents, and specific guides.",
+        "AI assistant deeply understands the task and your preferred response style.",
+        "No need to explain background context or copy-paste information each time."
       ]
     },
     bg: "bg-indigo-50/70 border-indigo-200",
@@ -70,18 +70,18 @@ const steps = [
   },
   {
     step: 3,
-    title: { vi: "Bước 3 – Lập trình chuỗi tư duy", en: "Step 3 – Chain of Thought" },
-    desc: { vi: "Thiết lập quy trình xử lý đa bước tự động", en: "Configure automated multi-step logic paths" },
+    title: { vi: "Bước 3 – Có quy trình", en: "Step 3 – Process-Driven" },
+    desc: { vi: "AI tự động xử lý các bước trong chuỗi công việc", en: "AI processes steps within structured workflows" },
     bullets: {
       vi: [
-        "Chia nhỏ công việc phức tạp thành chuỗi các bước xử lý tuần tự logic từ A-Z.",
-        "AI tự lập kế hoạch hành động và kiểm tra chéo kết quả trước khi đưa ra phản hồi.",
-        "Xử lý trọn gói luồng việc: Tự đọc database ➔ Tổng hợp dữ liệu ➔ Tự tạo báo cáo."
+        "Trợ lý AI tự xử lý từng bước tuần tự trong quy trình công việc (workflow).",
+        "Phân tích dữ liệu chuyên sâu, tổng hợp thông tin, lập kế hoạch, tạo nội dung.",
+        "Không chỉ tạo câu trả lời đơn thuần mà trực tiếp giúp xử lý công việc."
       ],
       en: [
-        "Break down complex tasks into sequential logic steps from A to Z.",
-        "AI plans its own actions and cross-checks output quality before submitting.",
-        "Fully handle multi-step flows: Read database ➔ Summarize data ➔ Generate report."
+        "AI assistant handles each sequential step in a work process (workflow).",
+        "Perform deep data analysis, information synthesis, planning, and content creation.",
+        "Goes beyond text responses to directly assist in executing tasks."
       ]
     },
     bg: "bg-teal-50/70 border-teal-200",
@@ -90,18 +90,18 @@ const steps = [
   },
   {
     step: 4,
-    title: { vi: "Bước 4 – Kết nối công cụ", en: "Step 4 – System Integration" },
-    desc: { vi: "Tích hợp API, cơ sở dữ liệu & app nội bộ", en: "Integrate APIs, databases & local apps" },
+    title: { vi: "Bước 4 – Có hệ thống", en: "Step 4 – Systematized" },
+    desc: { vi: "Đóng gói kinh nghiệm thành công cụ, template riêng", en: "Package expertise into custom prompts, tools or apps" },
     bullets: {
       vi: [
-        "Cấp quyền thao tác nâng cao: Đọc/ghi cơ sở dữ liệu, gọi API ngoài, xử lý folder.",
-        "Đồng bộ trực tiếp với CRM, Website, Email hoặc các phần mềm quản lý sẵn có.",
-        "Đóng gói thành ứng dụng/công cụ độc lập chạy trực tiếp trên thiết bị của bạn."
+        "Biến kinh nghiệm thực tế của bạn thành bộ prompt, template, tool hoặc app riêng.",
+        "Trợ lý AI làm việc tự động và chính xác theo đúng quy trình bạn thiết kế.",
+        "Đầu tư xây dựng hệ thống một lần, sử dụng hiệu quả nhiều lần."
       ],
       en: [
-        "Grant advanced permissions: Read/write databases, call external APIs, manage folders.",
-        "Sync directly with existing CRM, Website, Email, or business software.",
-        "Package everything into an independent app running directly on your local device."
+        "Turn operational experience into standardized prompts, templates, tools, or apps.",
+        "AI assistant operates automatically and precisely based on designed logic.",
+        "Build the system once, benefit and use it repeatedly."
       ]
     },
     bg: "bg-purple-50/70 border-purple-200",
@@ -110,18 +110,18 @@ const steps = [
   },
   {
     step: 5,
-    title: { vi: "Bước 5 – Triển khai tự hành", en: "Step 5 – Autonomous Deployment" },
-    desc: { vi: "Vận hành 100% Offline, tự chạy theo sự kiện", en: "Run 100% offline, triggered by schedules/events" },
+    title: { vi: "Bước 5 – Tự động hóa", en: "Step 5 – Automated" },
+    desc: { vi: "Hệ thống tự động vận hành 24/7 theo lịch/sự kiện", en: "System runs 24/7 on schedules or data event triggers" },
     bullets: {
       vi: [
-        "Hệ thống tự động chạy 24/7 theo lịch hẹn hoặc kích hoạt ngay khi có dữ liệu mới.",
-        "Vận hành hoàn toàn độc lập, con người chỉ đóng vai trò kiểm tra và giám sát.",
-        "Chạy offline cục bộ an toàn, trở thành một cộng sự tự hành thực thụ của bạn."
+        "Trợ lý AI tự chạy theo lịch hẹn hoặc ngay khi phát hiện có dữ liệu mới.",
+        "Kết nối trực tiếp API, luồng công việc tự động (workflow) và các công cụ khác.",
+        "AI không chỉ dừng ở vai trò hỗ trợ, mà trở thành một phần trong hệ thống vận hành."
       ],
       en: [
-        "System automatically runs 24/7 on schedules or when new data arrives.",
-        "Operates fully independently, with humans only auditing high-level actions.",
-        "Runs securely on local hardware, acting as a true autonomous teammate."
+        "AI assistant operates automatically based on schedules or new data events.",
+        "Directly integrates APIs, automation workflows, and other digital tools.",
+        "AI goes beyond support, fully blending into the operational environment."
       ]
     },
     bg: "bg-amber-50/70 border-amber-300",
@@ -348,8 +348,8 @@ export default function MainHero() {
                   <Bot className={`w-5 h-5 transition-all duration-500 ${isStep5Active ? "text-amber-500 animate-bounce" : "text-blue-500"}`} />
                   <span className="text-[11px] font-bold text-slate-200 tracking-wider uppercase font-mono">
                     {isStep5Active 
-                      ? t({ vi: "Hệ thống tự hành hoàn tất", en: "Autonomous Core Active" })
-                      : t({ vi: "Lộ trình xây dựng Trợ lý AI", en: "AI Assistant Build Roadmap" })
+                      ? t({ vi: "Cấp độ 5: Tự động hóa hoàn toàn", en: "Level 5: Full Automation" })
+                      : t({ vi: "Lộ trình 5 Cấp độ Trợ lý AI", en: "5-Level AI Assistant Roadmap" })
                     }
                   </span>
                 </div>
